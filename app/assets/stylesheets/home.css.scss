@@ -1,0 +1,15 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+div#container{
+  position:relative;
+  padding-right: 30px;
+  padding-top: 10px;
+} 
+div#dino{
+  float:right;
+  background-image:url('dinosaur_3.gif');
+  background-repeat:no-repeat;
+  padding:250px 250px 60px 20px;
+ }

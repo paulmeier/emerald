@@ -1,0 +1,33 @@
+.page-header
+  %h1 ZIIP Detailed Report
+- Location.find(params[:location]).machines.each do |m|
+  %h3= m.name
+  %strong
+    Name
+  = m.name
+  %br
+  %strong
+    Peak % Used
+  = number_to_percentage(Ziip.findBOXpeaks(m.id).first.peak.to_i.ceil, :precision => 1)
+  %br
+  %strong
+    Peak Time
+  = Ziip.findBOXpeaks(m.id).first.DateTime.in_time_zone("Central Time (US & Canada)")
+  %br
+  %strong
+    Average CEC ZIIP
+  = number_to_percentage(Ziip.findBOXaverage(m.id), :precision => 1)
+  %br
+  %table#minTable
+    %thead
+      %tr
+        %th LPAR
+        %th Peak
+        %th Average
+    %tbody
+      - Ziip.findLPARpeaks(m.id).each do |l|
+        %tr
+          %td= l.LPAR
+          %td= number_to_percentage(l.max.ceil, :precision => 1)
+          %td= number_to_percentage(l.average, :precision => 2)
+  %br

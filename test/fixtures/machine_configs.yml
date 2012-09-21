@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 1
+  machine_id: 1
+  type: 
+  mmodel_id: MyString
+  capacity_id: 1
+  machineLoc_id: 1
+  centralStorage: 1
+  ziip: 1
+  icf: 1
+  cbu: 1
+  ifb: 1
+  es: 1
+  fi: 1
+  osa: 1
+  crypto: 1
+
+two:
+  id: 1
+  machine_id: 1
+  type: 
+  mmodel_id: MyString
+  capacity_id: 1
+  machineLoc_id: 1
+  centralStorage: 1
+  ziip: 1
+  icf: 1
+  cbu: 1
+  ifb: 1
+  es: 1
+  fi: 1
+  osa: 1
+  crypto: 1

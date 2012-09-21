@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 1
+  lpar_id: 1
+  codedWeight: 1
+  runningWeight: 1
+  ziipWeight: 1
+  zaapWeight: 1
+  localEngines: 1
+  ziip: 1
+  zaap: 1
+  ifl: 1
+  storageCbu: 1
+  storageNormal: 1
+  reservedStorage: 1
+
+two:
+  id: 1
+  lpar_id: 1
+  codedWeight: 1
+  runningWeight: 1
+  ziipWeight: 1
+  zaapWeight: 1
+  localEngines: 1
+  ziip: 1
+  zaap: 1
+  ifl: 1
+  storageCbu: 1
+  storageNormal: 1
+  reservedStorage: 1

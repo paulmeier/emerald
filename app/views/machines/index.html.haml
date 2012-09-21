@@ -1,0 +1,25 @@
+- model_class = Machine
+.page-header
+  %h1= t '.title', default: model_class.model_name.human.pluralize
+%br
+  = link_to image_tag('xls-icon.png', height: "3.5%", width: "3.5%"),url_for(format: 'xls'),class: "xlsicon"
+  = link_to image_tag('PDF_icon.gif', height: "3%", width: "3%"), url_for(format: 'pdf')
+  %table.table.table-striped
+    %thead
+      %tr
+        %th= model_class.human_attribute_name(:id)
+        %th= model_class.human_attribute_name(:name)
+        %th= model_class.human_attribute_name(:serialNumber)
+        %th= model_class.human_attribute_name(:created_at)
+        %th= t '.actions', default: t("helpers.actions")
+    %tbody
+      - @machines.each do |machine|
+        %tr
+          %td= link_to machine.id, machine_path(machine)
+          %td= machine.name
+          %td= machine.serialNumber
+          %td= l machine.created_at
+          %td
+            = link_to t('.edit', default: t("helpers.links.edit")), edit_machine_path(machine), class: 'btn btn-mini'
+            = link_to t('.destroy', default: t("helpers.links.destroy")), machine_path(machine), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger'
+  = link_to t('.new', default: t("helpers.links.new")), new_machine_path, class: 'btn btn-primary'

@@ -1,0 +1,844 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+  <title>Class: ZiipsController</title>
+
+  <link rel="stylesheet" href="./rdoc.css" type="text/css" media="screen" />
+
+  <script src="./js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body id="top" class="class">
+
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#classes">Classes</a>
+          <a href="./index.html#methods">Methods</a>
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li><a href="./app/controllers/ziips_controller_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="app/controllers/ziips_controller.rb">app/controllers/ziips_controller.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+      <!-- Parent Class -->
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        
+        <p class="link"><a href="ApplicationController.html">ApplicationController</a></p>
+        
+      </div>
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-i-all">#all</a></li>
+          
+          <li><a href="#method-i-create">#create</a></li>
+          
+          <li><a href="#method-i-custom">#custom</a></li>
+          
+          <li><a href="#method-i-destroy">#destroy</a></li>
+          
+          <li><a href="#method-i-edit">#edit</a></li>
+          
+          <li><a href="#method-i-index">#index</a></li>
+          
+          <li><a href="#method-i-new">#new</a></li>
+          
+          <li><a href="#method-i-show">#show</a></li>
+          
+          <li><a href="#method-i-update">#update</a></li>
+          
+          <li><a href="#method-i-zAll">#zAll</a></li>
+          
+          <li><a href="#method-i-zAllAvg">#zAllAvg</a></li>
+          
+          <li><a href="#method-i-zHour">#zHour</a></li>
+          
+          <li><a href="#method-i-zday">#zday</a></li>
+          
+          <li><a href="#method-i-ztotal">#ztotal</a></li>
+          
+          <li><a href="#method-i-ztotal2">#ztotal2</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Files</h3>
+        <ul>
+        
+          <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="./images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+        
+          <li><a href="./ApplicationController.html">ApplicationController</a></li>
+        
+          <li><a href="./ApplicationHelper.html">ApplicationHelper</a></li>
+        
+          <li><a href="./CapacitiesController.html">CapacitiesController</a></li>
+        
+          <li><a href="./CapacitiesHelper.html">CapacitiesHelper</a></li>
+        
+          <li><a href="./Capacity.html">Capacity</a></li>
+        
+          <li><a href="./Cpu.html">Cpu</a></li>
+        
+          <li><a href="./CpusController.html">CpusController</a></li>
+        
+          <li><a href="./CpusHelper.html">CpusHelper</a></li>
+        
+          <li><a href="./Date.html">Date</a></li>
+        
+          <li><a href="./HomeController.html">HomeController</a></li>
+        
+          <li><a href="./HomeHelper.html">HomeHelper</a></li>
+        
+          <li><a href="./Import.html">Import</a></li>
+        
+          <li><a href="./ImportsController.html">ImportsController</a></li>
+        
+          <li><a href="./ImportsHelper.html">ImportsHelper</a></li>
+        
+          <li><a href="./Location.html">Location</a></li>
+        
+          <li><a href="./LocationsController.html">LocationsController</a></li>
+        
+          <li><a href="./LocationsHelper.html">LocationsHelper</a></li>
+        
+          <li><a href="./Lpar.html">Lpar</a></li>
+        
+          <li><a href="./LparConfig.html">LparConfig</a></li>
+        
+          <li><a href="./LparConfigsController.html">LparConfigsController</a></li>
+        
+          <li><a href="./LparConfigsHelper.html">LparConfigsHelper</a></li>
+        
+          <li><a href="./LparConfigsPdf.html">LparConfigsPdf</a></li>
+        
+          <li><a href="./LparsController.html">LparsController</a></li>
+        
+          <li><a href="./LparsHelper.html">LparsHelper</a></li>
+        
+          <li><a href="./LparsPdf.html">LparsPdf</a></li>
+        
+          <li><a href="./Machine.html">Machine</a></li>
+        
+          <li><a href="./MachineConfig.html">MachineConfig</a></li>
+        
+          <li><a href="./MachineConfigsController.html">MachineConfigsController</a></li>
+        
+          <li><a href="./MachineConfigsHelper.html">MachineConfigsHelper</a></li>
+        
+          <li><a href="./MachineConfigsPdf.html">MachineConfigsPdf</a></li>
+        
+          <li><a href="./MachineLoc.html">MachineLoc</a></li>
+        
+          <li><a href="./MachineLocsController.html">MachineLocsController</a></li>
+        
+          <li><a href="./MachineLocsHelper.html">MachineLocsHelper</a></li>
+        
+          <li><a href="./MachineLpar.html">MachineLpar</a></li>
+        
+          <li><a href="./MachineLparsController.html">MachineLparsController</a></li>
+        
+          <li><a href="./MachineLparsHelper.html">MachineLparsHelper</a></li>
+        
+          <li><a href="./MachineLparsPdf.html">MachineLparsPdf</a></li>
+        
+          <li><a href="./MachinesController.html">MachinesController</a></li>
+        
+          <li><a href="./MachinesHelper.html">MachinesHelper</a></li>
+        
+          <li><a href="./MachinesPdf.html">MachinesPdf</a></li>
+        
+          <li><a href="./Mod.html">Mod</a></li>
+        
+          <li><a href="./ModsController.html">ModsController</a></li>
+        
+          <li><a href="./ModsHelper.html">ModsHelper</a></li>
+        
+          <li><a href="./Notification.html">Notification</a></li>
+        
+          <li><a href="./NotificationsController.html">NotificationsController</a></li>
+        
+          <li><a href="./NotificationsHelper.html">NotificationsHelper</a></li>
+        
+          <li><a href="./StaticPagesController.html">StaticPagesController</a></li>
+        
+          <li><a href="./StaticPagesHelper.html">StaticPagesHelper</a></li>
+        
+          <li><a href="./User.html">User</a></li>
+        
+          <li><a href="./Ziip.html">Ziip</a></li>
+        
+          <li><a href="./ZiipsController.html">ZiipsController</a></li>
+        
+          <li><a href="./ZiipsHelper.html">ZiipsHelper</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div>
+
+  <div id="documentation">
+    <h1 class="class">ZiipsController</h1>
+
+    <div id="description" class="description">
+      
+    </div><!-- description -->
+
+    
+    
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+
+      
+
+      <!-- Methods -->
+      
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="all-method" class="method-detail ">
+          <a name="method-i-all"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">all</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="all-source">
+<pre>
+<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 137</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">all</span> 
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- all-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- all-method -->
+
+      
+        <div id="create-method" class="method-detail ">
+          <a name="method-i-create"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">create</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>POST /ziips POST /ziips.json</p>
+            
+
+            
+            <div class="method-source-code" id="create-source">
+<pre>
+<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 46</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
+  <span class="ruby-ivar">@ziip</span> = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:ziip</span>])
+
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@ziip</span>.<span class="ruby-identifier">save</span>
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@ziip</span>, <span class="ruby-identifier">notice</span><span class="ruby-operator">:</span> <span class="ruby-string">'Ziip was successfully created.'</span> }
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@ziip</span>, <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">:created</span>, <span class="ruby-identifier">location</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@ziip</span> }
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">action</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;new&quot;</span> }
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@ziip</span>.<span class="ruby-identifier">errors</span>, <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">:unprocessable_entity</span> }
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- create-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- create-method -->
+
+      
+        <div id="custom-method" class="method-detail ">
+          <a name="method-i-custom"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">custom</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="custom-source">
+<pre>
+<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 140</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">custom</span>
+  <span class="ruby-ivar">@lpars</span> = <span class="ruby-constant">Lpar</span>.<span class="ruby-identifier">all</span> 
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- custom-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- custom-method -->
+
+      
+        <div id="destroy-method" class="method-detail ">
+          <a name="method-i-destroy"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">destroy</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>DELETE /ziips/1 DELETE /ziips/1.json</p>
+            
+
+            
+            <div class="method-source-code" id="destroy-source">
+<pre>
+<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 78</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
+  <span class="ruby-ivar">@ziip</span> = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-ivar">@ziip</span>.<span class="ruby-identifier">destroy</span>
+
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">ziips_url</span> }
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">head</span> <span class="ruby-value">:no_content</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- destroy-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- destroy-method -->
+
+      
+        <div id="edit-method" class="method-detail ">
+          <a name="method-i-edit"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">edit</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>GET /ziips/1/edit</p>
+            
+
+            
+            <div class="method-source-code" id="edit-source">
+<pre>
+<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">edit</span>
+  <span class="ruby-ivar">@ziip</span> = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- edit-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- edit-method -->
+
+      
+        <div id="index-method" class="method-detail ">
+          <a name="method-i-index"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">index</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>GET /ziips GET /ziips.json</p>
+            
+
+            
+            <div class="method-source-code" id="index-source">
+<pre>
+<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 9</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
+  <span class="ruby-ivar">@ziips</span> = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">paginate</span>(<span class="ruby-value">:page</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>])
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment"># index.html.erb</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@ziips</span> }
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">js</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- index-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- index-method -->
+
+      
+        <div id="new-method" class="method-detail ">
+          <a name="method-i-new"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">new</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>GET /ziips/new GET /ziips/new.json</p>
+            
+
+            
+            <div class="method-source-code" id="new-source">
+<pre>
+<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 30</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">new</span>
+  <span class="ruby-ivar">@ziip</span> = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">new</span>
+
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment"># new.html.erb</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@ziip</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- new-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- new-method -->
+
+      
+        <div id="show-method" class="method-detail ">
+          <a name="method-i-show"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">show</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>GET /ziips/1 GET /ziips/1.json</p>
+            
+
+            
+            <div class="method-source-code" id="show-source">
+<pre>
+<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 20</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
+  <span class="ruby-ivar">@ziip</span> = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment"># show.html.erb</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@ziip</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- show-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- show-method -->
+
+      
+        <div id="update-method" class="method-detail ">
+          <a name="method-i-update"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">update</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>PUT /ziips/1 PUT /ziips/1.json</p>
+            
+
+            
+            <div class="method-source-code" id="update-source">
+<pre>
+<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 62</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
+  <span class="ruby-ivar">@ziip</span> = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@ziip</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:ziip</span>])
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@ziip</span>, <span class="ruby-identifier">notice</span><span class="ruby-operator">:</span> <span class="ruby-string">'Ziip was successfully updated.'</span> }
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">head</span> <span class="ruby-value">:no_content</span> }
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">action</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;edit&quot;</span> }
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@ziip</span>.<span class="ruby-identifier">errors</span>, <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">:unprocessable_entity</span> }
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- update-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- update-method -->
+
+      
+        <div id="zAll-method" class="method-detail ">
+          <a name="method-i-zAll"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">zAll</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="zAll-source">
+<pre>
+<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 120</span>
+ <span class="ruby-keyword">def</span> <span class="ruby-identifier">zAll</span>
+  <span class="ruby-ivar">@zAll</span> = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:LPAR</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:lpar</span>]).<span class="ruby-identifier">group</span>(<span class="ruby-string">&quot;DateTime&quot;</span>).<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;DateTime, PCTBOX&quot;</span>)
+    <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-comment">#format.html # show.html.erb</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@zAll</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- zAll-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- zAll-method -->
+
+      
+        <div id="zAllAvg-method" class="method-detail ">
+          <a name="method-i-zAllAvg"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">zAllAvg</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="zAllAvg-source">
+<pre>
+<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 128</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">zAllAvg</span>
+  <span class="ruby-ivar">@machine</span> = <span class="ruby-constant">Machine</span>.<span class="ruby-identifier">includes</span>(<span class="ruby-value">:lpars</span>).<span class="ruby-identifier">where</span>(<span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:machine_id</span>])
+  <span class="ruby-ivar">@zAll</span> = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">find</span>(<span class="ruby-value">:all</span>, <span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;date(DateTime),time(DateTime)&quot;</span>, <span class="ruby-value">:select</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;DateTime, sum(PCTBOX) as average&quot;</span>, <span class="ruby-value">:conditions</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">'LPAR in (?)'</span>, <span class="ruby-ivar">@machine</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">lpars</span>.<span class="ruby-identifier">map</span>(&amp;<span class="ruby-value">:name</span>)])
+    <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-comment">#format.html # show.html.erb</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@zAll</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- zAllAvg-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- zAllAvg-method -->
+
+      
+        <div id="zHour-method" class="method-detail ">
+          <a name="method-i-zHour"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">zHour</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="zHour-source">
+<pre>
+<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 112</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">zHour</span>
+  <span class="ruby-ivar">@ziipHour</span> = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">between</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:from</span>],<span class="ruby-identifier">params</span>[<span class="ruby-value">:to</span>]).<span class="ruby-identifier">where</span>(<span class="ruby-value">:LPAR</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:scope</span>]).<span class="ruby-identifier">group</span>(<span class="ruby-string">&quot;date(DateTime),hour(DateTime)&quot;</span>).<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;DateTime, PCTBOX&quot;</span>)
+    <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-comment">#format.html # show.html.erb</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@ziipHour</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- zHour-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- zHour-method -->
+
+      
+        <div id="zday-method" class="method-detail ">
+          <a name="method-i-zday"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">zday</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="zday-source">
+<pre>
+<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 88</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">zday</span>
+  <span class="ruby-ivar">@ziipTotal</span> = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">between</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:from</span>],<span class="ruby-identifier">params</span>[<span class="ruby-value">:to</span>]).<span class="ruby-identifier">where</span>(<span class="ruby-value">:LPAR</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:scope</span>]).<span class="ruby-identifier">group</span>(<span class="ruby-string">&quot;date(DateTime)&quot;</span>).<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;DateTime, AVG(PCTBOX) as average&quot;</span>)
+    <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-comment">#format.html # show.html.erb</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@ziipTotal</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- zday-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- zday-method -->
+
+      
+        <div id="ztotal-method" class="method-detail ">
+          <a name="method-i-ztotal"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">ztotal</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="ztotal-source">
+<pre>
+<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 96</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">ztotal</span>
+  <span class="ruby-ivar">@ziipTotal</span> = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">between</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:from</span>],<span class="ruby-identifier">params</span>[<span class="ruby-value">:to</span>]).<span class="ruby-identifier">where</span>(<span class="ruby-value">:LPAR</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:scope</span>]).<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;AVG(PCTBOX) as average&quot;</span>)
+    <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-comment">#format.html # show.html.erb</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@ziipTotal</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- ztotal-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- ztotal-method -->
+
+      
+        <div id="ztotal2-method" class="method-detail ">
+          <a name="method-i-ztotal2"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">ztotal2</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="ztotal2-source">
+<pre>
+<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 104</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">ztotal2</span>
+  <span class="ruby-ivar">@ziipTotal2</span> = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">between</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:from</span>],<span class="ruby-identifier">params</span>[<span class="ruby-value">:to</span>]).<span class="ruby-identifier">group</span>(<span class="ruby-string">&quot;date(DateTime)&quot;</span>).<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;DateTime, AVG(PCTBOX) as average&quot;</span>)
+    <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-comment">#format.html # show.html.erb</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@ziipTotal2</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- ztotal2-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- ztotal2-method -->
+
+      
+      </div><!-- public-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+
+  </div><!-- documentation -->
+
+  <div id="validator-badges">
+    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+      Rdoc Generator</a> 2</small>.</p>
+  </div>
+
+</body>
+</html>
+

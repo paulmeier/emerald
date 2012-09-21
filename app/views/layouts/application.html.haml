@@ -1,0 +1,44 @@
+!!!
+%html
+  %head
+    %title Emerald
+    = include_gon
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application","jquery-ui-timepicker-addon","jquery-ui-sliderAccess","highcharts","highstock","exporting"
+    = csrf_meta_tags
+  %body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        %a.btn.btn-navbar{"data-target" => ".collapse", "data-toggle" => "collapse"}
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        %a.brand{:href => root_path} Emerald
+        .nav-collapse
+          %ul.nav
+            %li= link_to 'Reports', reports_path
+            %li= link_to 'Configuration', configuration_path
+            %li= link_to 'Documents', documents_path
+            %li= link_to 'Notifications', notifications_path
+            %li= link_to 'Application', emerald_path
+            %li= link_to 'Data', data_path
+            %li= link_to 'About', about_path
+          %ul.nav.pull-right
+            %ul.nav
+              - if user_signed_in?
+                %li= link_to current_user.email, edit_user_registration_path
+                %li= link_to "Logout", destroy_user_session_path, method: :delete
+              - else
+                %li= link_to "Sign up", new_user_registration_path
+                %li= link_to "Login", new_user_session_path
+              - flash.each do |name, msg|
+                - content_tag :div, msg, id: "flash_#(name)"
+    .container
+      .row
+        .span11
+          - flash.each do |name,msg|
+            %div{:class => "alert alert-block alert-#{name} fade in"}
+              %button.close{"data-dismiss" => "alert", :type => "button"} x
+              = msg
+          = yield
+    #bottom

@@ -1,0 +1,11 @@
+<h3>ME/FBD Comparison</h3>
+A month end and first business day comparison report based upon selected data below.<br><br>
+Select multiple by holding down "Ctrl"
+<br><br>
+<%= simple_form_for(@cpus, :url => mefbdc_path) do |f| %>
+	<%= f.input :months, :collection => Cpu.all.map { |d| d.datetime.strftime('%b %y') }.uniq , :input_html => { :multiple => true, :class => "input-large", :size => "5" }%>	
+  <div class="actions">
+    <%= f.submit "Graph ME/FBD comparison", :class => 'btn btn-primary' %>
+    <%= submit_tag 'Clear', :type => :reset, :class => "btn btn-danger" %>
+  </div>
+<% end %>

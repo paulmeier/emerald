@@ -1,0 +1,16 @@
+<h3>ME/FBD</h3>
+A month end and first business day report based upon selected data below.<br>
+Select multiple by holding down "Ctrl"
+<br><br>
+<%= simple_form_for(@cpus, :url => mefbd_path) do |f| %>
+	<%= f.input :lpars, :collection => Location.lparList(params[:location]) , :input_html => { :multiple => true, :class => "input-large", :size => "10" }%>
+	<br>
+	<%= f.input :maxMips, :label => 'Maximum Machine MIPS Line', :as => :boolean %>
+	<%= f.input :totalMips, :label => 'Total Machine MIPS Used Line', :as => :boolean %>
+	<%= f.input :includeWeights, :label => 'LPAR Weight Line', :as => :boolean %>
+	<br><br>	
+  <div class="actions">
+    <%= f.submit "Graph ME/FBD", :class => 'btn btn-primary' %>
+    <%= submit_tag 'Clear', :type => :reset, :class => "btn btn-danger" %>
+  </div>
+<% end %>

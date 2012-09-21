@@ -1,0 +1,52 @@
+<script type="text/javascript">
+$(function() {
+var arr2 = new Array();	
+var ziipsChart = new Highcharts.Chart({
+			chart: { renderTo: "ziipsChart", type: "column",
+					 events: {
+					 	load: function(){
+					 		 		//Get the LPARs data the user selected
+							    	<% params[:ziip][:lpars].each do |lpar| %>
+							    	         $.get("/ziips/1/zday", {
+							    	         	from:  '<%= 2.weeks.ago %>',
+							    	         	to: '<%= 1.day.ago %>',
+									        	scope: '<%= Lpar.find(lpar).name %>'
+									      	},function(data){
+									      		arr2 = [];
+										      	$.each(data, function(index,obj) {
+								               		arr2.push([ 
+								               			Date.UTC(
+								               				obj.DateTime.substring(0,4),
+								               				obj.DateTime.substring(5,7)-1,
+								               				obj.DateTime.substring(8,10),
+								               				obj.DateTime.substring(11,13),
+								               				obj.DateTime.substring(14,16),
+								               				obj.DateTime.substring(17,19)
+								               			),
+								               			obj.average]);
+										      	});
+									      	ziipsChart.addSeries({
+									      		name: "<%= Lpar.find(lpar).name %>",		      		
+							                	data: arr2
+							            	});
+							            })
+							    	<% end %>					 							 		
+					 	}
+					 }	
+			}, 	
+			title: { text: "ZIIP Average by Day (2 Weeks)" },
+			xAxis: { type: "datetime",
+					 tickInterval: 24 * 3600 * 1000,
+		    		 labels: {
+		    			rotation:-45,
+		    		    align: 'right'
+		    			} 
+		    		},
+			yAxis: { title: { text: "% of ZIIP Used" }},
+			series: [],
+	});
+	
+});
+</script>
+
+<div id="ziipsChart" style="width:1200px; height:600px;"></div>

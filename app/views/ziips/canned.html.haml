@@ -1,0 +1,18 @@
+- model_class = Ziip
+.page-header
+  %h1 Canned ZIIP Reports #{Location.find(params[:location]).name}
+.tabbable.tabs-left
+  %ul.nav.nav-tabs
+    %li.active
+      %a{"data-toggle" => "tab", :href => "#twowe"} 2 Week Average
+    %li
+      %a{"data-toggle" => "tab", :href => "#tabd"} Peak Periods
+    %li
+      %a{"data-toggle" => "tab", :href => "#mefbd"} ME/FBD
+  .tab-content
+    #twowe.tab-pane.active
+      = render :partial => 'twoweekavg'
+    #tabd.tab-pane
+      Peak Periods - Under construction
+    #mefbd.tab-pane
+      MEFBD - Under construction

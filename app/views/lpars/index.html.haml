@@ -1,0 +1,28 @@
+- model_class = Lpar
+%h1= t '.title', default: model_class.model_name.human.pluralize.upcase
+%br
+  = link_to image_tag('xls-icon.png', height: "3.5%", width: "3.5%"),url_for(format: 'xls'),class: "xlsicon"
+  = link_to image_tag('PDF_icon.gif', height: "3%", width: "3%"), url_for(format: 'pdf')
+  %br
+    %br
+      %table.table.table-striped
+        %thead
+          %tr
+            %th ID
+            %th MID
+            %th SMFID
+            %th Name
+            %th= model_class.human_attribute_name(:created_at)
+            %th= t '.actions', default: t("helpers.actions")
+        %tbody
+          - @lpars.each do |lpar|
+            %tr
+              %td= link_to lpar.id, lpar_path(lpar)
+              %td= lpar.mid
+              %td= lpar.smfid
+              %td= lpar.name
+              %td= l lpar.created_at
+              %td
+                = link_to t('.edit', default: t("helpers.links.edit")), edit_lpar_path(lpar), class: 'btn btn-mini'
+                = link_to t('.destroy', default: t("helpers.links.destroy")),lpar_path(lpar), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger'                                                                                                 |
+      = link_to t('.new', default: t("helpers.links.new")), new_lpar_path, class: 'btn btn-primary'

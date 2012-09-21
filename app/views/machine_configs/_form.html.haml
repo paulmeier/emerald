@@ -1,0 +1,30 @@
+= simple_form_for @machine_config, html: { class: 'form-vertical-fluid' } do |f|
+  %fieldset
+    .control-group
+      %label.control-label Machine:
+      .controls
+        = f.select :machine_id, Machine.all.collect{ |c| [c.name, c.id] }
+      %label.control-label Type:
+      .controls
+        = f.select :name, Capacity.all.collect.map(&:name).uniq { |c| [c, c] }
+      %label.control-label Model:
+      .controls
+        = f.select :mod_id, Mod.all.collect{ |c| [c.name, c.id] }
+      %label.control-label Capacity:
+      .controls
+        = f.collection_select :capacity_id, Capacity.order(:capSetting), :id, :capSetting
+      %label.control-label Location:
+      .controls
+        = f.select :machineLoc_id, MachineLoc.all.collect{ |c| [c.location.name, c.id] }
+  = f.input :centralStorage
+  = f.input :ziip
+  = f.input :icf
+  = f.input :cbu
+  = f.input :ifb
+  = f.input :es
+  = f.input :fi
+  = f.input :osa
+  = f.input :crypto
+  .form-actions
+    = f.button :submit, class: 'btn-primary'
+    = link_to t('.cancel', default: t("helpers.links.cancel")), machine_configs_path, class: 'btn'

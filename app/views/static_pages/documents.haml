@@ -1,0 +1,9 @@
+.page-header
+  %h1 Documents
+- Location.all.each do |l|
+  #box
+    %h3= l.name
+    %ul.nav.nav-list
+      %li.nav-header Documents
+      %li= link_to "Storage Layout", storageLayout_path(location: l.id)
+      %li= link_to "DCONFIG", dconfig_path

@@ -1,0 +1,52 @@
+<style>
+  #myCanvas {
+    border: 1px solid #9C9898;
+  }
+  body {
+    margin: 0px;
+    padding: 50px 0px 0px 0px;
+  }
+</style>
+    <script>
+      window.onload = function() {
+        var canvas = document.getElementById('myCanvas');
+        var context = canvas.getContext('2d');
+        var x = 20;
+        var y = 40;
+	<% (Machine.find(1).lpars.count).times.each_with_index do |i| %>
+        context.beginPath();        
+        context.rect( 20, x, 200, 100);
+        context.fillStyle = '#FFFF00';
+        context.fill();
+        context.fillStyle = '#000000';
+        context.fillText('<%= Machine.find(1).lpars[i].name %>', 25, y);
+        context.fillText('<%= Machine.find(1).lpars[i].mid %>', 200, y);
+        context.fillText('Customer Information', 25, y + 30);
+        context.lineWidth = 2;
+        context.strokeStyle = 'black';
+        context.stroke();
+        x = x + 100;
+        y = y + 100;
+    <% end %>
+		
+		x = 20;
+        y = 40;
+	<% (Machine.find(2).lpars.count).times.each_with_index do |i| %>
+        context.beginPath();        
+        context.rect( 880, x, 200, 100);
+        context.fillStyle = '#FFFF00';
+        context.fill();
+        context.fillStyle = '#000000';
+        context.fillText('<%= Machine.find(2).lpars[i].name %>', 885, y);
+        context.fillText('<%= Machine.find(2).lpars[i].mid %>', 1060, y);
+        context.fillText('Customer Information', 885, y + 30);
+        context.lineWidth = 2;
+        context.strokeStyle = 'black';
+        context.stroke();
+        x = x + 100;
+        y = y + 100;
+	<% end %>
+      };
+
+</script>
+<canvas id="myCanvas" width="1100" height="1000"></canvas>Under Construction

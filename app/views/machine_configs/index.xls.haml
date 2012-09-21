@@ -1,0 +1,34 @@
+%table{:border => "1"}
+  %thead
+    %tr
+      %th Machine
+      %th Type
+      %th Mmodel
+      %th Capacity
+      %th Machineloc
+      %th Centralstorage
+      %th Ziip
+      %th Icf
+      %th Cbu
+      %th Ifb
+      %th Es
+      %th Fi
+      %th Osa
+      %th Crypto
+  %tbody
+    - @machine_configs.each do |machine_config|
+      %tr
+        %td= link_to machine_config.machine.name, machine_path(machine_config.machine)
+        %td= machine_config.capacity.name
+        %td= machine_config.mod.name
+        %td= machine_config.capacity.capSetting
+        %td= machine_config.machineLoc_id
+        %td= machine_config.centralStorage
+        %td= machine_config.ziip
+        %td= machine_config.icf
+        %td= machine_config.cbu
+        %td= machine_config.ifb
+        %td= machine_config.es
+        %td= machine_config.fi
+        %td= machine_config.osa
+        %td= machine_config.crypto

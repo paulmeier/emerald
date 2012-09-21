@@ -1,0 +1,197 @@
+<script type="text/javascript">
+$(function() {
+	$('div#weightpanel').hide();
+	var from = <%= Date.today.beginning_of_month.previous_business_day('us') %>;
+	var to = <%= Date.today.beginning_of_month.next_business_day('us') %>;
+	var mipsChart = new Highcharts.Chart({
+			chart: { renderTo: "chart", type: "spline",
+					 events: {
+					 	load: function(){					 				
+							/* Plotbands needs to be fixed for dynamic dates
+								mipsChart.xAxis[0].addPlotBand({
+						         from: Date.UTC(2012,6,31,10,0,0,0),
+						         to: Date.UTC(2012,6,31,16,0,0,0),
+						         color: 'rgb(255,244,244)',
+						         id: 'plotband'
+						      });
+						      mipsChart.xAxis[0].addPlotBand({
+						         from: Date.UTC(2012,7,1,10,0,0,0),
+						         to: Date.UTC(2012,7,1,16,0,0,0),
+						         color: 'rgb(255,244,244)',
+						         id: 'plotband'
+						      }); 		
+							*/      
+
+					 		//Draw maximum machine mips line if required
+								if ( <%= params[:cpu][:maxMips] %> ){
+									<% @machines.each_with_index do |mac,index| %>
+										this.yAxis[0].addPlotLine(
+										{  value: <%= @machConfig[@machines[index][0].id].machineConfig.capacity.mips %>,
+									 	   width: 2,
+										   color: 'green',
+										   dashStyle: 'dash',
+										   label : { text: '<%= @machines[index][0].name %> <%= @machConfig[@machines[index][0].id].machineConfig.capacity.mips %>'}
+										});
+								<% end %>			
+								};
+								
+					 			//Get only the Max machine lines for LPARs selected
+								if (<%= params[:cpu][:totalMips] %>){
+								<% @machines.each_with_index do |machine,index| %>
+								    	$.get("/cpus/<%= @machines[index][0].id %>/allCec",{},function(data){
+										var arr = new Array();
+								      	$.each(data, function(index,obj) {
+								               		arr.push([ 
+								               			Date.UTC(
+								               				obj.datetime.substring(0,4),
+								               				obj.datetime.substring(5,7)-1,
+								               				obj.datetime.substring(8,10),
+								               				obj.datetime.substring(11,13),
+								               				obj.datetime.substring(14,16),
+								               				obj.datetime.substring(17,19)
+								               			),obj.mips]);
+								      	});
+								      	mipsChart.addSeries({
+											name: "<%= @machines[index][0].name %>",		      		
+											data: arr
+									});
+									})
+								<% end %>
+								};
+								
+								//Get the LPARs data the user selected
+						    	<% params[:cpu][:lpars].each do |lpar| %>
+						    	         $.get("/cpus/1/total",
+								        	scope: <%= lpar.to_i %>
+								      	},function(data){
+								      		var arr2 = new Array();
+									      	$.each(data, function(index,obj) {
+							               		arr2.push([ 
+							               			Date.UTC(
+							               				obj.datetime.substring(0,4),
+							               				obj.datetime.substring(5,7)-1,
+							               				obj.datetime.substring(8,10),
+							               				obj.datetime.substring(11,13),
+							               				obj.datetime.substring(14,16),
+							               				obj.datetime.substring(17,19)
+							               			),
+							               			obj.mips]);
+									      	});
+								      	mipsChart.addSeries({
+								      		name: "<%= Lpar.find(lpar).name %>",		      		
+						                	data: arr2
+						            	});
+						            })
+						    	<% end %>
+						    	
+						    	//Draw lpar weight lines and bars if required
+						    	if ( <%= params[:cpu][:includeWeights] %> ) {
+						    		$('div#weightpanel').show();
+						    		<% @lpars.each do |lpar| %>
+							    		this.yAxis[0].addPlotLine(	
+							          { color: 'black',
+							            dashStyle: 'dash',
+							            label : { text: '<%= lpar.name %> Weight <%= (lpar.lparConfig.codedWeight.to_f / 100 * @machConfig[lpar.machines[0].id].machineConfig.capacity.mips).ceil %>',
+							            		  align: 'center',
+							            		  x: 300,
+						            		   	  style: {
+								            		  	fontWeight: 'bold',
+								            		  	color: 'black'
+								            	  }
+							            		 },
+							            id: <%= lpar.id %>,
+							            value: <%= lpar.lparConfig.codedWeight.to_f / 100 * @machConfig[lpar.machines[0].id].machineConfig.capacity.mips %>,
+							            width: 1
+							          });
+							         <% end %>
+								
+
+							
+									//Create the sliders to change label positions
+									<% @lpars.each_with_index do |lpar,index| %>
+										$( "#slider-range-min<%= index %>" ).slider({
+											range: "min",
+											value: 300,
+											min: -600,
+											max: 600,
+											slide: function( event, ui ) {
+												$( "#amount<%= index %>" ).val( ui.value );	
+											}
+										});
+										$( "#amount<%= index %>" ).val( $( "#slider-range-min<%= index %>" ).slider( "value" ) );
+									<% end %>
+								}; //End of weight label functions
+									
+						//END of load function
+					 	}
+					 },
+			
+			 },
+			title: { text: "ME/FBD <%= Date.today.beginning_of_month.previous_business_day('us') %> to <%= Date.today.beginning_of_month.next_business_day('us') %>"  },
+			xAxis: { type: "datetime",
+					 dateTimeLabelFormats: {
+        				minute: '%H:%M:%S %b-%e'   
+    					},
+    				  tickInterval: 7200000,
+    				  labels: {
+    				  	rotation:-45,
+    				  	align: 'right'
+    				  }
+    				  },
+			yAxis: { title: 
+						{ text: "MIPS Used" },
+						min: 0,
+				},
+				plotOptions: {
+						spline: {
+							lineWidth: 4,
+							states: {
+								hover: {
+									lineWidth: 5
+								}
+							},
+							marker: {
+								enabled: false
+							}
+				},
+			},
+		series: [],
+		exporting: { filename: 'MEFBD' }
+		}, function(chart) {
+						//When refresh button is clicked, update label positions based on value of slider bar
+				$('#button').click(function(event) {
+					event.preventDefault();
+					<% @lpars.each_with_index do |lpar,index| %>
+							var value = $("#amount<%= index %>").val();		
+					    	mipsChart.yAxis[0].removePlotLine(<%= lpar.id %>);
+					    	mipsChart.yAxis[0].addPlotLine(	
+					          { color: 'black',
+					            dashStyle: 'dash',
+					            label : { text: '<%= lpar.name %> Weight <%= (lpar.lparConfig.codedWeight.to_f / 100 * @machConfig[lpar.machines[0].id].machineConfig.capacity.mips).ceil %>',
+					            		  align: 'center',
+					            		  x: parseInt(value),
+					            		  style: {
+					            		  	fontWeight: 'bold',
+					            		  	color: 'black'
+					            		  }
+					            		 },
+					            id: <%= lpar.id %>,
+					            value: <%= lpar.lparConfig.codedWeight.to_f / 100 * @machConfig[lpar.machines[0].id].machineConfig.capacity.mips %>,
+					            width: 1
+					          });
+		    				mipsChart.redraw();
+		    		<% end %>	
+				});
+    	});		
+});
+</script>
+
+<div id="chart" style="width:1200px; height:600px;"></div>
+<br>
+<div id="weightpanel">
+	<% @lpars.each_with_index do |lpar,index| %>
+		<br><label for="amount<%= index %>"><%= lpar.name %> Weight Label Position</label><input type="text" id="amount<%= index %>" style="border:0; color:#f6931f; font-weight:bold;" /><div id="slider-range-min<%= index %>"></div><br>
+	<% end %>
+	<br><br>
+	<button class="btn" id="button">Refresh</button>
+</div>

@@ -1,0 +1,14 @@
+<h3>Two Week Average</h3>
+Two week data for selected systems.<br>
+Select multiple by holding down "Ctrl"
+<br><br>
+<%= simple_form_for(@ziips, :url => twoweekavg_path(1)) do |f| %>
+		<%= f.input :lpars, :collection => @lparList , :input_html => { :multiple => true, :class => "input-large", :size => "10" }%>
+	<br>
+		<%= f.input :includeWeights, :label => 'LPAR ZIIP Weight Line', :as => :boolean %>
+	<br><br>	
+  <div class="actions">
+    <%= f.submit "Graph", :class => 'btn btn-primary' %>
+    <%= submit_tag 'Clear', :type => :reset, :class => "btn btn-danger" %>
+  </div>
+<% end %>

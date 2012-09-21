@@ -1,0 +1,20 @@
+.page-header
+  %h1 Configuration
+#box
+  %h3 LPAR
+  %ul.nav.nav-pills.nav-stacked
+    %li= link_to "LPARs", lpars_path
+    %li= link_to "Configurations", lpar_configs_path
+    %li= link_to "Machine LPARs", machine_lpars_path
+#box
+  %h3 Machine
+  %ul.nav.nav-pills.nav-stacked
+    %li= link_to "Machines", machines_path
+    %li= link_to "Configurations", machine_configs_path
+    %li= link_to "Capacity", capacities_path
+    %li= link_to "Models", mods_path
+#box
+  %h3 Locations
+  %ul.nav.nav-pills.nav-stacked
+    %li= link_to "Locations", locations_path
+    %li= link_to "Machine Locations", machine_locs_path

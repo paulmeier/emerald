@@ -1,0 +1,21 @@
+- model_class = MachineLoc
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human
+
+%p
+  %strong= model_class.human_attribute_name(:location_id) + ':'
+  %br
+  = @machine_loc.location_id
+%p
+  %strong= model_class.human_attribute_name(:machine_id) + ':'
+  %br
+  = @machine_loc.machine_id
+%p
+  %strong= model_class.human_attribute_name(:raisedFloorLoc) + ':'
+  %br
+  = @machine_loc.raisedFloorLoc
+
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), machine_locs_path, :class => 'btn'
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_machine_loc_path(@machine_loc), :class => 'btn'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")), machine_loc_path(@machine_loc), :method => "delete", :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')), :class => 'btn btn-danger'
