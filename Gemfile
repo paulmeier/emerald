@@ -70,9 +70,9 @@ group :assets do
 # gem 'therubyracer', :platforms => :ruby
   gem 'jquery-rails'
   gem 'less'
-  gem 'twitter-bootstrap-rails'
+#  gem 'twitter-bootstrap-rails'
 # To use sass with bootstrap use gem below and not twitter-bootstrap
-#  gem 'bootstrap-sass'
+  gem 'bootstrap-sass'
   gem 'uglifier', '>= 1.0.3'
 end
 group :test do
