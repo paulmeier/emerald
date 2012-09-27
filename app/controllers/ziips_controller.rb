@@ -92,30 +92,7 @@ class ZiipsController < ApplicationController
     end
   end
 
-  def ztotal
-    @ziipTotal = Ziip.between(params[:from],params[:to]).where(:LPAR => params[:scope]).select("AVG(PCTBOX) as average")
-      respond_to do |format|
-      #format.html # show.html.erb
-      format.json { render json: @ziipTotal }
-    end
-  end
-  
-  def ztotal2
-    @ziipTotal2 = Ziip.between(params[:from],params[:to]).group("date(DateTime)").select("DateTime, AVG(PCTBOX) as average")
-      respond_to do |format|
-      #format.html # show.html.erb
-      format.json { render json: @ziipTotal2 }
-    end
-  end
-  
-  def zHour
-    @ziipHour = Ziip.between(params[:from],params[:to]).where(:LPAR => params[:scope]).group("date(DateTime),hour(DateTime)").select("DateTime, PCTBOX")
-      respond_to do |format|
-      #format.html # show.html.erb
-      format.json { render json: @ziipHour }
-    end
-  end
-  
+   #Selects DateTime and Percent of ZIIP used. Used to show raw data in the database.
    def zAll
     @zAll = Ziip.where(:LPAR => params[:lpar]).group("DateTime").select("DateTime, PCTBOX")
       respond_to do |format|
@@ -124,6 +101,7 @@ class ZiipsController < ApplicationController
     end
   end
   
+  #Selects DateTime Sum and average for a machine specified.
   def zAllAvg
     @machine = Machine.includes(:lpars).where(:id => params[:machine_id])
     @zAll = Ziip.find(:all, :group => "date(DateTime),time(DateTime)", :select => "DateTime, sum(PCTBOX) as average", :conditions => ['LPAR in (?)', @machine[0].lpars.map(&:name)])
@@ -133,12 +111,14 @@ class ZiipsController < ApplicationController
     end
   end
   
+  #Show the monthly average of user selected systems to a graph.
   def monAvg
     #For a Rails bug. Puts one blank array slot.
     params[:ziip][:lpars] = params[:ziip][:lpars].delete_if{ |x| x.empty? }
     params[:ziip][:machines] = params[:ziip][:machines].delete_if{ |x| x.empty? }
   end
   
+  #Show two week average of user selected systems.
   def twoweekavg    
     #For a Rails bug. Puts one blank array slot.
     params[:ziip][:lpars] = params[:ziip][:lpars].delete_if{ |x| x.empty? }

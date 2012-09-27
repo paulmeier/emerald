@@ -4,31 +4,31 @@
 .tabbable.tabs-left
   %ul.nav.nav-tabs
     %li.active
-      %a{"data-toggle" => "tab", :href => "#twowe"}2 Week Averages by Day
+      %a{"data-toggle" => "tab", href: "#twowe"}2 Week Averages by Day
     %li
-      %a{"data-toggle" => "tab", :href => "#twotd"}2 Week Totals
+      %a{"data-toggle" => "tab", href: "#twotd"}2 Week Totals
     %li
-      %a{"data-toggle" => "tab", :href => "#ma"}Monthly Averages
+      %a{"data-toggle" => "tab", href: "#ma"}Monthly Averages
     %li
-      %a{"data-toggle" => "tab", :href => "#da"}Day Averages
+      %a{"data-toggle" => "tab", href: "#da"}Day Averages
     %li
-      %a{"data-toggle" => "tab", :href => "#tabd"}Peak Periods
+      %a{"data-toggle" => "tab", href: "#tabd"}Peak Periods
     %li
-      %a{"data-toggle" => "tab", :href => "#dt"}Day Totals
+      %a{"data-toggle" => "tab", href: "#dt"}Day Totals
     %li
-      %a{"data-toggle" => "tab", :href => "#mefbd"}ME/FBD
+      %a{"data-toggle" => "tab", href: "#mefbd"}ME/FBD
   .tab-content
     #twowe.tab-pane.active
-      = render :partial => 'twoweekavg'
+      = render partial: 'twoweekavg'
     #twotd.tab-pane
-      = render :partial => 'twoWeekTotals'
+      = render partial: 'twoWeekTotals'
     #ma.tab-pane
-      = render :partial => 'monthAverages'
+      = render partial: 'monthAverages'
     #da.tab-pane
-      = render :partial => 'dayAveragesGraph'
+      = render partial: 'dayAveragesGraph'
     #tabd.tab-pane
-      = render :partial => 'peaksGraph'
+      = render partial: 'peaksGraph'
     #dt.tab-pane
-      = render :partial => 'dayTotalsGraph'
+      = render partial: 'dayTotalsGraph'
     #mefbd.tab-pane
       MEFBD - Under construction

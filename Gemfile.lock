@@ -32,7 +32,6 @@ GEM
     addressable (2.3.2)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
-    blankslate (2.1.2.4)
     bootstrap-sass (2.0.4.0)
     builder (3.0.0)
     by_star (1.0.1)
@@ -90,9 +89,6 @@ GEM
     hike (1.2.1)
     holidays (1.0.5)
     i18n (0.6.0)
-    jbuilder (0.4.0)
-      activesupport (>= 3.0.0)
-      blankslate (>= 2.1.2.4)
     journey (1.0.4)
     jquery-rails (2.0.2)
       railties (>= 3.2.0, < 5.0)
@@ -232,37 +228,36 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-sass
-  by_star
-  capybara
-  chronic
+  bootstrap-sass (~> 2.0.4.0)
+  by_star (~> 1.0.1)
+  capybara (~> 1.1.2)
+  chronic (~> 0.6.7)
   coffee-rails (~> 3.2.1)
-  devise
-  execjs
-  factory_girl_rails
-  gon
-  guard-rspec
-  haml
-  haml-rails
-  holidays
-  jbuilder
-  jquery-rails
-  jquery_datepicker
-  less
-  mocha
-  mysql2
-  prawn
-  rails (= 3.2.6)
-  rspec-rails
+  devise (~> 2.1.2)
+  execjs (~> 1.2.9)
+  factory_girl_rails (~> 4.0.0)
+  gon (~> 3.0.5)
+  guard-rspec (~> 1.2.1)
+  haml (~> 3.1.4)
+  haml-rails (~> 0.3.4)
+  holidays (~> 1.0.5)
+  jquery-rails (~> 2.0.2)
+  jquery_datepicker (~> 0.4)
+  less (~> 2.2.0)
+  mocha (~> 0.12.3)
+  mysql2 (~> 0.3.10)
+  prawn (~> 0.12.0)
+  rails (~> 3.2.6)
+  rspec-rails (~> 2.11.0)
   sass-rails (~> 3.2.3)
-  shoulda
-  simple_form
-  syntax
-  therubyracer (= 0.10.1)
-  thin
-  to_xls
-  uglifier (>= 1.0.3)
-  ui_datepicker-rails3
+  shoulda (~> 3.1.1)
+  simple_form (~> 2.0.2)
+  syntax (~> 1.0.0)
+  therubyracer (~> 0.10.1)
+  thin (~> 1.4.1)
+  to_xls (~> 1.5.1)
+  uglifier (~> 1.2.6)
+  ui_datepicker-rails3 (~> 1.1.0)
   whenever
-  will_paginate
-  will_paginate-bootstrap
+  will_paginate (~> 3.0.3)
+  will_paginate-bootstrap (~> 0.2.1)

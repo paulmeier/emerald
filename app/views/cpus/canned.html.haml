@@ -4,19 +4,19 @@
 .tabbable.tabs-left
   %ul.nav.nav-tabs
     %li.active
-      %a{"data-toggle" => "tab", :href => "#mefbd"} ME/FBD
+      %a{"data-toggle" => "tab", href: "#mefbd"} ME/FBD
     %li
-      %a{"data-toggle" => "tab", :href => "#mefbdc"} ME/FBD compare
+      %a{"data-toggle" => "tab", href: "#mefbdc"} ME/FBD compare
     %li
-      %a{"data-toggle" => "tab", :href => "#2weekavg"} 2 Week Avg
+      %a{"data-toggle" => "tab", href: "#2weekavg"} 2 Week Avg
     %li
-      %a{"data-toggle" => "tab", :href => "#dayavg"} Avg by Day
+      %a{"data-toggle" => "tab", href: "#dayavg"} Avg by Day
   .tab-content
     #mefbd.tab-pane.active
-      = render :partial => 'mefbd'
+      = render partial: 'mefbd'
     #mefbdc.tab-pane
-      = render :partial => 'mefbdc'
+      = render partial: 'mefbdc'
     #2weekavg.tab-pane
       2 Week Avg - Under Construction
     #dayavg.tab-pane
-      = render :partial => 'avgday'
+      = render partial: 'avgday'
