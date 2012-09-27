@@ -136,10 +136,6 @@
         
           <li><a href="./HomeHelper.html">HomeHelper</a></li>
         
-          <li><a href="./Import.html">Import</a></li>
-        
-          <li><a href="./ImportsController.html">ImportsController</a></li>
-        
           <li><a href="./ImportsHelper.html">ImportsHelper</a></li>
         
           <li><a href="./Location.html">Location</a></li>
@@ -315,7 +311,7 @@
 <pre>
 <span class="ruby-comment"># File app/controllers/lpars_controller.rb, line 80</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
-  <span class="ruby-ivar">@lpar</span> = <span class="ruby-constant">Lpar</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-ivar">@lpar</span> = <span class="ruby-identifier">get_lpar</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
   <span class="ruby-ivar">@lpar</span>.<span class="ruby-identifier">destroy</span>
 
   <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
@@ -354,7 +350,7 @@
 <pre>
 <span class="ruby-comment"># File app/controllers/lpars_controller.rb, line 42</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">edit</span>
-  <span class="ruby-ivar">@lpar</span> = <span class="ruby-constant">Lpar</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-ivar">@lpar</span> = <span class="ruby-identifier">get_lpar</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
 <span class="ruby-keyword">end</span></pre>
             </div><!-- edit-source -->
             
@@ -468,7 +464,7 @@
 <pre>
 <span class="ruby-comment"># File app/controllers/lpars_controller.rb, line 21</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
-  <span class="ruby-ivar">@lpar</span> = <span class="ruby-constant">Lpar</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-ivar">@lpar</span> = <span class="ruby-identifier">get_lpar</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
 
   <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment"># show.html.erb</span>
@@ -506,7 +502,7 @@
 <pre>
 <span class="ruby-comment"># File app/controllers/lpars_controller.rb, line 64</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
-  <span class="ruby-ivar">@lpar</span> = <span class="ruby-constant">Lpar</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-ivar">@lpar</span> = <span class="ruby-identifier">get_lpar</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
 
   <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@lpar</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:lpar</span>])

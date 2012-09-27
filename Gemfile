@@ -4,9 +4,16 @@ gem 'rails', '3.2.6'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-gem "paperclip"
+
+#For testing
+#gem "metric_fu"
+#gem "metrical"
+
 #For HAML
 gem 'haml-rails'
+
+#For rspec output syntax highlighting
+gem "syntax"
 
 #For cron jobs
 gem "whenever", require: false
@@ -31,7 +38,7 @@ gem "jquery_datepicker"
 gem 'ui_datepicker-rails3'
 gem 'holidays'
 
-#JQUERY!!! The best!
+#JQUERY!!! The best! A javascript library
 gem 'jquery-rails'
 
 gem "simple_form"
@@ -65,7 +72,7 @@ group :assets do
   gem 'less'
   gem 'twitter-bootstrap-rails'
 # To use sass with bootstrap use gem below and not twitter-bootstrap
-# gem 'bootstrap-sass'
+#  gem 'bootstrap-sass'
   gem 'uglifier', '>= 1.0.3'
 end
 group :test do

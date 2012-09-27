@@ -10,7 +10,7 @@
     %ul.nav.nav-list
       %li.nav-header ZIIP
       %li= link_to "ZIIP Stats", ziipreport_path(location: l.id)
-      -#%li= link_to "ZIIP Custom", ziips_custom_path(1, location: l.id) // Saving for later implementation, too complex     
+      %li= link_to "ZIIP Custom", ziips_custom_path(1, location: l.id)    
       %li= link_to "ZIIP Canned", ziips_canned_path(1, location: l.id)
       #accordion1.accordion
         .accordion-group
@@ -26,7 +26,7 @@
                     %li= link_to lpar.name, ziips_all_path(1, lpar.name)
       %li.nav-header CPU
       %li= link_to "CPU Stats", cpureport_path(location: l.id)
-      -#%li= link_to "CPU Custom", cpus_custom_path(1, location: l.id) // Saving for later implementation, too complex
+      %li= link_to "CPU Custom", cpus_custom_path(1, location: l.id)
       %li= link_to "CPU Canned", cpus_canned_path(1, location: l.id)
       #accordion2.accordion
         .accordion-group

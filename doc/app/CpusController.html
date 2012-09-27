@@ -77,9 +77,13 @@
           
           <li><a href="#method-i-canned">#canned</a></li>
           
+          <li><a href="#method-i-cday">#cday</a></li>
+          
           <li><a href="#method-i-create">#create</a></li>
           
           <li><a href="#method-i-ctotal">#ctotal</a></li>
+          
+          <li><a href="#method-i-custgraph">#custgraph</a></li>
           
           <li><a href="#method-i-custom">#custom</a></li>
           
@@ -157,10 +161,6 @@
           <li><a href="./HomeController.html">HomeController</a></li>
         
           <li><a href="./HomeHelper.html">HomeHelper</a></li>
-        
-          <li><a href="./Import.html">Import</a></li>
-        
-          <li><a href="./ImportsController.html">ImportsController</a></li>
         
           <li><a href="./ImportsHelper.html">ImportsHelper</a></li>
         
@@ -292,7 +292,7 @@
             
             <div class="method-source-code" id="all-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 125</span>
+<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 135</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">all</span> 
   <span class="ruby-comment">#placeholder</span>
 <span class="ruby-keyword">end</span></pre>
@@ -325,7 +325,7 @@
             
             <div class="method-source-code" id="allBox-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 121</span>
+<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 131</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">allBox</span>
   <span class="ruby-comment">#placeholder</span>
 <span class="ruby-keyword">end</span></pre>
@@ -358,7 +358,7 @@
             
             <div class="method-source-code" id="allCec-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 103</span>
+<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 104</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">allCec</span>
   <span class="ruby-ivar">@machine</span> = <span class="ruby-constant">Machine</span>.<span class="ruby-identifier">includes</span>(<span class="ruby-value">:lpars</span>).<span class="ruby-identifier">where</span>(<span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:machine_id</span>])
   
@@ -397,9 +397,10 @@
             
             <div class="method-source-code" id="avgday-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 143</span>
+<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 156</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">avgday</span>
   <span class="ruby-ivar">@cpus</span> = <span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">params</span>[<span class="ruby-value">:cpu</span>][<span class="ruby-value">:lpars</span>] = <span class="ruby-identifier">params</span>[<span class="ruby-value">:cpu</span>][<span class="ruby-value">:lpars</span>].<span class="ruby-identifier">delete_if</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">empty?</span> }
 <span class="ruby-keyword">end</span></pre>
             </div><!-- avgday-source -->
             
@@ -430,7 +431,7 @@
             
             <div class="method-source-code" id="cAll-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 86</span>
+<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 87</span>
  <span class="ruby-keyword">def</span> <span class="ruby-identifier">cAll</span>
   <span class="ruby-ivar">@cAll</span> = <span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:smfid</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:lpar</span>]).<span class="ruby-identifier">group</span>(<span class="ruby-string">&quot;datetime&quot;</span>).<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;datetime, mips&quot;</span>)
     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
@@ -467,10 +468,10 @@
             
             <div class="method-source-code" id="canned-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 134</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">canned</span> 
-  <span class="ruby-ivar">@lpars</span> = <span class="ruby-constant">Lpar</span>.<span class="ruby-identifier">all</span>
-  <span class="ruby-ivar">@cpus</span> = <span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 144</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">canned</span>
+  <span class="ruby-identifier">gon</span>.<span class="ruby-identifier">startDate</span> = <span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">first</span>(<span class="ruby-identifier">order</span><span class="ruby-operator">:</span> <span class="ruby-string">'datetime asc'</span>).<span class="ruby-identifier">datetime</span>  
+  <span class="ruby-ivar">@cpus</span> = <span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">new</span>    
 <span class="ruby-keyword">end</span></pre>
             </div><!-- canned-source -->
             
@@ -480,6 +481,44 @@
 
           
         </div><!-- canned-method -->
+
+      
+        <div id="cday-method" class="method-detail ">
+          <a name="method-i-cday"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">cday</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Gathers the data between two dates. Displays the day and it’s average use
+for the lpar specified in the scope.</p>
+            
+
+            
+            <div class="method-source-code" id="cday-source">
+<pre>
+<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 123</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">cday</span>
+  <span class="ruby-ivar">@cpuTotal</span> = <span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">between</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:from</span>],<span class="ruby-identifier">params</span>[<span class="ruby-value">:to</span>]).<span class="ruby-identifier">where</span>(<span class="ruby-value">:smfid</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:scope</span>]).<span class="ruby-identifier">group</span>(<span class="ruby-string">&quot;date(datetime)&quot;</span>).<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;datetime, AVG(mips) as average&quot;</span>)
+    <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-comment">#format.html # show.html.erb</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@cpuTotal</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- cday-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- cday-method -->
 
       
         <div id="create-method" class="method-detail ">
@@ -501,7 +540,7 @@
             
             <div class="method-source-code" id="create-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 44</span>
+<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 45</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
   <span class="ruby-ivar">@cpu</span> = <span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:cpu</span>])
 
@@ -544,7 +583,7 @@
             
             <div class="method-source-code" id="ctotal-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 113</span>
+<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 114</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">ctotal</span>
   <span class="ruby-ivar">@cTotal</span> = <span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">between</span>(<span class="ruby-constant">Date</span>.<span class="ruby-identifier">today</span>.<span class="ruby-identifier">beginning_of_month</span>.<span class="ruby-identifier">previous_business_day</span>(<span class="ruby-string">'us'</span>),<span class="ruby-constant">Date</span>.<span class="ruby-identifier">today</span>.<span class="ruby-identifier">beginning_of_month</span>.<span class="ruby-identifier">next_business_day</span>(<span class="ruby-string">'us'</span>) <span class="ruby-operator">+</span><span class="ruby-value">1</span>).<span class="ruby-identifier">where</span>(<span class="ruby-value">:smfid</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Lpar</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:scope</span>]).<span class="ruby-identifier">smfid</span>).<span class="ruby-identifier">group</span>(<span class="ruby-string">&quot;date(datetime),time(datetime)&quot;</span>).<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;datetime, mips&quot;</span>)
     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
@@ -560,6 +599,38 @@
 
           
         </div><!-- ctotal-method -->
+
+      
+        <div id="custgraph-method" class="method-detail ">
+          <a name="method-i-custgraph"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">custgraph</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="custgraph-source">
+<pre>
+<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 153</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">custgraph</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- custgraph-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- custgraph-method -->
 
       
         <div id="custom-method" class="method-detail ">
@@ -581,10 +652,10 @@
             
             <div class="method-source-code" id="custom-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 129</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">custom</span> 
-  <span class="ruby-ivar">@lpars</span> = <span class="ruby-constant">Lpar</span>.<span class="ruby-identifier">all</span>
-  <span class="ruby-ivar">@cpus</span> = <span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 139</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">custom</span>
+  <span class="ruby-identifier">gon</span>.<span class="ruby-identifier">startDate</span> = <span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">first</span>(<span class="ruby-identifier">order</span><span class="ruby-operator">:</span> <span class="ruby-string">'datetime asc'</span>).<span class="ruby-identifier">datetime</span> 
+  <span class="ruby-ivar">@cpus</span> = <span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">new</span>  
 <span class="ruby-keyword">end</span></pre>
             </div><!-- custom-source -->
             
@@ -615,7 +686,7 @@
             
             <div class="method-source-code" id="destroy-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 76</span>
+<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 77</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
   <span class="ruby-ivar">@cpu</span> = <span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
   <span class="ruby-ivar">@cpu</span>.<span class="ruby-identifier">destroy</span>
@@ -654,7 +725,7 @@
             
             <div class="method-source-code" id="edit-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 38</span>
+<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 39</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">edit</span>
   <span class="ruby-ivar">@cpu</span> = <span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
 <span class="ruby-keyword">end</span></pre>
@@ -687,7 +758,7 @@
             
             <div class="method-source-code" id="index-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 6</span>
+<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 7</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
   <span class="ruby-ivar">@cpus</span> = <span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">paginate</span>(<span class="ruby-value">:page</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>])
 
@@ -725,7 +796,7 @@
             
             <div class="method-source-code" id="mefbd-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 147</span>
+<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 161</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">mefbd</span>
   <span class="ruby-ivar">@lpars</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
   <span class="ruby-ivar">@machines</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
@@ -783,7 +854,7 @@
             
             <div class="method-source-code" id="mefbdc-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 139</span>
+<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 149</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">mefbdc</span>
   <span class="ruby-ivar">@cpus</span> = <span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">new</span>
 <span class="ruby-keyword">end</span></pre>
@@ -816,7 +887,7 @@
             
             <div class="method-source-code" id="new-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 28</span>
+<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 29</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">new</span>
   <span class="ruby-ivar">@cpu</span> = <span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">new</span>
 
@@ -854,7 +925,7 @@
             
             <div class="method-source-code" id="show-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 17</span>
+<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 18</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
   <span class="ruby-ivar">@cpu</span> = <span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
 
@@ -892,7 +963,7 @@
             
             <div class="method-source-code" id="totBox-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 94</span>
+<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 95</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">totBox</span>
   <span class="ruby-ivar">@machine</span> = <span class="ruby-constant">Machine</span>.<span class="ruby-identifier">includes</span>(<span class="ruby-value">:lpars</span>).<span class="ruby-identifier">where</span>(<span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:machine_id</span>])
   <span class="ruby-ivar">@totBox</span>= <span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">find</span>(<span class="ruby-value">:all</span>, <span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;date(DateTime),time(DateTime)&quot;</span>, <span class="ruby-value">:select</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;datetime, sum(mips) as mips&quot;</span>, <span class="ruby-value">:conditions</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">'smfid in (?)'</span>, <span class="ruby-ivar">@machine</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">lpars</span>.<span class="ruby-identifier">map</span>(&amp;<span class="ruby-value">:smfid</span>)])
@@ -930,7 +1001,7 @@
             
             <div class="method-source-code" id="update-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 60</span>
+<span class="ruby-comment"># File app/controllers/cpus_controller.rb, line 61</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
   <span class="ruby-ivar">@cpu</span> = <span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
 

@@ -60,6 +60,16 @@
       
 
       
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-c-lparList">::lparList</a></li>
+          
+        </ul>
+      </div>
+      
 
       
     </div>
@@ -113,10 +123,6 @@
           <li><a href="./HomeController.html">HomeController</a></li>
         
           <li><a href="./HomeHelper.html">HomeHelper</a></li>
-        
-          <li><a href="./Import.html">Import</a></li>
-        
-          <li><a href="./ImportsController.html">ImportsController</a></li>
         
           <li><a href="./ImportsHelper.html">ImportsHelper</a></li>
         
@@ -225,6 +231,51 @@
 
       <!-- Methods -->
       
+      <div id="public-class-method-details" class="method-section section">
+        <h3 class="section-header">Public Class Methods</h3>
+
+      
+        <div id="lparList-method" class="method-detail ">
+          <a name="method-c-lparList"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">lparList</span><span
+              class="method-args">(loc)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="lparList-source">
+<pre>
+<span class="ruby-comment"># File app/models/location.rb, line 6</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">lparList</span>(<span class="ruby-identifier">loc</span>)
+  <span class="ruby-ivar">@lparList</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-constant">Location</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">loc</span>).<span class="ruby-identifier">machines</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">m</span>.<span class="ruby-identifier">lpars</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span>
+      <span class="ruby-ivar">@lparList</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">l</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@lparList</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- lparList-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- lparList-method -->
+
+      
+      </div><!-- public-class-method-details -->
+    
     </div><!-- 5Buntitled-5D -->
   
 

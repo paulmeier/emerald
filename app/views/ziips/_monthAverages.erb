@@ -1,0 +1,37 @@
+<script>
+$(function() {
+  $("#month").datepicker({
+		changeMonth: true,
+        changeYear: true,
+        showButtonPanel: true,
+        dateFormat: 'yy-mm',
+        onClose: function(dateText, inst) { 
+            var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+            var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+            $(this).datepicker('setDate', new Date(year, month, 1));
+        }
+     });
+});
+</script>
+<style>
+.ui-datepicker-calendar {
+    display: none;
+    }
+</style>
+<h3>Monthly Averages</h3>
+Select systems for a pie chart of average usage for a month.<br>
+<br>
+<%= simple_form_for(@ziips, :url => monAvg_path(1)) do |f| %>
+	Month: <%= f.datepicker :from, id: "month" %>
+	<br>
+	<br>
+	<%= f.input :lpars, :collection => Location.lparList(params[:location]) , :input_html => { :multiple => true, :class => "input-large", :size => "10" }%>
+	<span class="help-block label label-info" style="width: 380px">Select multiple by holding down "Ctrl" then making selections.</span>
+	<br>
+	<%= f.input :machines, :collection => Location.find(params[:location]).machines , :input_html => { :multiple => true, :class => "input-large", :size => "5" }%>	
+  	<br>
+  <div class="actions">
+    <%= f.submit "Graph", :class => 'btn btn-primary' %>
+    <%= submit_tag 'Clear', :type => :reset, :class => "btn btn-danger" %>
+  </div>
+<% end %>

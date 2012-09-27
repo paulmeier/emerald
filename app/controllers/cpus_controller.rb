@@ -1,6 +1,7 @@
 class CpusController < ApplicationController
   require 'active_support/core_ext/numeric/time'
   require "Date.rb"
+  
   # GET /cpus
   # GET /cpus.json
   def index

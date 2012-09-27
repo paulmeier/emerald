@@ -41,7 +41,7 @@ Create a custom graph below. NOTE! THIS DATA CAN BE VERY CPU INTENSE! BE CAREFUL
     <br><br>
 	<strong>Select multiple by holding down "Ctrl"</strong>
 	<br><br>
-	<%= f.input :lpars, :collection => @lparList , :input_html => { :multiple => true, :class => "input-large", :size => "10" }%>
+	<%= f.input :lpars, :collection => Location.lparList(params[:location]) , :input_html => { :multiple => true, :class => "input-large", :size => "10" }%>
 	<br>
 	<%= f.input :includeWeights, :label => 'Include LPAR Weight(s)', :as => :boolean %>
 	<br>

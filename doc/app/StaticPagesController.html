@@ -142,10 +142,6 @@
         
           <li><a href="./HomeHelper.html">HomeHelper</a></li>
         
-          <li><a href="./Import.html">Import</a></li>
-        
-          <li><a href="./ImportsController.html">ImportsController</a></li>
-        
           <li><a href="./ImportsHelper.html">ImportsHelper</a></li>
         
           <li><a href="./Location.html">Location</a></li>
@@ -276,7 +272,7 @@
             
             <div class="method-source-code" id="about-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/static_pages_controller.rb, line 49</span>
+<span class="ruby-comment"># File app/controllers/static_pages_controller.rb, line 22</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">about</span>
 <span class="ruby-keyword">end</span></pre>
             </div><!-- about-source -->
@@ -308,7 +304,7 @@
             
             <div class="method-source-code" id="configuration-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/static_pages_controller.rb, line 43</span>
+<span class="ruby-comment"># File app/controllers/static_pages_controller.rb, line 16</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">configuration</span>
 <span class="ruby-keyword">end</span></pre>
             </div><!-- configuration-source -->
@@ -340,20 +336,8 @@
             
             <div class="method-source-code" id="cpureport-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/static_pages_controller.rb, line 28</span>
+<span class="ruby-comment"># File app/controllers/static_pages_controller.rb, line 13</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">cpureport</span>
-  <span class="ruby-ivar">@machines</span> = <span class="ruby-constant">Machine</span>.<span class="ruby-identifier">includes</span>(<span class="ruby-value">:lpars</span>).<span class="ruby-identifier">includes</span>(<span class="ruby-value">:machineConfig</span>).<span class="ruby-identifier">all</span>
-  
-  <span class="ruby-ivar">@peaks</span> = <span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">new</span>
-  <span class="ruby-ivar">@mAvg</span> = <span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">new</span>
-  <span class="ruby-ivar">@mPeak</span> = <span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">new</span>   
-  
-   <span class="ruby-comment">#Build each machine's LPAR's peaks and average. mAvg builds the machines total box average.</span>
-   <span class="ruby-ivar">@machines</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">m</span>,<span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
-     <span class="ruby-ivar">@peaks</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">find</span>(<span class="ruby-value">:all</span>, <span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;smfid&quot;</span>, <span class="ruby-value">:select</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;smfid, max(mips) as max, AVG(mips) as average&quot;</span>, <span class="ruby-value">:conditions</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">'smfid in (?)'</span>, <span class="ruby-identifier">m</span>.<span class="ruby-identifier">lpars</span>.<span class="ruby-identifier">map</span>(&amp;<span class="ruby-value">:smfid</span>)])
-     <span class="ruby-ivar">@mPeak</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">find</span>(<span class="ruby-value">:all</span>, <span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;date(datetime),time(datetime)&quot;</span>, <span class="ruby-value">:select</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;datetime ,sum(mips) as peak&quot;</span>, <span class="ruby-value">:order</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;peak DESC&quot;</span>, <span class="ruby-value">:conditions</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">'smfid in (?)'</span>, <span class="ruby-identifier">m</span>.<span class="ruby-identifier">lpars</span>.<span class="ruby-identifier">map</span>(&amp;<span class="ruby-value">:smfid</span>)])
-     <span class="ruby-ivar">@mAvg</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">find</span>(<span class="ruby-value">:all</span>, <span class="ruby-value">:select</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;AVG(mips) as average&quot;</span>, <span class="ruby-value">:conditions</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">'smfid in (?)'</span>, <span class="ruby-identifier">m</span>.<span class="ruby-identifier">lpars</span>.<span class="ruby-identifier">map</span>(&amp;<span class="ruby-value">:smfid</span>)])     
-   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
             </div><!-- cpureport-source -->
             
@@ -384,7 +368,7 @@
             
             <div class="method-source-code" id="data-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/static_pages_controller.rb, line 52</span>
+<span class="ruby-comment"># File app/controllers/static_pages_controller.rb, line 25</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">data</span>
 <span class="ruby-keyword">end</span></pre>
             </div><!-- data-source -->
@@ -416,7 +400,7 @@
             
             <div class="method-source-code" id="dconfig-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/static_pages_controller.rb, line 60</span>
+<span class="ruby-comment"># File app/controllers/static_pages_controller.rb, line 31</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">dconfig</span>
 <span class="ruby-keyword">end</span></pre>
             </div><!-- dconfig-source -->
@@ -448,7 +432,7 @@
             
             <div class="method-source-code" id="documents-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/static_pages_controller.rb, line 46</span>
+<span class="ruby-comment"># File app/controllers/static_pages_controller.rb, line 19</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">documents</span>
 <span class="ruby-keyword">end</span></pre>
             </div><!-- documents-source -->
@@ -480,7 +464,7 @@
             
             <div class="method-source-code" id="home-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/static_pages_controller.rb, line 3</span>
+<span class="ruby-comment"># File app/controllers/static_pages_controller.rb, line 4</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">home</span>
 <span class="ruby-keyword">end</span></pre>
             </div><!-- home-source -->
@@ -512,10 +496,8 @@
             
             <div class="method-source-code" id="reports-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/static_pages_controller.rb, line 6</span>
+<span class="ruby-comment"># File app/controllers/static_pages_controller.rb, line 7</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">reports</span>
-  <span class="ruby-ivar">@lpars</span> = <span class="ruby-constant">Lpar</span>.<span class="ruby-identifier">all</span>
-  <span class="ruby-ivar">@machines</span> = <span class="ruby-constant">Machine</span>.<span class="ruby-identifier">all</span>
 <span class="ruby-keyword">end</span></pre>
             </div><!-- reports-source -->
             
@@ -546,10 +528,8 @@
             
             <div class="method-source-code" id="storageLayout-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/static_pages_controller.rb, line 55</span>
+<span class="ruby-comment"># File app/controllers/static_pages_controller.rb, line 28</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">storageLayout</span>
-  <span class="ruby-ivar">@machines</span> = <span class="ruby-constant">Machine</span>.<span class="ruby-identifier">includes</span>(<span class="ruby-value">:lpars</span>).<span class="ruby-identifier">includes</span>(<span class="ruby-value">:machineConfig</span>).<span class="ruby-identifier">includes</span>(<span class="ruby-value">:machine_lpars</span>).<span class="ruby-identifier">all</span>
-  <span class="ruby-ivar">@lpar_configs</span> = <span class="ruby-constant">LparConfig</span>.<span class="ruby-identifier">all</span>   
 <span class="ruby-keyword">end</span></pre>
             </div><!-- storageLayout-source -->
             
@@ -580,23 +560,9 @@
             
             <div class="method-source-code" id="ziipreport-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/static_pages_controller.rb, line 11</span>
+<span class="ruby-comment"># File app/controllers/static_pages_controller.rb, line 10</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">ziipreport</span>
-  <span class="ruby-comment">#Grab machine list</span>
-  <span class="ruby-ivar">@machines</span> = <span class="ruby-constant">Machine</span>.<span class="ruby-identifier">includes</span>(<span class="ruby-value">:lpars</span>).<span class="ruby-identifier">all</span>
-  
-  <span class="ruby-comment">#INIT or loops below will crash and burn</span>
-  <span class="ruby-ivar">@peaks</span> = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">new</span>
-  <span class="ruby-ivar">@mAvg</span> = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">new</span>
-  <span class="ruby-ivar">@mPeak</span> = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">new</span>
-  
-  <span class="ruby-comment">#Build each machine's LPAR's peaks and average. mAvg builds the machines total box average.</span>
-   <span class="ruby-ivar">@machines</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">m</span>,<span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
-     <span class="ruby-ivar">@peaks</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">find</span>(<span class="ruby-value">:all</span>, <span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;LPAR&quot;</span>, <span class="ruby-value">:select</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;LPAR, max(PCTBOX) as max, AVG(PCTBOX) as average&quot;</span>, <span class="ruby-value">:conditions</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">'LPAR in (?)'</span>, <span class="ruby-identifier">m</span>.<span class="ruby-identifier">lpars</span>.<span class="ruby-identifier">map</span>(&amp;<span class="ruby-value">:name</span>)])
-     <span class="ruby-ivar">@mPeak</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">find</span>(<span class="ruby-value">:all</span>, <span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;date(DateTime),time(DateTime)&quot;</span>, <span class="ruby-value">:select</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;DateTime ,sum(PCTBOX) as peak&quot;</span>, <span class="ruby-value">:order</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;peak DESC&quot;</span>, <span class="ruby-value">:conditions</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">'LPAR in (?)'</span>, <span class="ruby-identifier">m</span>.<span class="ruby-identifier">lpars</span>.<span class="ruby-identifier">map</span>(&amp;<span class="ruby-value">:name</span>)])
-     <span class="ruby-ivar">@mAvg</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">find</span>(<span class="ruby-value">:all</span>, <span class="ruby-value">:select</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;AVG(PCTBOX) as average&quot;</span>, <span class="ruby-value">:conditions</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">'LPAR in (?)'</span>, <span class="ruby-identifier">m</span>.<span class="ruby-identifier">lpars</span>.<span class="ruby-identifier">map</span>(&amp;<span class="ruby-value">:name</span>)])     
-   <span class="ruby-keyword">end</span>      
- <span class="ruby-keyword">end</span></pre>
+<span class="ruby-keyword">end</span></pre>
             </div><!-- ziipreport-source -->
             
           </div>

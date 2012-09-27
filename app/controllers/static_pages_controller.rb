@@ -26,6 +26,7 @@ class StaticPagesController < ApplicationController
   end
   
   def storageLayout
+    @machineList = Location.find(params[:location]).machines
   end
   
   def dconfig

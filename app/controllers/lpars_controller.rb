@@ -1,5 +1,5 @@
 class LparsController < ApplicationController
-  before_filter :authenticate_user!
+  
   # GET /lpars
   # GET /lpars.json
   def index
@@ -19,7 +19,7 @@ class LparsController < ApplicationController
   # GET /lpars/1
   # GET /lpars/1.json
   def show
-    @lpar = Lpar.find(params[:id])
+    @lpar = get_lpar(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -40,7 +40,7 @@ class LparsController < ApplicationController
 
   # GET /lpars/1/edit
   def edit
-    @lpar = Lpar.find(params[:id])
+    @lpar = get_lpar(params[:id])
   end
 
   # POST /lpars
@@ -62,7 +62,7 @@ class LparsController < ApplicationController
   # PUT /lpars/1
   # PUT /lpars/1.json
   def update
-    @lpar = Lpar.find(params[:id])
+    @lpar = get_lpar(params[:id])
 
     respond_to do |format|
       if @lpar.update_attributes(params[:lpar])
@@ -78,12 +78,17 @@ class LparsController < ApplicationController
   # DELETE /lpars/1
   # DELETE /lpars/1.json
   def destroy
-    @lpar = Lpar.find(params[:id])
+    @lpar = get_lpar(params[:id])
     @lpar.destroy
 
     respond_to do |format|
       format.html { redirect_to lpars_url }
       format.json { head :no_content }
     end
+  end
+  
+  private
+  def get_lpar(lpar_id)
+    Lpar.find(lpar_id)
   end
 end

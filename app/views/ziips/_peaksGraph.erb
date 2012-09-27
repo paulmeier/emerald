@@ -1,7 +1,7 @@
-<h3>Two Week Average by Day</h3>
-Two week data for selected systems.<br>
+<h3>Peak period</h3>
+Peak period data for selected systems.<br>
 <br>
-<%= simple_form_for(@ziips, :url => twoweekavg_path(1)) do |f| %>
+<%= simple_form_for(@ziips, :url => peaks_path(1)) do |f| %>
 		<%= f.input :lpars, :collection => Location.lparList(params[:location]) , :input_html => { :multiple => true, :class => "input-large", :size => "10" }%>
 	<span class="help-block label label-info" style="width: 380px">Select multiple by holding down "Ctrl" then making selections.</span>
 	<br>

@@ -81,6 +81,8 @@
           
           <li><a href="#method-c-verifyWeights">::verifyWeights</a></li>
           
+          <li><a href="#method-c-weightMIPS">::weightMIPS</a></li>
+          
         </ul>
       </div>
       
@@ -137,10 +139,6 @@
           <li><a href="./HomeController.html">HomeController</a></li>
         
           <li><a href="./HomeHelper.html">HomeHelper</a></li>
-        
-          <li><a href="./Import.html">Import</a></li>
-        
-          <li><a href="./ImportsController.html">ImportsController</a></li>
         
           <li><a href="./ImportsHelper.html">ImportsHelper</a></li>
         
@@ -544,6 +542,40 @@ for CBU.</p>
 
           
         </div><!-- verifyWeights-method -->
+
+      
+        <div id="weightMIPS-method" class="method-detail ">
+          <a name="method-c-weightMIPS"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">weightMIPS</span><span
+              class="method-args">(id)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="weightMIPS-source">
+<pre>
+<span class="ruby-comment"># File app/models/lpar_config.rb, line 82</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">weightMIPS</span>(<span class="ruby-identifier">id</span>)
+  <span class="ruby-ivar">@lpar</span> = <span class="ruby-constant">Lpar</span>.<span class="ruby-identifier">includes</span>(<span class="ruby-value">:machines</span>).<span class="ruby-identifier">find</span>(<span class="ruby-identifier">id</span>)
+  ((<span class="ruby-ivar">@lpar</span>.<span class="ruby-identifier">lparConfig</span>.<span class="ruby-identifier">runningWeight</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-value">100</span>) * <span class="ruby-ivar">@lpar</span>.<span class="ruby-identifier">machines</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">machineConfig</span>.<span class="ruby-identifier">capacity</span>.<span class="ruby-identifier">mips</span>.<span class="ruby-identifier">to_f</span>).<span class="ruby-identifier">round</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- weightMIPS-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- weightMIPS-method -->
 
       
       </div><!-- public-class-method-details -->

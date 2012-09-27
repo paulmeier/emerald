@@ -65,7 +65,7 @@
         <h3 class="section-header">Methods</h3>
         <ul class="link-list">
           
-          <li><a href="#method-i-all">#all</a></li>
+          <li><a href="#method-i-canned">#canned</a></li>
           
           <li><a href="#method-i-create">#create</a></li>
           
@@ -77,9 +77,17 @@
           
           <li><a href="#method-i-index">#index</a></li>
           
+          <li><a href="#method-i-monAvg">#monAvg</a></li>
+          
           <li><a href="#method-i-new">#new</a></li>
           
+          <li><a href="#method-i-peaksGraph">#peaksGraph</a></li>
+          
           <li><a href="#method-i-show">#show</a></li>
+          
+          <li><a href="#method-i-twoweekavg">#twoweekavg</a></li>
+          
+          <li><a href="#method-i-twoweektot">#twoweektot</a></li>
           
           <li><a href="#method-i-update">#update</a></li>
           
@@ -151,10 +159,6 @@
           <li><a href="./HomeController.html">HomeController</a></li>
         
           <li><a href="./HomeHelper.html">HomeHelper</a></li>
-        
-          <li><a href="./Import.html">Import</a></li>
-        
-          <li><a href="./ImportsController.html">ImportsController</a></li>
         
           <li><a href="./ImportsHelper.html">ImportsHelper</a></li>
         
@@ -267,12 +271,12 @@
         <h3 class="section-header">Public Instance Methods</h3>
 
       
-        <div id="all-method" class="method-detail ">
-          <a name="method-i-all"></a>
+        <div id="canned-method" class="method-detail ">
+          <a name="method-i-canned"></a>
 
           
           <div class="method-heading">
-            <span class="method-name">all</span><span
+            <span class="method-name">canned</span><span
               class="method-args">()</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
@@ -284,19 +288,21 @@
             
 
             
-            <div class="method-source-code" id="all-source">
+            <div class="method-source-code" id="canned-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 137</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">all</span> 
+<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 154</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">canned</span>
+  <span class="ruby-identifier">gon</span>.<span class="ruby-identifier">startDate</span> = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">first</span>(<span class="ruby-identifier">order</span><span class="ruby-operator">:</span> <span class="ruby-string">'DateTime asc'</span>).<span class="ruby-constant">DateTime</span>
+  <span class="ruby-ivar">@ziips</span> = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">new</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- all-source -->
+            </div><!-- canned-source -->
             
           </div>
 
           
 
           
-        </div><!-- all-method -->
+        </div><!-- canned-method -->
 
       
         <div id="create-method" class="method-detail ">
@@ -318,7 +324,7 @@
             
             <div class="method-source-code" id="create-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 46</span>
+<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 45</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
   <span class="ruby-ivar">@ziip</span> = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:ziip</span>])
 
@@ -361,9 +367,10 @@
             
             <div class="method-source-code" id="custom-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 140</span>
+<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 159</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">custom</span>
-  <span class="ruby-ivar">@lpars</span> = <span class="ruby-constant">Lpar</span>.<span class="ruby-identifier">all</span> 
+  <span class="ruby-identifier">gon</span>.<span class="ruby-identifier">startDate</span> = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">first</span>(<span class="ruby-identifier">order</span><span class="ruby-operator">:</span> <span class="ruby-string">'DateTime asc'</span>).<span class="ruby-constant">DateTime</span>
+  <span class="ruby-ivar">@ziips</span> = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">new</span>
 <span class="ruby-keyword">end</span></pre>
             </div><!-- custom-source -->
             
@@ -394,7 +401,7 @@
             
             <div class="method-source-code" id="destroy-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 78</span>
+<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 77</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
   <span class="ruby-ivar">@ziip</span> = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
   <span class="ruby-ivar">@ziip</span>.<span class="ruby-identifier">destroy</span>
@@ -433,7 +440,7 @@
             
             <div class="method-source-code" id="edit-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 40</span>
+<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 39</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">edit</span>
   <span class="ruby-ivar">@ziip</span> = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
 <span class="ruby-keyword">end</span></pre>
@@ -466,7 +473,7 @@
             
             <div class="method-source-code" id="index-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 9</span>
+<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 8</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
   <span class="ruby-ivar">@ziips</span> = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">paginate</span>(<span class="ruby-value">:page</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>])
   <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
@@ -483,6 +490,41 @@
 
           
         </div><!-- index-method -->
+
+      
+        <div id="monAvg-method" class="method-detail ">
+          <a name="method-i-monAvg"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">monAvg</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="monAvg-source">
+<pre>
+<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 136</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">monAvg</span>
+  <span class="ruby-comment">#For a Rails bug. Puts one blank array slot.</span>
+  <span class="ruby-identifier">params</span>[<span class="ruby-value">:ziip</span>][<span class="ruby-value">:lpars</span>] = <span class="ruby-identifier">params</span>[<span class="ruby-value">:ziip</span>][<span class="ruby-value">:lpars</span>].<span class="ruby-identifier">delete_if</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">empty?</span> }
+  <span class="ruby-identifier">params</span>[<span class="ruby-value">:ziip</span>][<span class="ruby-value">:machines</span>] = <span class="ruby-identifier">params</span>[<span class="ruby-value">:ziip</span>][<span class="ruby-value">:machines</span>].<span class="ruby-identifier">delete_if</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">empty?</span> }
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- monAvg-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- monAvg-method -->
 
       
         <div id="new-method" class="method-detail ">
@@ -504,7 +546,7 @@
             
             <div class="method-source-code" id="new-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 30</span>
+<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 29</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">new</span>
   <span class="ruby-ivar">@ziip</span> = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">new</span>
 
@@ -521,6 +563,51 @@
 
           
         </div><!-- new-method -->
+
+      
+        <div id="peaksGraph-method" class="method-detail ">
+          <a name="method-i-peaksGraph"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">peaksGraph</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="peaksGraph-source">
+<pre>
+<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 164</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">peaksGraph</span>
+  <span class="ruby-ivar">@ziips</span> = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">new</span>
+  
+  <span class="ruby-comment">#For a Rails bug. Puts one blank array slot.</span>
+  <span class="ruby-identifier">params</span>[<span class="ruby-value">:ziip</span>][<span class="ruby-value">:lpars</span>] = <span class="ruby-identifier">params</span>[<span class="ruby-value">:ziip</span>][<span class="ruby-value">:lpars</span>].<span class="ruby-identifier">delete_if</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">empty?</span> }
+  <span class="ruby-identifier">params</span>[<span class="ruby-value">:ziip</span>][<span class="ruby-value">:machines</span>] = <span class="ruby-identifier">params</span>[<span class="ruby-value">:ziip</span>][<span class="ruby-value">:machines</span>].<span class="ruby-identifier">delete_if</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">empty?</span> }
+  
+  <span class="ruby-ivar">@lpars</span> = <span class="ruby-constant">Lpar</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:ziip</span>][<span class="ruby-value">:lpars</span>])
+  <span class="ruby-ivar">@lparPeaks</span> = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">findLPARpeaks</span>(<span class="ruby-ivar">@lpars</span>)
+  
+  <span class="ruby-ivar">@machinePeaks</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">params</span>[<span class="ruby-value">:ziip</span>][<span class="ruby-value">:machines</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span>
+    <span class="ruby-ivar">@machinePeaks</span>.<span class="ruby-identifier">push</span>(<span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">findBoxPeaks</span>(<span class="ruby-identifier">m</span>))
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- peaksGraph-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- peaksGraph-method -->
 
       
         <div id="show-method" class="method-detail ">
@@ -542,7 +629,7 @@
             
             <div class="method-source-code" id="show-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 20</span>
+<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 19</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
   <span class="ruby-ivar">@ziip</span> = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
   <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
@@ -558,6 +645,76 @@
 
           
         </div><!-- show-method -->
+
+      
+        <div id="twoweekavg-method" class="method-detail ">
+          <a name="method-i-twoweekavg"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">twoweekavg</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="twoweekavg-source">
+<pre>
+<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 142</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">twoweekavg</span>    
+  <span class="ruby-comment">#For a Rails bug. Puts one blank array slot.</span>
+  <span class="ruby-identifier">params</span>[<span class="ruby-value">:ziip</span>][<span class="ruby-value">:lpars</span>] = <span class="ruby-identifier">params</span>[<span class="ruby-value">:ziip</span>][<span class="ruby-value">:lpars</span>].<span class="ruby-identifier">delete_if</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">empty?</span> }
+  <span class="ruby-identifier">params</span>[<span class="ruby-value">:ziip</span>][<span class="ruby-value">:machines</span>] = <span class="ruby-identifier">params</span>[<span class="ruby-value">:ziip</span>][<span class="ruby-value">:machines</span>].<span class="ruby-identifier">delete_if</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">empty?</span> }
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- twoweekavg-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- twoweekavg-method -->
+
+      
+        <div id="twoweektot-method" class="method-detail ">
+          <a name="method-i-twoweektot"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">twoweektot</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="twoweektot-source">
+<pre>
+<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 148</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">twoweektot</span>    
+  <span class="ruby-comment">#For a Rails bug. Puts one blank array slot.</span>
+  <span class="ruby-identifier">params</span>[<span class="ruby-value">:ziip</span>][<span class="ruby-value">:lpars</span>] = <span class="ruby-identifier">params</span>[<span class="ruby-value">:ziip</span>][<span class="ruby-value">:lpars</span>].<span class="ruby-identifier">delete_if</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">empty?</span> }
+  <span class="ruby-identifier">params</span>[<span class="ruby-value">:ziip</span>][<span class="ruby-value">:machines</span>] = <span class="ruby-identifier">params</span>[<span class="ruby-value">:ziip</span>][<span class="ruby-value">:machines</span>].<span class="ruby-identifier">delete_if</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">empty?</span> }
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- twoweektot-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- twoweektot-method -->
 
       
         <div id="update-method" class="method-detail ">
@@ -579,7 +736,7 @@
             
             <div class="method-source-code" id="update-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 62</span>
+<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 61</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
   <span class="ruby-ivar">@ziip</span> = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
 
@@ -622,7 +779,7 @@
             
             <div class="method-source-code" id="zAll-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 120</span>
+<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 119</span>
  <span class="ruby-keyword">def</span> <span class="ruby-identifier">zAll</span>
   <span class="ruby-ivar">@zAll</span> = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:LPAR</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:lpar</span>]).<span class="ruby-identifier">group</span>(<span class="ruby-string">&quot;DateTime&quot;</span>).<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;DateTime, PCTBOX&quot;</span>)
     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
@@ -659,7 +816,7 @@
             
             <div class="method-source-code" id="zAllAvg-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 128</span>
+<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 127</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">zAllAvg</span>
   <span class="ruby-ivar">@machine</span> = <span class="ruby-constant">Machine</span>.<span class="ruby-identifier">includes</span>(<span class="ruby-value">:lpars</span>).<span class="ruby-identifier">where</span>(<span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:machine_id</span>])
   <span class="ruby-ivar">@zAll</span> = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">find</span>(<span class="ruby-value">:all</span>, <span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;date(DateTime),time(DateTime)&quot;</span>, <span class="ruby-value">:select</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;DateTime, sum(PCTBOX) as average&quot;</span>, <span class="ruby-value">:conditions</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">'LPAR in (?)'</span>, <span class="ruby-ivar">@machine</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">lpars</span>.<span class="ruby-identifier">map</span>(&amp;<span class="ruby-value">:name</span>)])
@@ -697,7 +854,7 @@
             
             <div class="method-source-code" id="zHour-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 112</span>
+<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 111</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">zHour</span>
   <span class="ruby-ivar">@ziipHour</span> = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">between</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:from</span>],<span class="ruby-identifier">params</span>[<span class="ruby-value">:to</span>]).<span class="ruby-identifier">where</span>(<span class="ruby-value">:LPAR</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:scope</span>]).<span class="ruby-identifier">group</span>(<span class="ruby-string">&quot;date(DateTime),hour(DateTime)&quot;</span>).<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;DateTime, PCTBOX&quot;</span>)
     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
@@ -734,7 +891,7 @@
             
             <div class="method-source-code" id="zday-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 88</span>
+<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 87</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">zday</span>
   <span class="ruby-ivar">@ziipTotal</span> = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">between</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:from</span>],<span class="ruby-identifier">params</span>[<span class="ruby-value">:to</span>]).<span class="ruby-identifier">where</span>(<span class="ruby-value">:LPAR</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:scope</span>]).<span class="ruby-identifier">group</span>(<span class="ruby-string">&quot;date(DateTime)&quot;</span>).<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;DateTime, AVG(PCTBOX) as average&quot;</span>)
     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
@@ -771,7 +928,7 @@
             
             <div class="method-source-code" id="ztotal-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 96</span>
+<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 95</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">ztotal</span>
   <span class="ruby-ivar">@ziipTotal</span> = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">between</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:from</span>],<span class="ruby-identifier">params</span>[<span class="ruby-value">:to</span>]).<span class="ruby-identifier">where</span>(<span class="ruby-value">:LPAR</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:scope</span>]).<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;AVG(PCTBOX) as average&quot;</span>)
     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
@@ -808,7 +965,7 @@
             
             <div class="method-source-code" id="ztotal2-source">
 <pre>
-<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 104</span>
+<span class="ruby-comment"># File app/controllers/ziips_controller.rb, line 103</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">ztotal2</span>
   <span class="ruby-ivar">@ziipTotal2</span> = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">between</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:from</span>],<span class="ruby-identifier">params</span>[<span class="ruby-value">:to</span>]).<span class="ruby-identifier">group</span>(<span class="ruby-string">&quot;date(DateTime)&quot;</span>).<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;DateTime, AVG(PCTBOX) as average&quot;</span>)
     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>

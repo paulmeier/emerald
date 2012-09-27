@@ -65,6 +65,12 @@
         <h3 class="section-header">Methods</h3>
         <ul class="link-list">
           
+          <li><a href="#method-c-findBOXaverage">::findBOXaverage</a></li>
+          
+          <li><a href="#method-c-findBOXpeaks">::findBOXpeaks</a></li>
+          
+          <li><a href="#method-c-findLPARpeaks">::findLPARpeaks</a></li>
+          
           <li><a href="#method-c-parseCSV">::parseCSV</a></li>
           
           <li><a href="#method-i-after_initialize">#after_initialize</a></li>
@@ -125,10 +131,6 @@
           <li><a href="./HomeController.html">HomeController</a></li>
         
           <li><a href="./HomeHelper.html">HomeHelper</a></li>
-        
-          <li><a href="./Import.html">Import</a></li>
-        
-          <li><a href="./ImportsController.html">ImportsController</a></li>
         
           <li><a href="./ImportsHelper.html">ImportsHelper</a></li>
         
@@ -469,6 +471,115 @@
         <h3 class="section-header">Public Class Methods</h3>
 
       
+        <div id="findBOXaverage-method" class="method-detail ">
+          <a name="method-c-findBOXaverage"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">findBOXaverage</span><span
+              class="method-args">(mid)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Find the average MIPS the BOX uses.</p>
+            
+
+            
+            <div class="method-source-code" id="findBOXaverage-source">
+<pre>
+<span class="ruby-comment"># File app/models/cpu.rb, line 44</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">findBOXaverage</span>(<span class="ruby-identifier">mid</span>)
+  <span class="ruby-ivar">@Machine</span> = <span class="ruby-constant">Machine</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">mid</span>)
+  <span class="ruby-ivar">@mipsSum</span> = <span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">find</span>(<span class="ruby-value">:all</span>, <span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;date(DateTime),time(DateTime)&quot;</span>, <span class="ruby-value">:select</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;sum(mips) as average&quot;</span>, <span class="ruby-value">:conditions</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">'smfid in (?)'</span>, <span class="ruby-ivar">@Machine</span>.<span class="ruby-identifier">lpars</span>.<span class="ruby-identifier">map</span>(&amp;<span class="ruby-value">:smfid</span>)])
+  <span class="ruby-identifier">sum</span> = <span class="ruby-value">0</span>
+  <span class="ruby-ivar">@mipsSum</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">m</span>,<span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">sum</span> <span class="ruby-operator">+=</span> <span class="ruby-ivar">@mipsSum</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">average</span>.<span class="ruby-identifier">to_f</span> 
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-keyword">return</span> (<span class="ruby-identifier">sum</span> <span class="ruby-operator">/</span> <span class="ruby-ivar">@mipsSum</span>.<span class="ruby-identifier">count</span>).<span class="ruby-identifier">round</span>  
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- findBOXaverage-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- findBOXaverage-method -->
+
+      
+        <div id="findBOXpeaks-method" class="method-detail ">
+          <a name="method-c-findBOXpeaks"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">findBOXpeaks</span><span
+              class="method-args">(mid)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Find the peak period of the BOX and how much MIPS it is using total.
+datetime and peak returned.</p>
+            
+
+            
+            <div class="method-source-code" id="findBOXpeaks-source">
+<pre>
+<span class="ruby-comment"># File app/models/cpu.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">findBOXpeaks</span>(<span class="ruby-identifier">mid</span>)
+  <span class="ruby-ivar">@Machine</span> = <span class="ruby-constant">Machine</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">mid</span>)
+  <span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">find</span>(<span class="ruby-value">:all</span>, <span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;date(datetime),time(datetime)&quot;</span>, <span class="ruby-value">:select</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;datetime ,sum(mips) as peak&quot;</span>, <span class="ruby-value">:order</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;peak DESC&quot;</span>, <span class="ruby-value">:conditions</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">'smfid in (?)'</span>, <span class="ruby-ivar">@Machine</span>.<span class="ruby-identifier">lpars</span>.<span class="ruby-identifier">map</span>(&amp;<span class="ruby-value">:smfid</span>)])
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- findBOXpeaks-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- findBOXpeaks-method -->
+
+      
+        <div id="findLPARpeaks-method" class="method-detail ">
+          <a name="method-c-findLPARpeaks"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">findLPARpeaks</span><span
+              class="method-args">(mid)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Find each LPARs cpu or MIPS peak use. smfid, max, and average returned.</p>
+            
+
+            
+            <div class="method-source-code" id="findLPARpeaks-source">
+<pre>
+<span class="ruby-comment"># File app/models/cpu.rb, line 32</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">findLPARpeaks</span>(<span class="ruby-identifier">mid</span>)
+  <span class="ruby-ivar">@Machine</span> = <span class="ruby-constant">Machine</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">mid</span>)
+  <span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">find</span>(<span class="ruby-value">:all</span>, <span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;smfid&quot;</span>, <span class="ruby-value">:select</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;smfid, max(mips) as max, AVG(mips) as average&quot;</span>, <span class="ruby-value">:conditions</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">'smfid in (?)'</span>, <span class="ruby-ivar">@Machine</span>.<span class="ruby-identifier">lpars</span>.<span class="ruby-identifier">map</span>(&amp;<span class="ruby-value">:smfid</span>)])
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- findLPARpeaks-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- findLPARpeaks-method -->
+
+      
         <div id="parseCSV-method" class="method-detail ">
           <a name="method-c-parseCSV"></a>
 
@@ -482,23 +593,23 @@
 
           <div class="method-description">
             
-            <p>Parse a ziipdata csv file. Just tell it what date. (Format:
-ziipdata_MM-DD-YY.csv)</p>
+            <p>Parse a cpudata csv file</p>
             
 
             
             <div class="method-source-code" id="parseCSV-source">
 <pre>
-<span class="ruby-comment"># File app/models/cpu.rb, line 18</span>
+<span class="ruby-comment"># File app/models/cpu.rb, line 19</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">parseCSV</span>(<span class="ruby-identifier">filename</span>)
-  <span class="ruby-constant">FasterCSV</span>.<span class="ruby-identifier">foreach</span>(<span class="ruby-string">'/home/ftp/mips/'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">filename</span>, <span class="ruby-identifier">col_sep</span><span class="ruby-operator">:</span> <span class="ruby-string">','</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">row</span><span class="ruby-operator">|</span>
+  <span class="ruby-constant">CSV</span>.<span class="ruby-identifier">foreach</span>(<span class="ruby-string">'/home/ftp/mips/'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">filename</span>, <span class="ruby-identifier">col_sep</span><span class="ruby-operator">:</span> <span class="ruby-string">','</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">row</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">date</span> = <span class="ruby-identifier">row</span>[<span class="ruby-value">1</span>]
     <span class="ruby-identifier">month</span> = <span class="ruby-identifier">date</span>[<span class="ruby-value">0</span>,<span class="ruby-value">2</span>]
     <span class="ruby-identifier">day</span> = <span class="ruby-identifier">date</span>[<span class="ruby-value">3</span>,<span class="ruby-value">2</span>]
     <span class="ruby-identifier">year</span> = <span class="ruby-identifier">date</span>[<span class="ruby-value">6</span>,<span class="ruby-value">2</span>].<span class="ruby-identifier">to_i</span> <span class="ruby-operator">+</span> <span class="ruby-value">2000</span>
-    <span class="ruby-identifier">date</span> = <span class="ruby-identifier">year</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;-&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">month</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;-&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">day</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot; &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">row</span>[<span class="ruby-value">1</span>]
-    <span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">datetime</span><span class="ruby-operator">:</span> <span class="ruby-identifier">date</span>, <span class="ruby-identifier">smfid</span><span class="ruby-operator">:</span> <span class="ruby-identifier">row</span>[<span class="ruby-value">2</span>], <span class="ruby-identifier">mips</span><span class="ruby-operator">:</span> <span class="ruby-identifier">row</span>[<span class="ruby-value">3</span>])
+    <span class="ruby-identifier">date</span> = <span class="ruby-identifier">year</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;-&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">month</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;-&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">day</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot; &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">row</span>[<span class="ruby-value">2</span>]
+    <span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">datetime</span><span class="ruby-operator">:</span> <span class="ruby-identifier">date</span>, <span class="ruby-identifier">smfid</span><span class="ruby-operator">:</span> <span class="ruby-identifier">row</span>[<span class="ruby-value">0</span>], <span class="ruby-identifier">mips</span><span class="ruby-operator">:</span> <span class="ruby-identifier">row</span>[<span class="ruby-value">3</span>])
   <span class="ruby-keyword">end</span>
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">'/home/ftp/mips/'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">filename</span>) 
 <span class="ruby-keyword">end</span></pre>
             </div><!-- parseCSV-source -->
             
@@ -535,11 +646,10 @@ ziipdata_MM-DD-YY.csv)</p>
             
             <div class="method-source-code" id="after_initialize-source">
 <pre>
-<span class="ruby-comment"># File app/models/cpu.rb, line 11</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">after_initialize</span>
-  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">lpars</span> <span class="ruby-operator">||=</span> []
-  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">months</span> <span class="ruby-operator">||=</span> []
-  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">machines</span> <span class="ruby-operator">||=</span> []
+<span class="ruby-comment"># File app/models/cpu.rb, line 13</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">after_initialize</span> 
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">lpars</span> <span class="ruby-operator">||=</span> {}
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">machines</span> <span class="ruby-operator">||=</span> {}
 <span class="ruby-keyword">end</span></pre>
             </div><!-- after_initialize-source -->
             

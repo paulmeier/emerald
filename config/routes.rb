@@ -58,6 +58,9 @@ Emerald::Application.routes.draw do
   match 'ziips/zcustgraph' => 'ziips#zcustgraph', :as => "zcustgraph"
   match 'ziips/:id/canned' => 'ziips#canned', :as => "ziips_canned"
   match 'ziips/:id/twoweekavg' => 'ziips#twoweekavg', :as => "twoweekavg"
+  match 'ziips/:id/twoweektot' => 'ziips#twoweektot', :as => "twoweektot"
+  match 'ziips/:id/monAvg' => 'ziips#monAvg', :as => "monAvg"
+  match 'ziips/:id/peaks' => 'ziips#peaksGraph', :as => "peaks"
   match 'ziips/:id/:lpar/all' => 'ziips#all', :as => "ziips_all"
   match 'ziips/:id/:name/allAvg' => 'ziips#allavg', :as => "ziips_allAvg"
   

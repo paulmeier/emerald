@@ -1,8 +1,7 @@
 <script type="text/javascript">
 $(function() {
 	$('div#weightpanel').hide();
-	var from = <%= Date.today.beginning_of_month.previous_business_day('us') %>;
-	var to = <%= Date.today.beginning_of_month.next_business_day('us') %>;
+
 	var mipsChart = new Highcharts.Chart({
 			chart: { renderTo: "chart", type: "spline",
 					 events: {

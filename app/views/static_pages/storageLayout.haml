@@ -2,7 +2,7 @@
   $("[rel=itooltip]").tooltip();
 .page-header
   %h1 Storage Layout
-- Location.find(params[:location]).machines.each do |m|
+- @machineList.each do |m|
   %br
   %table#minTable{align: "center"}
     %thead
@@ -87,7 +87,7 @@
         %th 
           %a{"data-placement" => "top", :href => "#", :rel => "itooltip", :title => "The value coded in the HMC for this parameter."}Reserved Storage
     %tbody
-      - m.lpars.each do |lpar|
+      - m.lpars.find_each(batch_size: 200) do |lpar|
         %tr#lconflist
           %td= lpar.name
           %td= lpar.mid

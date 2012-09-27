@@ -25,15 +25,14 @@
 
 #hack to rvmsudo to use password later 
 #sudo "password"
-
-    
+   
 every 1.day do
   runner "LparConfig.verifyWeights", environment: "development"
   runner "LparConfig.verifyStorage", environment: "development"
 end
 
-every 5.hours do
-  command "rspec /home/e1031991/emerald/spec/** --format h > /home/e1031991/emerald/rspec_output.html.erb", environment: "development"
+every 1.day do
+  command "rspec /home/e1031991/emerald/spec/** --format h > /home/e1031991/emerald/app/views/static_pages/rspec_output.html", environment: "development"
 end
 
 every 1.day do

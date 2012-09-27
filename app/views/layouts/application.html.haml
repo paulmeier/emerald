@@ -3,7 +3,8 @@
   %head
     %title Emerald
     = include_gon
-    = stylesheet_link_tag    "application", :media => "all"
+    = yield :head
+    = stylesheet_link_tag    "application"
     = javascript_include_tag "application","jquery-ui-timepicker-addon","jquery-ui-sliderAccess","highcharts","highstock","exporting"
     = csrf_meta_tags
   %body

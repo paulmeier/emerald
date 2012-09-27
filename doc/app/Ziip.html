@@ -65,7 +65,23 @@
         <h3 class="section-header">Methods</h3>
         <ul class="link-list">
           
+          <li><a href="#method-c-datetime_to_epoch">::datetime_to_epoch</a></li>
+          
+          <li><a href="#method-c-findBoxAverage">::findBoxAverage</a></li>
+          
+          <li><a href="#method-c-findBoxLPARpeaks">::findBoxLPARpeaks</a></li>
+          
+          <li><a href="#method-c-findBoxPeaks">::findBoxPeaks</a></li>
+          
+          <li><a href="#method-c-findLPARpeaks">::findLPARpeaks</a></li>
+          
+          <li><a href="#method-c-getZiipAverageByDay">::getZiipAverageByDay</a></li>
+          
+          <li><a href="#method-c-getZiipBoxAverageByDay">::getZiipBoxAverageByDay</a></li>
+          
           <li><a href="#method-c-parseCSV">::parseCSV</a></li>
+          
+          <li><a href="#method-i-after_initialize">#after_initialize</a></li>
           
           <li><a href="#method-i-canned">#canned</a></li>
           
@@ -125,10 +141,6 @@
           <li><a href="./HomeController.html">HomeController</a></li>
         
           <li><a href="./HomeHelper.html">HomeHelper</a></li>
-        
-          <li><a href="./Import.html">Import</a></li>
-        
-          <li><a href="./ImportsController.html">ImportsController</a></li>
         
           <li><a href="./ImportsHelper.html">ImportsHelper</a></li>
         
@@ -234,11 +246,439 @@
       
 
       
+      <!-- Attributes -->
+      <div id="attribute-method-details" class="method-section section">
+        <h3 class="section-header">Attributes</h3>
+
+        
+        <div id="data-attribute-method" class="method-detail">
+          <a name="data"></a>
+          
+          <a name="data="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">data</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description">
+          
+          
+          
+          </div>
+        </div>
+        
+        <div id="from-attribute-method" class="method-detail">
+          <a name="from"></a>
+          
+          <a name="from="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">from</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description">
+          
+          
+          
+          </div>
+        </div>
+        
+        <div id="graphtype-attribute-method" class="method-detail">
+          <a name="graphtype"></a>
+          
+          <a name="graphtype="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">graphtype</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description">
+          
+          
+          
+          </div>
+        </div>
+        
+        <div id="includeWeights-attribute-method" class="method-detail">
+          <a name="includeWeights"></a>
+          
+          <a name="includeWeights="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">includeWeights</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description">
+          
+          
+          
+          </div>
+        </div>
+        
+        <div id="increment-attribute-method" class="method-detail">
+          <a name="increment"></a>
+          
+          <a name="increment="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">increment</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description">
+          
+          
+          
+          </div>
+        </div>
+        
+        <div id="lpars-attribute-method" class="method-detail">
+          <a name="lpars"></a>
+          
+          <a name="lpars="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">lpars</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description">
+          
+          
+          
+          </div>
+        </div>
+        
+        <div id="machines-attribute-method" class="method-detail">
+          <a name="machines"></a>
+          
+          <a name="machines="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">machines</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description">
+          
+          
+          
+          </div>
+        </div>
+        
+        <div id="maxMips-attribute-method" class="method-detail">
+          <a name="maxMips"></a>
+          
+          <a name="maxMips="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">maxMips</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description">
+          
+          
+          
+          </div>
+        </div>
+        
+        <div id="to-attribute-method" class="method-detail">
+          <a name="to"></a>
+          
+          <a name="to="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">to</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description">
+          
+          
+          
+          </div>
+        </div>
+        
+        <div id="totalMips-attribute-method" class="method-detail">
+          <a name="totalMips"></a>
+          
+          <a name="totalMips="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">totalMips</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description">
+          
+          
+          
+          </div>
+        </div>
+        
+      </div><!-- attribute-method-details -->
+      
 
       <!-- Methods -->
       
       <div id="public-class-method-details" class="method-section section">
         <h3 class="section-header">Public Class Methods</h3>
+
+      
+        <div id="datetime_to_epoch-method" class="method-detail ">
+          <a name="method-c-datetime_to_epoch"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">datetime_to_epoch</span><span
+              class="method-args">(datetime)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Converts a string date in the format “YYYY-MM-DD HH:MM:SS” to epoch time</p>
+            
+
+            
+            <div class="method-source-code" id="datetime_to_epoch-source">
+<pre>
+<span class="ruby-comment"># File app/models/ziip.rb, line 62</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">datetime_to_epoch</span>(<span class="ruby-identifier">datetime</span>)
+  <span class="ruby-constant">Time</span>.<span class="ruby-identifier">local</span>(<span class="ruby-identifier">datetime</span>[<span class="ruby-value">0</span>,<span class="ruby-value">4</span>].<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">datetime</span>[<span class="ruby-value">5</span>,<span class="ruby-value">2</span>].<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">datetime</span>[<span class="ruby-value">8</span>,<span class="ruby-value">2</span>].<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">datetime</span>[<span class="ruby-value">11</span>,<span class="ruby-value">2</span>].<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">datetime</span>[<span class="ruby-value">14</span>,<span class="ruby-value">2</span>].<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">datetime</span>[<span class="ruby-value">17</span>,<span class="ruby-value">2</span>].<span class="ruby-identifier">to_i</span>, <span class="ruby-value">00</span>).<span class="ruby-identifier">to_i</span> * <span class="ruby-value">1000</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- datetime_to_epoch-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- datetime_to_epoch-method -->
+
+      
+        <div id="findBoxAverage-method" class="method-detail ">
+          <a name="method-c-findBoxAverage"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">findBoxAverage</span><span
+              class="method-args">(mid)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Find the average MIPS the BOX uses.</p>
+            
+
+            
+            <div class="method-source-code" id="findBoxAverage-source">
+<pre>
+<span class="ruby-comment"># File app/models/ziip.rb, line 50</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">findBoxAverage</span>(<span class="ruby-identifier">mid</span>)
+  
+  <span class="ruby-ivar">@ziipSum</span> = <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">find</span>(<span class="ruby-value">:all</span>, <span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;date(datetime),time(datetime)&quot;</span>, <span class="ruby-value">:select</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;sum(PCTBOX) as average&quot;</span>, <span class="ruby-value">:conditions</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">'LPAR in (?)'</span>, <span class="ruby-ivar">@Machine</span>.<span class="ruby-identifier">lpars</span>.<span class="ruby-identifier">map</span>(&amp;<span class="ruby-value">:name</span>)])
+  <span class="ruby-identifier">sum</span> = <span class="ruby-value">0</span>
+  <span class="ruby-ivar">@ziipSum</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">m</span>,<span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">sum</span> <span class="ruby-operator">+=</span> <span class="ruby-ivar">@ziipSum</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">average</span>.<span class="ruby-identifier">to_f</span> 
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-keyword">return</span> (<span class="ruby-identifier">sum</span> <span class="ruby-operator">/</span> <span class="ruby-ivar">@ziipSum</span>.<span class="ruby-identifier">count</span>)  
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- findBoxAverage-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- findBoxAverage-method -->
+
+      
+        <div id="findBoxLPARpeaks-method" class="method-detail ">
+          <a name="method-c-findBoxLPARpeaks"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">findBoxLPARpeaks</span><span
+              class="method-args">(mid)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Find each LPARs cpu or MIPS peak use. name, max, and average returned.</p>
+            
+
+            
+            <div class="method-source-code" id="findBoxLPARpeaks-source">
+<pre>
+<span class="ruby-comment"># File app/models/ziip.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">findBoxLPARpeaks</span>(<span class="ruby-identifier">mid</span>)
+  <span class="ruby-identifier">find_machine</span>(<span class="ruby-identifier">mid</span>)
+  <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">find</span>(<span class="ruby-value">:all</span>, <span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;LPAR&quot;</span>, <span class="ruby-value">:select</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;LPAR, max(PCTBOX) as max, AVG(PCTBOX) as average&quot;</span>, <span class="ruby-value">:conditions</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">'LPAR in (?)'</span>, <span class="ruby-ivar">@Machine</span>.<span class="ruby-identifier">lpars</span>.<span class="ruby-identifier">map</span>(&amp;<span class="ruby-value">:name</span>)])
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- findBoxLPARpeaks-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- findBoxLPARpeaks-method -->
+
+      
+        <div id="findBoxPeaks-method" class="method-detail ">
+          <a name="method-c-findBoxPeaks"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">findBoxPeaks</span><span
+              class="method-args">(mid)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Find the peak period of the BOX and how much MIPS it is using total.
+datetime and peak returned.</p>
+            
+
+            
+            <div class="method-source-code" id="findBoxPeaks-source">
+<pre>
+<span class="ruby-comment"># File app/models/ziip.rb, line 44</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">findBoxPeaks</span>(<span class="ruby-identifier">mid</span>)
+  <span class="ruby-identifier">find_machine</span>(<span class="ruby-identifier">mid</span>)
+  <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">find</span>(<span class="ruby-value">:all</span>, <span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;date(DateTime),time(DateTime)&quot;</span>, <span class="ruby-value">:select</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;DateTime ,sum(PCTBOX) as peak&quot;</span>, <span class="ruby-value">:order</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;peak DESC&quot;</span>, <span class="ruby-value">:conditions</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">'LPAR in (?)'</span>, <span class="ruby-ivar">@Machine</span>.<span class="ruby-identifier">lpars</span>.<span class="ruby-identifier">map</span>(&amp;<span class="ruby-value">:name</span>)]).<span class="ruby-identifier">first</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- findBoxPeaks-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- findBoxPeaks-method -->
+
+      
+        <div id="findLPARpeaks-method" class="method-detail ">
+          <a name="method-c-findLPARpeaks"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">findLPARpeaks</span><span
+              class="method-args">(lpars)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Find collection of LPARs cpu or MIPS peak use. name, datetime, and max
+returned.</p>
+            
+
+            
+            <div class="method-source-code" id="findLPARpeaks-source">
+<pre>
+<span class="ruby-comment"># File app/models/ziip.rb, line 33</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">findLPARpeaks</span>(<span class="ruby-identifier">lpars</span>)
+  <span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">find</span>(<span class="ruby-value">:all</span>, <span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;LPAR&quot;</span>, <span class="ruby-value">:select</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;LPAR, DateTime, max(PCTBOX) as max&quot;</span>, <span class="ruby-value">:conditions</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">'LPAR in (?)'</span>, <span class="ruby-identifier">lpars</span>.<span class="ruby-identifier">map</span>(&amp;<span class="ruby-value">:name</span>)])
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- findLPARpeaks-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- findLPARpeaks-method -->
+
+      
+        <div id="getZiipAverageByDay-method" class="method-detail ">
+          <a name="method-c-getZiipAverageByDay"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">getZiipAverageByDay</span><span
+              class="method-args">(from, to, lparId)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Find LPAR average ZIIP useage by day. Numbers are in percent (from
+database)</p>
+            
+
+            
+            <div class="method-source-code" id="getZiipAverageByDay-source">
+<pre>
+<span class="ruby-comment"># File app/models/ziip.rb, line 67</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">getZiipAverageByDay</span>(<span class="ruby-identifier">from</span>, <span class="ruby-identifier">to</span>, <span class="ruby-identifier">lparId</span>)
+  <span class="ruby-ivar">@totals</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+  (<span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">between</span>(<span class="ruby-identifier">from</span>,<span class="ruby-identifier">to</span>).<span class="ruby-identifier">where</span>(<span class="ruby-constant">LPAR</span><span class="ruby-operator">:</span> <span class="ruby-constant">Lpar</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">lparId</span>).<span class="ruby-identifier">name</span>).<span class="ruby-identifier">group</span>(<span class="ruby-string">&quot;date(DateTime)&quot;</span>).<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;AVG(PCTBOX) as average&quot;</span>)).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+    <span class="ruby-ivar">@totals</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">i</span>.<span class="ruby-identifier">average</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@totals</span>     
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- getZiipAverageByDay-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- getZiipAverageByDay-method -->
+
+      
+        <div id="getZiipBoxAverageByDay-method" class="method-detail ">
+          <a name="method-c-getZiipBoxAverageByDay"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">getZiipBoxAverageByDay</span><span
+              class="method-args">(from, to, machineId)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Find CEC average ZIIP useage by day. Numbers are in percent (from database)</p>
+            
+
+            
+            <div class="method-source-code" id="getZiipBoxAverageByDay-source">
+<pre>
+<span class="ruby-comment"># File app/models/ziip.rb, line 76</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">getZiipBoxAverageByDay</span>(<span class="ruby-identifier">from</span>, <span class="ruby-identifier">to</span>, <span class="ruby-identifier">machineId</span>)
+  <span class="ruby-ivar">@totals</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+  (<span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">between</span>(<span class="ruby-identifier">from</span>,<span class="ruby-identifier">to</span>).<span class="ruby-identifier">where</span>(<span class="ruby-string">'LPAR in (?)'</span>, <span class="ruby-identifier">find_machine</span>(<span class="ruby-identifier">machineId</span>).<span class="ruby-identifier">lpars</span>.<span class="ruby-identifier">map</span>(&amp;<span class="ruby-value">:name</span>)).<span class="ruby-identifier">group</span>(<span class="ruby-string">&quot;date(DateTime)&quot;</span>).<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;AVG(PCTBOX) as dayTotal&quot;</span>)).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+    <span class="ruby-ivar">@totals</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">i</span>.<span class="ruby-identifier">dayTotal</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@totals</span>     
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- getZiipBoxAverageByDay-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- getZiipBoxAverageByDay-method -->
 
       
         <div id="parseCSV-method" class="method-detail ">
@@ -261,7 +701,7 @@ ziipdata_MM-DD-YY.csv) e.g 1.day.ago.strftime(“%m-%d-%y”)</p>
             
             <div class="method-source-code" id="parseCSV-source">
 <pre>
-<span class="ruby-comment"># File app/models/ziip.rb, line 23</span>
+<span class="ruby-comment"># File app/models/ziip.rb, line 21</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">parseCSV</span>(<span class="ruby-identifier">filename</span>)
   <span class="ruby-constant">FasterCSV</span>.<span class="ruby-identifier">foreach</span>(<span class="ruby-string">'/home/ftp/ziip/'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">filename</span>, <span class="ruby-identifier">col_sep</span><span class="ruby-operator">:</span> <span class="ruby-string">','</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">row</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">date</span> = <span class="ruby-identifier">row</span>[<span class="ruby-value">0</span>]
@@ -288,6 +728,40 @@ ziipdata_MM-DD-YY.csv) e.g 1.day.ago.strftime(“%m-%d-%y”)</p>
         <h3 class="section-header">Public Instance Methods</h3>
 
       
+        <div id="after_initialize-method" class="method-detail ">
+          <a name="method-i-after_initialize"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">after_initialize</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="after_initialize-source">
+<pre>
+<span class="ruby-comment"># File app/models/ziip.rb, line 11</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">after_initialize</span> 
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">lpars</span> <span class="ruby-operator">||=</span> {}
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">machines</span> <span class="ruby-operator">||=</span> {}
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- after_initialize-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- after_initialize-method -->
+
+      
         <div id="canned-method" class="method-detail ">
           <a name="method-i-canned"></a>
 
@@ -307,7 +781,7 @@ ziipdata_MM-DD-YY.csv) e.g 1.day.ago.strftime(“%m-%d-%y”)</p>
             
             <div class="method-source-code" id="canned-source">
 <pre>
-<span class="ruby-comment"># File app/models/ziip.rb, line 18</span>
+<span class="ruby-comment"># File app/models/ziip.rb, line 16</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">canned</span>
   <span class="ruby-ivar">@lpars</span> = <span class="ruby-constant">Lpar</span>.<span class="ruby-identifier">all</span>
 <span class="ruby-keyword">end</span></pre>

@@ -5,7 +5,6 @@ class Lpar < ActiveRecord::Base
   has_many :machine_lpars
   has_many :machines, through: :machine_lpars
   
-  validates :id, presence: true, uniqueness: true
   validates :mid, length: { minimum: 2, maximum: 5 }, presence: true, uniqueness: true
   validates :name, length: { minimum: 3, maximum: 8 }, presence: true, uniqueness: true
   validates :smfid, length: { minimum: 2, maximum: 7 }, presence: true, uniqueness: true

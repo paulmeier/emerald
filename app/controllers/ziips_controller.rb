@@ -1,5 +1,4 @@
 class ZiipsController < ApplicationController
-  before_filter :authenticate_user!
   
   #For future dates (e.g. 2.weeks.from_now)
   require 'active_support/core_ext/numeric/time'
@@ -134,36 +133,48 @@ class ZiipsController < ApplicationController
     end
   end
   
-  def all 
-  end
-  
-  def twoweekavg
+  def monAvg
     #For a Rails bug. Puts one blank array slot.
     params[:ziip][:lpars] = params[:ziip][:lpars].delete_if{ |x| x.empty? }
+    params[:ziip][:machines] = params[:ziip][:machines].delete_if{ |x| x.empty? }
+  end
+  
+  def twoweekavg    
+    #For a Rails bug. Puts one blank array slot.
+    params[:ziip][:lpars] = params[:ziip][:lpars].delete_if{ |x| x.empty? }
+    params[:ziip][:machines] = params[:ziip][:machines].delete_if{ |x| x.empty? }
+  end
+  
+  def twoweektot    
+    #For a Rails bug. Puts one blank array slot.
+    params[:ziip][:lpars] = params[:ziip][:lpars].delete_if{ |x| x.empty? }
+    params[:ziip][:machines] = params[:ziip][:machines].delete_if{ |x| x.empty? }
   end
   
   def canned
     gon.startDate = Ziip.first(order: 'DateTime asc').DateTime
-    @ziips = Ziip.new  
-    @lparList = Array.new
-    
-    Location.find(params[:location]).machines.each do |m|
-      m.lpars.each do |l|
-        @lparList.push(l)
-      end
-    end
+    @ziips = Ziip.new
   end
   
   def custom
     gon.startDate = Ziip.first(order: 'DateTime asc').DateTime
     @ziips = Ziip.new
-    @lparList = Array.new
-    
-    Location.find(params[:location]).machines.each do |m|
-      m.lpars.each do |l|
-        @lparList.push(l)
-      end
-    end
-    
   end
+  
+  def peaksGraph
+    @ziips = Ziip.new
+    
+    #For a Rails bug. Puts one blank array slot.
+    params[:ziip][:lpars] = params[:ziip][:lpars].delete_if{ |x| x.empty? }
+    params[:ziip][:machines] = params[:ziip][:machines].delete_if{ |x| x.empty? }
+    
+    @lpars = Lpar.find(params[:ziip][:lpars])
+    @lparPeaks = Ziip.findLPARpeaks(@lpars)
+    
+    @machinePeaks = Array.new
+    params[:ziip][:machines].each do |m|
+      @machinePeaks.push(Ziip.findBoxPeaks(m))
+    end
+  end
+  
 end

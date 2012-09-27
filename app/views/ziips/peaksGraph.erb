@@ -1,0 +1,38 @@
+<script type="text/javascript">
+$(function() {
+	var chart = new Highcharts.Chart({
+			chart: { renderTo: "ziipsChart", type: "column" },
+			title: { text: "ZIIP Peaks" },
+			xAxis: { },
+			yAxis: { title: { text: "% of ZIIP Used" },
+					 labels: {
+    				  	formatter: function () {
+				            return Highcharts.numberFormat(this.value, 2) + ' %';
+				        }
+				     }
+				    },
+			tooltip: {
+                formatter: function() {
+                        return '<b>'+ this.series.name +'</b><br/>'+
+                        Highcharts.numberFormat(this.y, 2) +' %';
+                }
+            },
+			series: [
+			<% @lparPeaks.each do |lp| %>
+			{
+				name: "<%= lp.LPAR %>",   		
+				data: [<%= lp.max / 100 %>]
+			},
+			<% end %>
+			<% params[:ziip][:machines].each_with_index do |m,i| %>
+			{
+				name: "<%= Machine.find(m).name %>",   		
+				data: [<%= @machinePeaks[i].peak %>]
+			},
+			<% end %>
+					]
+	});
+});
+</script>
+
+<div id="ziipsChart" style="width:1200px; height:600px;"></div>
