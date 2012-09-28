@@ -89,7 +89,6 @@ Emerald::Application.routes.draw do
   match 'cpus/:id/:lpar/custom' => 'cpus#custom'
   match 'cpus/:machine_id/allCec' => 'cpus#allCec'
   match 'cpus/:machine_id/totBox' => 'cpus#totBox'
-  match 'cpus/:id/cday' => 'cpus#cday'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

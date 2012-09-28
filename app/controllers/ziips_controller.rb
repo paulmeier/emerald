@@ -83,14 +83,6 @@ class ZiipsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
-  def zday
-    @ziipTotal = Ziip.between(params[:from],params[:to]).where(:LPAR => params[:scope]).group("date(DateTime)").select("DateTime, AVG(PCTBOX) as average")
-      respond_to do |format|
-      #format.html # show.html.erb
-      format.json { render json: @ziipTotal }
-    end
-  end
 
    #Selects DateTime and Percent of ZIIP used. Used to show raw data in the database.
    def zAll

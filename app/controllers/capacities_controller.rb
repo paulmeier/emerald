@@ -1,5 +1,5 @@
 class CapacitiesController < ApplicationController
-  before_filter :authenticate_user!
+
   # GET /capacities
   # GET /capacities.json
   def index

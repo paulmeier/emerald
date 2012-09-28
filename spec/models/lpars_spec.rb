@@ -23,7 +23,7 @@ require 'spec_helper'
     subject { lpar }
       its(:name) { should be_nil }
       it { should_not be_valid }
-      it { should validate_presence_of(:id) }
+      its(:id) { should_not be_nil }
       it { should validate_presence_of(:smfid) }
       it { should validate_presence_of(:mid) }
       it { should validate_presence_of(:name) }

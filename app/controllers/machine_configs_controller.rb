@@ -1,5 +1,5 @@
 class MachineConfigsController < ApplicationController
-  before_filter :authenticate_user!
+
   # GET /machine_configs
   # GET /machine_configs.json
   def index

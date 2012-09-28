@@ -1,5 +1,5 @@
 class ModsController < ApplicationController
-  before_filter :authenticate_user!
+
   # GET /mods
   # GET /mods.json
   def index

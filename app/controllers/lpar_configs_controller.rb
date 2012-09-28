@@ -1,5 +1,5 @@
 class LparConfigsController < ApplicationController
-  before_filter :authenticate_user!
+
   # GET /lpar_configs
   # GET /lpar_configs.json
   def index

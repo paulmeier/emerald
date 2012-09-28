@@ -1,5 +1,5 @@
 class MachineLparsController < ApplicationController
-  before_filter :authenticate_user!
+
   # GET /machine_lpars
   # GET /machine_lpars.json
   def index
