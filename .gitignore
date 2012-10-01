@@ -4,12 +4,70 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile ~/.gitignore_global
 
-# Ignore bundler config
-/.bundle
+app/view/static_pages/rspec_output.html
 
-# Ignore the default SQLite database.
-/db/*.sqlite3
+# Configuration files
+config/diaspora.yml
+config/heroku.yml
+config/script_server.yml
+config/initializers/secret_token.rb
+config/redis.conf
+config/deploy_config.yml
+.bundle
+vendor/bundle/*
+vendor/cache/*
+config/database.yml
+.rvmrc_custom
+.rvmrc.local
 
-# Ignore all logfiles and tempfiles.
-/log/*.log
-/tmp
+#Mailing list stuff
+config/email_offset
+config/mailing_list.csv
+
+# Generated files
+log/*
+public/stylesheets/*.css
+public/diaspora
+spec/fixtures/*.y*ml
+spec/fixtures/*.fixture.*
+coverage/*
+xml_locales/*
+
+#Documentation
+.yardoc/
+doc/
+
+# Uploaded files and local files
+public/uploads/*
+public/assets/*
+public/source.tar*
+public/.well-known
+tmp/**/*
+tmp/*
+*.sqlite3
+
+# Temporary files of every sort
+.sass-cache/*
+.DS_Store
+.idea
+.redcar
+.rvmrc
+.stgit*
+*.swap
+*.swo
+*.swp
+*~
+*#
+bin/*
+nbproject
+patches-*
+capybara-*.html
+dump.rdb
+
+#Rubinius's JIT
+*.rbc
+
+# Ignore precompiled assets
+# Heroku or Capistrano can and should regenerate them on every deploy
+public/assets
+
