@@ -1,6 +1,6 @@
 .page-header
   %h1 ZIIP Detailed Report
-- Location.find(params[:location]).machines.each do |m|
+- @machines.each do |m|
   %h3= m.name
   %strong
     Name

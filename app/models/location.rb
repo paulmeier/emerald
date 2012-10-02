@@ -7,7 +7,9 @@ class Location < ActiveRecord::Base
     @lparList = Array.new
     Location.find(loc).machines.each do |m|
       m.lpars.each do |l|
-        @lparList.push(l)
+        if(Ziip.exists?(LPAR: l.name))
+          @lparList.push(l)
+        end
       end
     end
     return @lparList

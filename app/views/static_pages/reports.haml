@@ -1,12 +1,4 @@
-:javascript
-  $(document).ready(function(){
-   $('.dropdown-toggle').dropdown()	
-  });
 .page-header
   %h1 Reports
-- Location.all.each_with_index do |l,i|
-  #box   
-    %h3= l.name
-    %ul.nav.nav-list
-      = ziips_info(l)
-      = cpu_info(l)
+- @locations.each do |location|
+  = report_pill(location)

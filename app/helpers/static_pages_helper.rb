@@ -1,4 +1,41 @@
 module StaticPagesHelper
+  #create document pill if location has machines.
+  def document_pill(location)
+  capture_haml do
+   location.machines.each do |m|     
+       if(!m.machineConfig.nil?)           
+               haml_tag :div, id: "box" do
+                   haml_tag :h3 do
+                       haml_concat "#{location.name}"
+                     end
+                   haml_tag :ul, class: "nav nav-list" do
+                      haml_concat documents_info(location)
+                   end
+               end
+            end
+         break
+        end  
+    end
+  end
+  
+  #create the report pill if the location contains report data.
+  def report_pill(location)
+    capture_haml do
+     if(ziips_info(location) && cpu_info(location))
+       haml_tag :div, id: "box" do  
+         haml_tag :h3 do
+           haml_concat "#{location.name}"
+         end    
+             haml_tag :ul, class: "nav nav-list" do 
+               haml_concat ziips_info(location)
+               haml_concat cpu_info(location)
+             end
+       end
+      end
+     end
+  end
+  
+  #Does a location have ZIIP information in the database? If so display it.
   def ziips_info(location)    
     if(contain_ziip_data(location))            
               capture_haml do
@@ -35,6 +72,7 @@ module StaticPagesHelper
                                   end
                                 end
                               end
+                                                         
                             end
                           end
                         end
@@ -46,7 +84,8 @@ module StaticPagesHelper
               end
         end
     end
-    
+  
+  #Does a location have CPU information in the database (MIPS)? If so display it.  
   def cpu_info(location)    
     if(contain_cpu_data(location))            
               capture_haml do
@@ -93,6 +132,16 @@ module StaticPagesHelper
         end
     end
     
+    def documents_info(location)
+      capture_haml do
+        haml_tag :li, "CPU", class: "nav-header"
+          haml_tag :li do
+            haml_concat link_to "Storage Layout", storageLayout_path(location: location.id)
+            haml_concat link_to "DCONFIG", dconfig_path
+          end
+       end
+    end
+    
     #Checks if a location has machines with ZIIP data.
     def contain_ziip_data(location)
       location.machines.each do |m|
@@ -108,7 +157,7 @@ module StaticPagesHelper
       end
     end
     
-        #Checks if a location has machines with ZIIP data.
+    #Checks if a location has machines with CPU data.
     def contain_cpu_data(location)
       location.machines.each do |m|
         if(m.machineConfig)

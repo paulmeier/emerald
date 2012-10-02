@@ -1,12 +1,23 @@
 class StaticPagesController < ApplicationController
   
   def home
+    @notifications = Notification.all
   end
   
   def reports
+    #Gather the locations from the database
+    @locations = Location.all
+    
+    #Check if the location contains machines.
+    @locations.delete_if{ |x| !x.machine_locs.exists? }
   end
   
-  def ziipreport
+  def ziipreport    
+    #Get the locations machines.
+    @machines = Location.find(params[:location]).machines
+    
+    #Make sure the machine has a ZIIP. If not, dont even bother querying for information.
+    @machines.delete_if{ |x| x.machineConfig.ziip <= 0 }
   end
    
   def cpureport
@@ -16,6 +27,10 @@ class StaticPagesController < ApplicationController
   end
 
   def documents
+    @locations = Location.all
+    
+    #Check if the location contains machines.
+    @locations.delete_if{ |x| !x.machine_locs.exists? }
   end
 
   def about
@@ -25,6 +40,7 @@ class StaticPagesController < ApplicationController
   end
   
   def storageLayout
+    #Get the locations machines.
     @machineList = Location.find(params[:location]).machines
   end
   
