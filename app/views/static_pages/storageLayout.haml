@@ -1,5 +1,7 @@
 :javascript
-  $("[rel=itooltip]").tooltip();
+  $(document).ready(function() {
+      $('.tip').tooltip();
+  });
 .page-header
   %h1 Storage Layout
 - @machineList.each do |m|
@@ -8,25 +10,25 @@
     %thead
       %tr
         %th 
-          %a{"data-placement" => "top", :href => "#", :rel => "itooltip", :title => "The IOCDS designation name."}CPU
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "tooltip", :title => "The IOCDS designated name."}CPU
         %th 
-          %a{"data-placement" => "top", :href => "#", :rel => "itooltip", :title => "The machines serial number."}Serial
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "The machines serial number."}Serial
         %th 
-          %a{"data-placement" => "top", :href => "#", :rel => "itooltip", :title => "The IBM MIPS rating."}MIPS
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "The IBM MIPS rating."}MIPS
         %th 
-          %a{"data-placement" => "top", :href => "#", :rel => "itooltip", :title => "The IBM MSU rating."}MSU
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "The IBM MSU rating."}MSU
         %th 
-          %a{"data-placement" => "top", :href => "#", :rel => "itooltip", :title => "Converts MIPS (at the weight value) to MSUs for software contracts."}MSU Weight
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "Converts MIPS (at the weight value) to MSUs for software contracts."}MSU Weight
         %th 
-          %a{"data-placement" => "top", :href => "#", :rel => "itooltip", :title => "The IBM designation for the number of z/OS engines."}Capacity
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "The IBM designation for the number of z/OS engines."}Capacity
         %th Model
         %th 
-          %a{"data-placement" => "top", :href => "#", :rel => "itooltip",
+          %a{"data-placement" => "top", :href => "#", :rel => "itooltip",  class: "tip",
            :title => "Indicates how much of the logical engines assigned an LPAR are used. (Physical engines are never permanently assigned an LPAR.)"}Per CP Share
         %th 
-          %a{"data-placement" => "top", :href => "#", :rel => "itooltip", :title => "The standard amount of storage allocated to this machine."}Storage
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "The standard amount of storage allocated to this machine."}Storage
         %th 
-          %a{"data-placement" => "top", :href => "#", :rel => "itooltip", :title => "Available storage."}Remaining Storage
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "Available storage."}Remaining Storage
       %tbody
         %td= m.name
         %td= m.serialNumber
@@ -43,49 +45,49 @@
     %thead
       %tr
         %th 
-          %a{"data-placement" => "top", :href => "#", :rel => "itooltip", :title => "LPAR name."}LPAR
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "LPAR name."}LPAR
         %th 
-          %a{"data-placement" => "top", :href => "#", :rel => "itooltip", :title => "I/O protocols use this number to direct incoming I/O to the correct LPAR."}Lpar ID
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "I/O protocols use this number to direct incoming I/O to the correct LPAR."}Lpar ID
         %th 
-          %a{"data-placement" => "top", :href => "#", :rel => "itooltip", :title => "This ID is set by the systems group in the SYSNAME parameter of the member IEASYS00 in SYS1.PARMLIB"}SMF ID
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "This ID is set by the systems group in the SYSNAME parameter of the member IEASYS00 in SYS1.PARMLIB"}SMF ID
         %th 
-          %a{"data-placement" => "top", :href => "#", :rel => "itooltip", :title => "Except for OVERHEAD, these are the values entered via the HMC (Hardware Management Console)."}Coded Weight
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "Except for OVERHEAD, these are the values entered via the HMC (Hardware Management Console)."}Coded Weight
         %th 
-          %a{"data-placement" => "top", :href => "#", :rel => "itooltip", :title => "Regardless of coded weight values, PR/SM normalizes the weight settings to 100."}Running Weight
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "Regardless of coded weight values, PR/SM normalizes the weight settings to 100."}Running Weight
         %th 
-          %a{"data-placement" => "top", :href => "#", :rel => "itooltip", :title => "This column, generated for TAPS, converts MIPS (at the weight value) to MSUs for software contracts."}MSU Weight
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "This column, generated for TAPS, converts MIPS (at the weight value) to MSUs for software contracts."}MSU Weight
         %th 
-          %a{"data-placement" => "top", :href => "#", :rel => "itooltip", :title => "This is the maximum MIPS that will be allocated to this LPAR when the MACHINE is running at 100%."}Max MIPS (Weight)
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "This is the maximum MIPS that will be allocated to this LPAR when the MACHINE is running at 100%."}Max MIPS (Weight)
         %th 
-          %a{"data-placement" => "top", :href => "#", :rel => "itooltip",
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip",
            :title => "If there is no CAP VALUE, this is the maximum MIPS this LPAR could get based on the number of logical engines assigned in the HMC."}Max MIPS Engine Cap
         %th 
-          %a{"data-placement" => "top", :href => "#", :rel => "itooltip", :title => "This value represents the MAXIMUM MIPS this LPAR can use if neither weight nor capping is a factor."}Max Kick
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "This value represents the MAXIMUM MIPS this LPAR can use if neither weight nor capping is a factor."}Max Kick
         %th 
-          %a{"data-placement" => "top", :href => "#", :rel => "itooltip", :title => "This is the MSU value entered into the HMC that corresponds with the desired MIPS value."}Cap Value
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "This is the MSU value entered into the HMC that corresponds with the desired MIPS value."}Cap Value
         %th 
-          %a{"data-placement" => "top", :href => "#", :rel => "itooltip", :title => "These are the values entered via the HMC (Hardware Management Console)."}Ziip Weight
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "These are the values entered via the HMC (Hardware Management Console)."}Ziip Weight
         %th 
-          %a{"data-placement" => "top", :href => "#", :rel => "itooltip", :title => "These are the values entered via the HMC (Hardware Management Console)."}Zaap Weight
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "These are the values entered via the HMC (Hardware Management Console)."}Zaap Weight
         %th 
-          %a{"data-placement" => "top", :href => "#", :rel => "itooltip", :title => "The number of Z/OS logical engines assigned to this LPAR. The assignment is done on the HMC console."}Local Engines
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "The number of Z/OS logical engines assigned to this LPAR. The assignment is done on the HMC console."}Local Engines
         %th 
-          %a{"data-placement" => "top", :href => "#", :rel => "itooltip", :title => "This entry exists if a zIIP engine(s) is assigned to this LPAR, normally in shared (S) mode."}ZIIPs
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "This entry exists if a zIIP engine(s) is assigned to this LPAR, normally in shared (S) mode."}ZIIPs
         %th 
-          %a{"data-placement" => "top", :href => "#", :rel => "itooltip", :title => "This entry exists if a zAAP engine(s) is assigned to this LPAR, normally in shared (S) mode."}ZAAPs
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "This entry exists if a zAAP engine(s) is assigned to this LPAR, normally in shared (S) mode."}ZAAPs
         %th 
-          %a{"data-placement" => "top", :href => "#", :rel => "itooltip", :title => "This entry exists if a IFL engine(s) is assigned to this LPAR."}IFLs
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "This entry exists if a IFL engine(s) is assigned to this LPAR."}IFLs
         %th 
-          %a{"data-placement" => "top", :href => "#", :rel => "itooltip",
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip",
            :title => "Guaranteed Processor Value. This value is based on weight. When running at 100% GPV shows the number of engines that will be used by this LPAR. WHOLE numbers are preferred! Fractional numbers mean overhead is likely to be higher as Z/OS swaps real engines. Real engine swapping can optionally be minimized via HiperDispatch."}GPV
         %th 
-          %a{"data-placement" => "top", :href => "#", :rel => "itooltip", :title => "Indicates how much of the logical engines assigned an LPAR are used. (Physical engines are never permanently assigned an LPAR."}Per CP Share
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "Indicates how much of the logical engines assigned an LPAR are used. (Physical engines are never permanently assigned an LPAR."}Per CP Share
         %th 
-          %a{"data-placement" => "top", :href => "#", :rel => "itooltip", :title => "The total amount of storage requitred for full CBU mode operation with all LPARs recovered."}Storage CBU
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "The total amount of storage requitred for full CBU mode operation with all LPARs recovered."}Storage CBU
         %th 
-          %a{"data-placement" => "top", :href => "#", :rel => "itooltip", :title => "The standard amount of storage allocated to this LPAR via the HMC."}Storage Normal
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "The standard amount of storage allocated to this LPAR via the HMC."}Storage Normal
         %th 
-          %a{"data-placement" => "top", :href => "#", :rel => "itooltip", :title => "The value coded in the HMC for this parameter."}Reserved Storage
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "The value coded in the HMC for this parameter."}Reserved Storage
     %tbody
       - m.lpars.find_each(batch_size: 200) do |lpar|
         %tr#lconflist

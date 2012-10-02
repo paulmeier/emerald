@@ -36,8 +36,6 @@ Emerald::Application.routes.draw do
   get "static_pages/cpureport", :as => "cpureport"
 
   get "static_pages/configuration", :as => "configuration"
-  
-  get "static_pages/data", :as => "data"
 
   get "static_pages/documents", :as => "documents"
 

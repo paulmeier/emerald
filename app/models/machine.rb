@@ -9,4 +9,16 @@ class Machine < ActiveRecord::Base
   
   validates :name, presence: true, length: { minimum: 1, maximum: 10 }, uniqueness: true
   validates :serialNumber, presence: true, length: { minimum: 1, maximum: 10}, uniqueness: true
+  
+  def self.verifyMachineConfigsExist()
+    @machines = Machine.all
+    @machines.each do |machine|
+      if (machine.machineConfig.nil?)
+        if !(Notification.exists?(name: "error", msg: machine.name + " does not have a Machine Configuration."))
+          Notification.create(name: "error", msg: machine.name + " does not have a Machine Configuration.")
+        end
+      end
+    end
+  end
+  
 end

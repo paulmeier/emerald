@@ -9,6 +9,10 @@
 body{
   margin:0;
   padding:40px 40px;
+  /*
+  background: url('FNCOR-10490X-H-4.jpg');
+  background-position:bottom;
+  background-repeat:no-repeat;*/
  }
  
   div#footer{
@@ -60,4 +64,14 @@ body{
 	  width:300px;
 	  top: 40px;
    }
-  
+   div#container{
+	  position:relative;
+	  padding-right: 30px;
+	  padding-top: 10px;
+   } 
+   div#dino{
+	  float:right;
+	  background-image:url('dinosaur_3.gif');
+	  background-repeat:no-repeat;
+	  padding:250px 250px 60px 20px;
+   }  

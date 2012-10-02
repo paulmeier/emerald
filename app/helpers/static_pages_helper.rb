@@ -132,6 +132,7 @@ module StaticPagesHelper
         end
     end
     
+    #Display storage layout links and DCONFIG links
     def documents_info(location)
       capture_haml do
         haml_tag :li, "CPU", class: "nav-header"

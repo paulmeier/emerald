@@ -3,18 +3,17 @@
   %head
     %title Emerald
     = include_gon
-    = yield :head
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application","jquery-ui-timepicker-addon","jquery-ui-sliderAccess","highcharts","highstock","exporting"
     = csrf_meta_tags
   %body
     .navbar.navbar-fixed-top
       .navbar-inner
-        %a.btn.btn-navbar{"data-target" => ".collapse", "data-toggle" => "collapse"}
+        %a.btn.btn-navbar{"data-toggle" => "collapse", "data-target" => ".collapse"}
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-        %a.brand{:href => root_path} Emerald
+        %a.brand{href: root_path} Emerald
         .nav-collapse
           %ul.nav
             %li= link_to 'Reports', reports_path
@@ -22,7 +21,6 @@
             %li= link_to 'Documents', documents_path
             %li= link_to 'Notifications', notifications_path
             %li= link_to 'Application', emerald_path
-            %li= link_to 'Data', data_path
             %li= link_to 'About', about_path
           %ul.nav.pull-right
             %ul.nav
@@ -36,8 +34,8 @@
       .row
         .span11
           - flash.each do |name,msg|
-            %div{:class => "alert alert-block alert-#{name} fade in"}
-              %button.close{"data-dismiss" => "alert", :type => "button"} x
+            %div{class: "alert alert-block alert-#{name} fade in"}
+              %button.close{"data-dismiss" => "alert", type: "button"} x
               = msg
           = yield
     #bottom

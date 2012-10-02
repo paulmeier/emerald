@@ -3,6 +3,7 @@ class Location < ActiveRecord::Base
   has_many :machine_locs
   has_many :machines, through: :machine_locs
   
+  #fix this. ZIIP is hard coded, it should not be.
   def self.lparList(loc)
     @lparList = Array.new
     Location.find(loc).machines.each do |m|

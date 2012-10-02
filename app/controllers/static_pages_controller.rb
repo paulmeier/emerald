@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
   
   def home
-    @notifications = Notification.all
+    @notifications = Notification.all   
   end
   
   def reports
@@ -34,9 +34,8 @@ class StaticPagesController < ApplicationController
   end
 
   def about
-  end
-  
-  def data
+    require 'socket'
+    @host = Socket.gethostname
   end
   
   def storageLayout

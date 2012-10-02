@@ -35,11 +35,13 @@ every 1.day do
   #Make sure the weights are not less than 99 and not more than 100. If so send out a notification.
   runner "LparConfig.verifyWeights", environment: "development"
   #Make sure the storage is OK. If so send out a notification.
-  runner "LparConfig.verifyStorage", environment: "development" 
-
+  runner "LparConfig.verifyStorage", environment: "development"
+  #Verify machines have configurations
+  runner "Machine.verifyMachineConfigsExist", environment: "development"
+  
   #Parse any CSV files that have been uploaded to /home/ftp/
   runner "Cpu.parseCSV('CPU#PA MIPS.csv')", environment: "development"
-  runner "Cpu.parseCSV('CPU#PB MIPS.csv')", environment: "development"  
+  runner "Cpu.parseCSV('CPU#PB MIPS.csv')", environment: "development" 
 end
 
 every 1.week do 
