@@ -1,8 +1,8 @@
-require 'spec_helper'
+require_relative '../spec_helper'
 
   describe 'reports page' do
     it 'has ziips box' do
-      visit reports_path
+     visit reports_path
       assert_equal reports_path, current_path
       page.should have_content('ZIIP')
       page.should have_content('CPU')

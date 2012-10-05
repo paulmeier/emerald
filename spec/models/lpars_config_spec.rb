@@ -1,4 +1,4 @@
-require 'spec_helper'
+require_relative '../spec_helper'
 
   describe LparConfig do
     let(:lpar_config) { build(:lpar_config) }

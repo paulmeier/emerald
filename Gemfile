@@ -17,6 +17,9 @@ gem 'rails', '~> 3.2.6'
 #JQUERY!!! The best! A javascript library
 gem 'jquery-rails', '~> 2.0.2'
 
+#For file uploading
+gem "carrierwave", "~> 0.6.2"
+
 #For rspec output syntax highlighting
 gem 'syntax', '~> 1.0.0'
 

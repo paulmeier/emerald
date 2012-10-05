@@ -1,4 +1,4 @@
-require "spec_helper"
+require_relative '../spec_helper'
 
 describe "user registration" do
   it "allows new users to register with an email address and password" do
