@@ -1,5 +1,13 @@
 Emerald::Application.routes.draw do
   
+  resources :customers
+
+  resources :information_management_systems
+
+  resources :sysplex_lpars
+
+  resources :sysplexes
+
   resources :notifications
 
   resources :locations

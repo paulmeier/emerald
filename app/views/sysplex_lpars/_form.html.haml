@@ -1,0 +1,17 @@
+= simple_form_for @sysplex_lpar, html: { class: 'form-horizontal' } do |f|
+  = f.error_notification
+  %br
+    %br
+      %fieldset
+        .control-group
+          %label.control-label LPAR:
+          .controls
+            = f.select :sysplex_id, Lpar.all.collect{ |c| [c.name, c.id] }
+          %br
+          %label.control-label SYSPLEX:
+          .controls
+            = f.select :lpar_id, Sysplex.all.collect{ |c| [c.name, c.id] }
+
+  .form-actions
+    = f.button :submit, class: 'btn-primary'
+    = link_to t('.cancel', default: t("helpers.links.cancel")), mods_path, class: 'btn'

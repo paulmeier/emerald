@@ -3,6 +3,6 @@ class MachineLpar < ActiveRecord::Base
   belongs_to :lpar
   belongs_to :machine
   
-  validates :lpar_id, :uniqueness => true
+  validates :lpar_id, uniqueness: true
   
 end

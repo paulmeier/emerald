@@ -21,16 +21,13 @@
 #   runner "AnotherModel.prune_old_records"
 # end
 # Learn more: http://github.com/javan/whenever
-set :output, '/home/e1031991/whenever.log'
+#set :output, '/home/e1031991/whenever.log'
 
-every 5.minutes do
+every 1.day do  
   #Check the status of the code.
   command "rspec /home/e1031991/emerald/spec/** --format h > /home/e1031991/emerald/app/views/static_pages/rspec_output.html", environment: "development"
   command "chmod 777 /home/e1031991/emerald/app/views/static_pages/rspec_output.html", environment: "development"
   command "sed -i '265i<br><br><br><br>' /home/e1031991/emerald/app/views/static_pages/rspec_output.html", environment: "development"  
-end
-
-every 1.day do  
   
   #Do validations on saved configuration data  
   #Make sure the weights are not less than 99 and not more than 100. If so send out a notification.

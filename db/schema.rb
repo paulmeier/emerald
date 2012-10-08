@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120911204327) do
+ActiveRecord::Schema.define(:version => 20121008181320) do
 
   create_table "capacities", :force => true do |t|
     t.string   "name"
@@ -27,6 +27,18 @@ ActiveRecord::Schema.define(:version => 20120911204327) do
     t.datetime "datetime"
     t.string   "smfid"
     t.integer  "mips"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "customers", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "information_management_systems", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -116,6 +128,19 @@ ActiveRecord::Schema.define(:version => 20120911204327) do
   create_table "notifications", :force => true do |t|
     t.string   "name"
     t.text     "msg"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "sysplex_lpars", :force => true do |t|
+    t.integer  "sysplex_id"
+    t.integer  "lpar_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "sysplexes", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

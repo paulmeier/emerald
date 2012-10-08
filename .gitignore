@@ -4,7 +4,7 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile ~/.gitignore_global
 
-app/view/static_pages/rspec_output.html
+app/views/static_pages/rspec_output.html
 
 # Configuration files
 config/diaspora.yml

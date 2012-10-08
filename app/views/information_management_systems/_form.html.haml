@@ -1,0 +1,10 @@
+= simple_form_for @information_management_system, html: { class: 'form-horizontal' } do |f|
+  = f.error_notification
+  %fieldset
+    %br   
+    = f.input :id
+    %br
+    = f.input :name
+  .form-actions
+    = f.button :submit, class: 'btn-primary'
+    = link_to t('.cancel', default: t("helpers.links.cancel")), lpars_path, class: 'btn'
