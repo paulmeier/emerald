@@ -60,7 +60,7 @@ class Ziip < ActiveRecord::Base
   
   #Converts a string date in the format "YYYY-MM-DD HH:MM:SS" to epoch time
   def self.datetime_to_epoch(datetime)
-    Time.local(datetime[0,4].to_i, datetime[5,2].to_i, datetime[8,2].to_i, datetime[11,2].to_i, datetime[14,2].to_i, datetime[17,2].to_i, 00).to_i * 1000
+    Time.local(datetime.strftime('%Y').to_i, datetime.strftime('%m').to_i, datetime.strftime('%d').to_i, datetime.strftime('%H').to_i, datetime.strftime('%M').to_i, datetime.strftime('%S').to_i).to_i * 1000
   end
   
   #Find LPAR average ZIIP useage by day. Numbers are in percent (from database)

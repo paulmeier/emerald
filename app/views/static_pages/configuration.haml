@@ -59,9 +59,33 @@
   .accordion-group
     .accordion-heading
       %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", :href => "#collapseSeven"}
-        Report Data
+        Applications
     #collapseSeven.accordion-body.collapse
       .accordion-inner
         %ul.nav.nav-pills.nav-stacked
+          %li= link_to "Applications", applications_path
+  .accordion-group
+    .accordion-heading
+      %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", :href => "#collapseNine"}
+        DB2s
+    #collapseNine.accordion-body.collapse
+      .accordion-inner
+        %ul.nav.nav-pills.nav-stacked
+          %li= link_to "DB2s", db2s_path
+  .accordion-group
+    .accordion-heading
+      %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", :href => "#collapseTen"}
+        CICS
+    #collapseTen.accordion-body.collapse
+      .accordion-inner
+        %ul.nav.nav-pills.nav-stacked
+          %li= link_to "CICS", customer_information_control_systems_path
+  .accordion-group
+    .accordion-heading
+      %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", :href => "#collapseEight"}
+        Report Data
+    #collapseEight.accordion-body.collapse
+      .accordion-inner
+        %ul.nav.nav-pills.nav-stacked
           %li= link_to "ZIIP", ziips_path
-          %li= link_to "CPU", cpus_path       
+          %li= link_to "CPU", cpus_path

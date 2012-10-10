@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Id:
+  = @customer_information_control_system.id
+%p
+  %b Name:
+  = @customer_information_control_system.name
+
+= link_to 'Edit', edit_customer_information_control_system_path(@customer_information_control_system)
+\|
+= link_to 'Back', customer_information_control_systems_path

@@ -161,29 +161,23 @@ class CpusController < ApplicationController
   def mefbd
     @lpars = Array.new
     @machines = Array.new
-    @medays = Array.new
-        
+    
     #For a Rails bug. Puts one blank array slot.
     params[:cpu][:lpars] = params[:cpu][:lpars].delete_if{ |x| x.empty? }
+    params[:cpu][:machines] = params[:cpu][:machines].delete_if{ |x| x.empty? }
     
     #Create my LPARS array the user selected
       params[:cpu][:lpars].each do |lpid|
-        @lpars.push(Lpar.includes(:machines).includes(:lparConfig).find(lpid))
+        @lpars.push(Lpar.find(lpid))
       end
       
     #Create the machines array based on the LPARS selected.
-      @lpars.each do |lpar|
-        @machines.push(lpar.machines)
+      params[:cpu][:machines].each do |m|
+        @machines.push(Machine.find(m.to_i))
       end
       
     #Get only unique machines from machines.
-    @machines = @machines.inject([]) { |result,h| result << h unless result.include?(h); result }
-    
-    #Get Max Box lines
-    @machConfig = Array.new
-    @machines.each_with_index do |machine,index|
-      @machConfig[@machines[index][0].id] = Machine.includes(:machineConfig).includes(:machine_lpars).find(@machines[index][0].id)
-    end
+    #@machines = @machines.inject([]) { |result,h| result << h unless result.include?(h); result }
     
   end
 end

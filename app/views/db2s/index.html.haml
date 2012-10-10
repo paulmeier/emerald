@@ -1,0 +1,23 @@
+- model_class = Sysplex
+%h1= t '.title', default: model_class.model_name.human.pluralize.upcase
+%br
+  = link_to image_tag('xls-icon.png', height: "3.5%", width: "3.5%"),url_for(format: 'xls'),class: "xlsicon"
+  = link_to image_tag('PDF_icon.gif', height: "3%", width: "3%"), url_for(format: 'pdf')
+  %br
+    %br
+      %table.table.table-striped
+        %tr
+          %th Id
+          %th Name
+          %th= model_class.human_attribute_name(:created_at)
+          %th= t '.actions', default: t("helpers.actions")
+      
+        - @db2s.each do |db2|
+          %tr
+            %td= db2.id
+            %td= db2.name
+            %td= l db2.created_at
+            %td
+              = link_to t('.edit', default: t("helpers.links.edit")), edit_db2_path(db2), class: 'btn btn-mini'
+              = link_to t('.destroy', default: t("helpers.links.destroy")),db2_path(db2), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger'                                                                                                 |
+      = link_to t('.new', default: t("helpers.links.new")), new_db2_path, class: 'btn btn-primary'

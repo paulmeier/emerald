@@ -1,14 +1,16 @@
 <h3>ME/FBD</h3>
-A month end and first business day report based upon selected data below.<br>
+A month end and first business day report based upon selected data below. Selected months will provide data for the <strong>START</strong> of that month.<br>
 Select multiple by holding down "Ctrl"
 <br><br>
-<%= simple_form_for(@cpus, :url => mefbd_path) do |f| %>
-	<%= f.input :lpars, :collection => Location.lparList(params[:location]) , :input_html => { :multiple => true, :class => "input-large", :size => "10" }%>
+<%= simple_form_for(@cpus, :url => mefbd_path(1)) do |f| %>
+	<%= f.input :lpars, :label => 'LPARs', :collection => Location.lparList(params[:location]) , :input_html => { :multiple => true, :class => "input-large", :size => "10" }%>
+		<span class="help-block label label-info" style="width: 380px">Select multiple by holding down "Ctrl" then making selections.</span>
 	<br>
 	<%= f.input :maxMips, :label => 'Maximum Machine MIPS Line', :as => :boolean %>
-	<%= f.input :totalMips, :label => 'Total Machine MIPS Used Line', :as => :boolean %>
 	<%= f.input :includeWeights, :label => 'LPAR Weight Line', :as => :boolean %>
-	<br><br>	
+	<br>
+	<%= f.input :machines, :collection => Location.find(params[:location]).machines , :input_html => { :multiple => true, :class => "input-large", :size => "5" }%>
+	<br>	
   <div class="actions">
     <%= f.submit "Graph ME/FBD", :class => 'btn btn-primary' %>
     <%= submit_tag 'Clear', :type => :reset, :class => "btn btn-danger" %>

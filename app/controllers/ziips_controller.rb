@@ -125,11 +125,19 @@ class ZiipsController < ApplicationController
   
   def canned
     gon.startDate = Ziip.first(order: 'DateTime asc').DateTime
+    gon.endDate = Ziip.first(order: 'DateTime desc').DateTime
+    @start = (Ziip.first(order: 'DateTime asc').DateTime)
+    @end = (Ziip.first(order: 'DateTime desc').DateTime)
+    @startYear = @start.strftime('%Y').to_i
+    @endYear = @end.strftime('%Y').to_i
+    @startMonth = @start.strftime('%m').to_i
+    @endMonth = @end.strftime('%m').to_i
     @ziips = Ziip.new
   end
   
   def custom
     gon.startDate = Ziip.first(order: 'DateTime asc').DateTime
+    gon.endDate = Ziip.first(order: 'DateTime desc').DateTime
     @ziips = Ziip.new
   end
   

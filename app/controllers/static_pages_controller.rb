@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
   
   def home
-    @notifications = Notification.all   
+    @notifications = Notification.all 
   end
   
   def reports

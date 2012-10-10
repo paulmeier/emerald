@@ -1,5 +1,11 @@
 Emerald::Application.routes.draw do
   
+  resources :customer_information_control_systems
+
+  resources :db2s
+
+  resources :applications
+
   resources :customers
 
   resources :information_management_systems
