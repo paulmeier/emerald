@@ -42,7 +42,7 @@ module StaticPagesHelper
                     haml_tag :li, "ZIIP", class: "nav-header"
                     haml_tag :li do
                       haml_concat link_to "ZIIP Stats", ziipreport_path(location: location.id)
-                      haml_concat link_to "ZIIP Custom", ziips_custom_path(1, location: location.id)
+                      #haml_concat link_to "ZIIP Custom", ziips_custom_path(1, location: location.id)
                       haml_concat link_to "ZIIP Canned", ziips_canned_path(1, location: location.id)
                     end
 
@@ -92,7 +92,7 @@ module StaticPagesHelper
                     haml_tag :li, "CPU", class: "nav-header"
                     haml_tag :li do
                       haml_concat link_to "CPU Stats", cpureport_path(location: location.id)
-                      haml_concat link_to "CPU Custom", cpus_custom_path(1, location: location.id)
+                      #haml_concat link_to "CPU Custom", cpus_custom_path(1, location: location.id)
                       haml_concat link_to "CPU Canned", cpus_canned_path(1, location: location.id)
                     end
 

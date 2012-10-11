@@ -117,21 +117,28 @@ class ZiipsController < ApplicationController
     params[:ziip][:machines] = params[:ziip][:machines].delete_if{ |x| x.empty? }
   end
   
-  def twoweektot    
+  def twoweektot 
     #For a Rails bug. Puts one blank array slot.
     params[:ziip][:lpars] = params[:ziip][:lpars].delete_if{ |x| x.empty? }
     params[:ziip][:machines] = params[:ziip][:machines].delete_if{ |x| x.empty? }
   end
   
+  def dayAverages
+    params[:ziip][:lpars] = params[:ziip][:lpars].delete_if{ |x| x.empty? }
+    params[:ziip][:machines] = params[:ziip][:machines].delete_if{ |x| x.empty? }
+  end
+  
   def canned
-    gon.startDate = Ziip.first(order: 'DateTime asc').DateTime
-    gon.endDate = Ziip.first(order: 'DateTime desc').DateTime
+    @lparList = Location.lparList(params[:location])
+    @machineList = Location.find(params[:location]).machines
+    
     @start = (Ziip.first(order: 'DateTime asc').DateTime)
     @end = (Ziip.first(order: 'DateTime desc').DateTime)
+    gon.startDate = @start
+    gon.endDate = @end
     @startYear = @start.strftime('%Y').to_i
     @endYear = @end.strftime('%Y').to_i
-    @startMonth = @start.strftime('%m').to_i
-    @endMonth = @end.strftime('%m').to_i
+
     @ziips = Ziip.new
   end
   
@@ -148,12 +155,24 @@ class ZiipsController < ApplicationController
     params[:ziip][:lpars] = params[:ziip][:lpars].delete_if{ |x| x.empty? }
     params[:ziip][:machines] = params[:ziip][:machines].delete_if{ |x| x.empty? }
     
+    #Find LPAR peaks
     @lpars = Lpar.find(params[:ziip][:lpars])
     @lparPeaks = Ziip.findLPARpeaks(@lpars)
+    @peakData = Array.new
     
+    @lparPeaks.each do |l|
+      @peakData.push(l.max)
+    end
+    
+    #find Machine peaks
     @machinePeaks = Array.new
     params[:ziip][:machines].each do |m|
-      @machinePeaks.push(Ziip.findBoxPeaks(m))
+      @machinePeaks.push([Machine.find(m).name,Ziip.findBoxPeaks(m).peak,Ziip.findBoxPeaks(m).DateTime])
+    end
+    
+    @mpeakData = Array.new
+    @machinePeaks.each_with_index do |mp,index|
+      @mpeakData.push(@machinePeaks[index][1])
     end
   end
   

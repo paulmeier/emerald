@@ -75,6 +75,7 @@ Emerald::Application.routes.draw do
   match 'ziips/:id/peaks' => 'ziips#peaksGraph', :as => "peaks"
   match 'ziips/:id/:lpar/all' => 'ziips#all', :as => "ziips_all"
   match 'ziips/:id/:name/allAvg' => 'ziips#allavg', :as => "ziips_allAvg"
+  match 'ziips/:id/dayAverages' => 'ziips#dayAverages', :as => "dayAverages"
   
   #CPU Routes
   match 'cpus/:id/:lpar/all' => 'cpus#all', :as => "cpus_all"  

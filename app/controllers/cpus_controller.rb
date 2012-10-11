@@ -100,33 +100,6 @@ class CpusController < ApplicationController
       format.json { render json: @totBox }
     end  
   end
-  #Find the machine totals for end of month
-  def allCec
-    @machine = Machine.includes(:lpars).where(:id => params[:machine_id])
-    
-    @cAllCec = Cpu.between(Date.today.beginning_of_month.previous_business_day('us'),Date.today.beginning_of_month.next_business_day('us') +1).find(:all, :group => "date(DateTime),time(DateTime)", :select => "datetime, sum(mips) as mips", :conditions => ['smfid in (?)', @machine[0].lpars.map(&:smfid)])
-      respond_to do |format|
-      #format.html # show.html.erb
-      format.json { render json: @cAllCec }
-    end
-  end
-  
-  def ctotal
-    @cTotal = Cpu.between(Date.today.beginning_of_month.previous_business_day('us'),Date.today.beginning_of_month.next_business_day('us') +1).where(:smfid => Lpar.find(params[:scope]).smfid).group("date(datetime),time(datetime)").select("datetime, mips")
-      respond_to do |format|
-      #format.html # show.html.erb
-      format.json { render json: @cTotal }
-    end
-  end
-  
-  #Gathers the data between two dates. Displays the day and it's average use for the lpar specified in the scope.
-  def cday
-    @cpuTotal = Cpu.between(params[:from],params[:to]).where(:smfid => params[:scope]).group("date(datetime)").select("datetime, AVG(mips) as average")
-      respond_to do |format|
-      #format.html # show.html.erb
-      format.json { render json: @cpuTotal }
-    end
-  end
   
   def allBox
     #placeholder

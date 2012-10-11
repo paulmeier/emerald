@@ -1,6 +1,6 @@
 <script type="text/javascript">
 $(function() {
-		//Set the charts colors
+	//Set the charts colors
 	Highcharts.setOptions({
     colors: [
 '#C46210',	
@@ -31,18 +31,10 @@ $(function() {
 });
 	var chart = new Highcharts.Chart({
 			chart: { renderTo: "ziipsChart", type: "column" },
-			title: { text: "ZIIP Average by Day for 2 Weeks" },
-			xAxis: { type: "datetime",
-					 dateTimeLabelFormats: { day: '%b-%e' },
-					 tickInterval: 24 * 3600 * 1000,
-    				 labels: {
-    				  	rotation:-45,
-    				  	align: 'right',
-    				  	formatter: function() {
-				             return Highcharts.dateFormat("%a %b %e, %Y", this.value);
-				        }
-    				  } 
-    				},
+			title: { text: "ZIIP Average for the Month of <%= Date.parse(params[:ziip][:from]).strftime('%B %Y') %>" },
+			xAxis: { categories: [
+				'Average'
+			]},
 			yAxis: { title: { text: "Average % of ZIIP Used" },
 					 labels: {
     				  	formatter: function () {
@@ -57,18 +49,18 @@ $(function() {
                 }
             },
 			series: [
-			<% params[:ziip][:lpars].each do |lpar| %>
+			<% params[:ziip][:lpars].each do |l| %>
 			{
-				name: "<%= Lpar.find(lpar).name %>",
-				data: <%= Ziip.getZiipAverageByDay("2012-08-16", "2012-08-30", lpar) %>,
+				name: "<%= Lpar.find(l).name %>",
+				data: <%= Ziip.totalAveragesLPARs(Date.parse(params[:ziip][:from]).beginning_of_month.to_s, Date.parse(params[:ziip][:from]).end_of_month.to_s, l) %>
 			},
 			<% end %>
 			<% params[:ziip][:machines].each do |m| %>
 			{
-				name: "<%= Machine.find(m).name %>",		      		
-				data: <%= Ziip.getZiipBoxAverageByDay("2012-08-16", "2012-08-30", m) %>,
+				name: "<%= Machine.find(m).name %>",
+				data: <%= Ziip.totalAveragesCECs(Date.parse(params[:ziip][:from]).beginning_of_month.to_s, Date.parse(params[:ziip][:from]).end_of_month.to_s, m) %>
 			},
-			<% end %>	
+			<% end %>
 					]
 	});
 });

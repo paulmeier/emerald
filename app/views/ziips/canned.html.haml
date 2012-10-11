@@ -6,15 +6,13 @@
     %li.active
       %a{"data-toggle" => "tab", href: "#twowe"}2 Week Averages by Day
     %li
-      %a{"data-toggle" => "tab", href: "#twotd"}2 Week Totals
+      %a{"data-toggle" => "tab", href: "#twotd"}2 Week Averages
     %li
       %a{"data-toggle" => "tab", href: "#ma"}Monthly Averages
     %li
-      %a{"data-toggle" => "tab", href: "#da"}Day Averages
+      %a{"data-toggle" => "tab", href: "#da"}Daily Averages
     %li
       %a{"data-toggle" => "tab", href: "#tabd"}Peak Periods
-    %li
-      %a{"data-toggle" => "tab", href: "#dt"}Day Totals
     %li
       %a{"data-toggle" => "tab", href: "#mefbd"}ME/FBD
   .tab-content
@@ -25,10 +23,8 @@
     #ma.tab-pane
       = render partial: 'monthAverages'
     #da.tab-pane
-      = render partial: 'dayAveragesGraph'
+      = render partial: 'dayAverages'
     #tabd.tab-pane
       = render partial: 'peaksGraph'
-    #dt.tab-pane
-      = render partial: 'dayTotalsGraph'
     #mefbd.tab-pane
       MEFBD - Under construction

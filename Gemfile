@@ -82,7 +82,7 @@ end
 
 group :test do
 #For performance testing
-# gem 'rack-mini-profiler'
+  gem 'rack-mini-profiler'
   gem 'shoulda', '~> 3.1.1'
   gem 'rspec-rails', '~> 2.11.0'
   gem 'capybara', '~> 1.1.2'

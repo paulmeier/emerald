@@ -52,6 +52,28 @@
       
 
       
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-i-contain_cpu_data">#contain_cpu_data</a></li>
+          
+          <li><a href="#method-i-contain_ziip_data">#contain_ziip_data</a></li>
+          
+          <li><a href="#method-i-cpu_info">#cpu_info</a></li>
+          
+          <li><a href="#method-i-document_pill">#document_pill</a></li>
+          
+          <li><a href="#method-i-documents_info">#documents_info</a></li>
+          
+          <li><a href="#method-i-report_pill">#report_pill</a></li>
+          
+          <li><a href="#method-i-ziips_info">#ziips_info</a></li>
+          
+        </ul>
+      </div>
+      
 
       
     </div>
@@ -84,9 +106,15 @@
 
         <ul class="link-list">
         
+          <li><a href="./Application.html">Application</a></li>
+        
           <li><a href="./ApplicationController.html">ApplicationController</a></li>
         
           <li><a href="./ApplicationHelper.html">ApplicationHelper</a></li>
+        
+          <li><a href="./ApplicationsController.html">ApplicationsController</a></li>
+        
+          <li><a href="./ApplicationsHelper.html">ApplicationsHelper</a></li>
         
           <li><a href="./CapacitiesController.html">CapacitiesController</a></li>
         
@@ -100,13 +128,35 @@
         
           <li><a href="./CpusHelper.html">CpusHelper</a></li>
         
+          <li><a href="./CsvDataUploader.html">CsvDataUploader</a></li>
+        
+          <li><a href="./Customer.html">Customer</a></li>
+        
+          <li><a href="./CustomerInformationControlSystem.html">CustomerInformationControlSystem</a></li>
+        
+          <li><a href="./CustomerInformationControlSystemsController.html">CustomerInformationControlSystemsController</a></li>
+        
+          <li><a href="./CustomerInformationControlSystemsHelper.html">CustomerInformationControlSystemsHelper</a></li>
+        
+          <li><a href="./CustomersController.html">CustomersController</a></li>
+        
+          <li><a href="./CustomersHelper.html">CustomersHelper</a></li>
+        
           <li><a href="./Date.html">Date</a></li>
         
-          <li><a href="./HomeController.html">HomeController</a></li>
+          <li><a href="./Db2.html">Db2</a></li>
         
-          <li><a href="./HomeHelper.html">HomeHelper</a></li>
+          <li><a href="./Db2sController.html">Db2sController</a></li>
+        
+          <li><a href="./Db2sHelper.html">Db2sHelper</a></li>
         
           <li><a href="./ImportsHelper.html">ImportsHelper</a></li>
+        
+          <li><a href="./InformationManagementSystem.html">InformationManagementSystem</a></li>
+        
+          <li><a href="./InformationManagementSystemsController.html">InformationManagementSystemsController</a></li>
+        
+          <li><a href="./InformationManagementSystemsHelper.html">InformationManagementSystemsHelper</a></li>
         
           <li><a href="./Location.html">Location</a></li>
         
@@ -176,6 +226,18 @@
         
           <li><a href="./StaticPagesHelper.html">StaticPagesHelper</a></li>
         
+          <li><a href="./Sysplex.html">Sysplex</a></li>
+        
+          <li><a href="./SysplexLpar.html">SysplexLpar</a></li>
+        
+          <li><a href="./SysplexLparsController.html">SysplexLparsController</a></li>
+        
+          <li><a href="./SysplexLparsHelper.html">SysplexLparsHelper</a></li>
+        
+          <li><a href="./SysplexesController.html">SysplexesController</a></li>
+        
+          <li><a href="./SysplexesHelper.html">SysplexesHelper</a></li>
+        
           <li><a href="./User.html">User</a></li>
         
           <li><a href="./Ziip.html">Ziip</a></li>
@@ -213,6 +275,383 @@
 
       <!-- Methods -->
       
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="contain_cpu_data-method" class="method-detail ">
+          <a name="method-i-contain_cpu_data"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">contain_cpu_data</span><span
+              class="method-args">(location)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Checks if a location has machines with CPU data.</p>
+            
+
+            
+            <div class="method-source-code" id="contain_cpu_data-source">
+<pre>
+<span class="ruby-comment"># File app/helpers/static_pages_helper.rb, line 162</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">contain_cpu_data</span>(<span class="ruby-identifier">location</span>)
+  <span class="ruby-identifier">location</span>.<span class="ruby-identifier">machines</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">m</span>.<span class="ruby-identifier">machineConfig</span>)
+        <span class="ruby-keyword">if</span>(<span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">exists?</span>([<span class="ruby-string">'smfid in (?)'</span>, <span class="ruby-identifier">m</span>.<span class="ruby-identifier">lpars</span>.<span class="ruby-identifier">map</span>(&amp;<span class="ruby-value">:smfid</span>)]))
+          <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+        <span class="ruby-keyword">else</span>
+          <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+        <span class="ruby-keyword">end</span>
+     <span class="ruby-keyword">else</span>
+       <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+     <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- contain_cpu_data-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- contain_cpu_data-method -->
+
+      
+        <div id="contain_ziip_data-method" class="method-detail ">
+          <a name="method-i-contain_ziip_data"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">contain_ziip_data</span><span
+              class="method-args">(location)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Checks if a location has machines with ZIIP data.</p>
+            
+
+            
+            <div class="method-source-code" id="contain_ziip_data-source">
+<pre>
+<span class="ruby-comment"># File app/helpers/static_pages_helper.rb, line 147</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">contain_ziip_data</span>(<span class="ruby-identifier">location</span>)
+  <span class="ruby-identifier">location</span>.<span class="ruby-identifier">machines</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">m</span>.<span class="ruby-identifier">machineConfig</span>)
+        <span class="ruby-keyword">if</span>(<span class="ruby-identifier">m</span>.<span class="ruby-identifier">machineConfig</span>.<span class="ruby-identifier">ziip</span>)
+          <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+        <span class="ruby-keyword">else</span>
+          <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+        <span class="ruby-keyword">end</span>
+     <span class="ruby-keyword">else</span>
+       <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+     <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- contain_ziip_data-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- contain_ziip_data-method -->
+
+      
+        <div id="cpu_info-method" class="method-detail ">
+          <a name="method-i-cpu_info"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">cpu_info</span><span
+              class="method-args">(location)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Does a location have CPU information in the database (MIPS)? If so display
+it.</p>
+            
+
+            
+            <div class="method-source-code" id="cpu_info-source">
+<pre>
+<span class="ruby-comment"># File app/helpers/static_pages_helper.rb, line 89</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">cpu_info</span>(<span class="ruby-identifier">location</span>)    
+  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">contain_cpu_data</span>(<span class="ruby-identifier">location</span>))            
+            <span class="ruby-identifier">capture_haml</span> <span class="ruby-keyword">do</span>
+                  <span class="ruby-identifier">haml_tag</span> <span class="ruby-value">:li</span>, <span class="ruby-string">&quot;CPU&quot;</span>, <span class="ruby-keyword">class</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;nav-header&quot;</span>
+                  <span class="ruby-identifier">haml_tag</span> <span class="ruby-value">:li</span> <span class="ruby-keyword">do</span>
+                    <span class="ruby-identifier">haml_concat</span> <span class="ruby-identifier">link_to</span> <span class="ruby-string">&quot;CPU Stats&quot;</span>, <span class="ruby-identifier">cpureport_path</span>(<span class="ruby-identifier">location</span><span class="ruby-operator">:</span> <span class="ruby-identifier">location</span>.<span class="ruby-identifier">id</span>)
+                    <span class="ruby-comment">#haml_concat link_to &quot;CPU Custom&quot;, cpus_custom_path(1, location: location.id)</span>
+                    <span class="ruby-identifier">haml_concat</span> <span class="ruby-identifier">link_to</span> <span class="ruby-string">&quot;CPU Canned&quot;</span>, <span class="ruby-identifier">cpus_canned_path</span>(<span class="ruby-value">1</span>, <span class="ruby-identifier">location</span><span class="ruby-operator">:</span> <span class="ruby-identifier">location</span>.<span class="ruby-identifier">id</span>)
+                  <span class="ruby-keyword">end</span>
+
+                <span class="ruby-identifier">haml_tag</span> <span class="ruby-value">:div</span>, <span class="ruby-identifier">id</span><span class="ruby-operator">:</span> <span class="ruby-node">&quot;accordion2#{location.id}&quot;</span>, <span class="ruby-keyword">class</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;accordion&quot;</span> <span class="ruby-keyword">do</span>
+                  <span class="ruby-identifier">haml_tag</span> <span class="ruby-value">:div</span>, <span class="ruby-keyword">class</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;accordion-group&quot;</span> <span class="ruby-keyword">do</span>
+                    <span class="ruby-identifier">haml_tag</span> <span class="ruby-value">:div</span>, <span class="ruby-keyword">class</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;accordion-heading&quot;</span> <span class="ruby-keyword">do</span>
+                      <span class="ruby-identifier">haml_tag</span> <span class="ruby-value">:a</span>, <span class="ruby-keyword">class</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;accordion-toggle&quot;</span>, <span class="ruby-string">&quot;data-parent&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;#accordion2#{location.id}&quot;</span>, <span class="ruby-string">&quot;data-toggle&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;collapse&quot;</span>, <span class="ruby-string">&quot;href&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;#collapse2#{location.id}&quot;</span> <span class="ruby-keyword">do</span>
+                        <span class="ruby-identifier">haml_concat</span> <span class="ruby-string">&quot;All Data&quot;</span>
+                      <span class="ruby-keyword">end</span>
+                    <span class="ruby-keyword">end</span>
+                    
+                    <span class="ruby-identifier">haml_tag</span> <span class="ruby-value">:div</span>, <span class="ruby-keyword">class</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;accordion-body collapse&quot;</span>, <span class="ruby-identifier">id</span><span class="ruby-operator">:</span> <span class="ruby-node">&quot;collapse2#{location.id}&quot;</span> <span class="ruby-keyword">do</span>
+                      <span class="ruby-identifier">haml_tag</span> <span class="ruby-value">:div</span>, <span class="ruby-keyword">class</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;accordian-inner&quot;</span> <span class="ruby-keyword">do</span>
+                        <span class="ruby-identifier">haml_tag</span> <span class="ruby-value">:ul</span>, <span class="ruby-keyword">class</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;nav nav-list&quot;</span> <span class="ruby-keyword">do</span>
+                          <span class="ruby-identifier">location</span>.<span class="ruby-identifier">machines</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">m</span>,<span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+                            <span class="ruby-identifier">haml_tag</span> <span class="ruby-value">:li</span> <span class="ruby-keyword">do</span>
+                              <span class="ruby-keyword">if</span>(<span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">exists?</span>([<span class="ruby-string">'smfid in (?)'</span>, <span class="ruby-identifier">m</span>.<span class="ruby-identifier">lpars</span>.<span class="ruby-identifier">map</span>(&amp;<span class="ruby-value">:smfid</span>)]))
+                                <span class="ruby-identifier">haml_concat</span> <span class="ruby-identifier">link_to</span> <span class="ruby-identifier">m</span>.<span class="ruby-identifier">name</span>, <span class="ruby-identifier">cpus_allBox_path</span>(<span class="ruby-identifier">m</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">m</span>.<span class="ruby-identifier">name</span>)
+                              <span class="ruby-keyword">end</span>
+                           <span class="ruby-keyword">end</span>
+                            <span class="ruby-identifier">location</span>.<span class="ruby-identifier">machines</span>[<span class="ruby-identifier">x</span>].<span class="ruby-identifier">lpars</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">lpar</span><span class="ruby-operator">|</span>
+                              <span class="ruby-keyword">if</span>(<span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">smfid</span><span class="ruby-operator">:</span> <span class="ruby-identifier">lpar</span>.<span class="ruby-identifier">smfid</span>))
+                                <span class="ruby-identifier">haml_tag</span> <span class="ruby-value">:li</span> <span class="ruby-keyword">do</span>
+                                  <span class="ruby-identifier">haml_concat</span> <span class="ruby-identifier">link_to</span> <span class="ruby-identifier">lpar</span>.<span class="ruby-identifier">name</span>, <span class="ruby-identifier">cpus_all_path</span>(<span class="ruby-value">1</span>, <span class="ruby-identifier">lpar</span>.<span class="ruby-identifier">smfid</span>)
+                                <span class="ruby-keyword">end</span>
+                              <span class="ruby-keyword">end</span>
+                            <span class="ruby-keyword">end</span>
+                          <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">end</span>
+                      <span class="ruby-keyword">end</span>
+                      
+                    <span class="ruby-keyword">end</span>
+                  <span class="ruby-keyword">end</span>
+                  
+                <span class="ruby-keyword">end</span>
+            <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span></pre>
+            </div><!-- cpu_info-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- cpu_info-method -->
+
+      
+        <div id="document_pill-method" class="method-detail ">
+          <a name="method-i-document_pill"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">document_pill</span><span
+              class="method-args">(location)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>create document pill if location has machines.</p>
+            
+
+            
+            <div class="method-source-code" id="document_pill-source">
+<pre>
+<span class="ruby-comment"># File app/helpers/static_pages_helper.rb, line 3</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">document_pill</span>(<span class="ruby-identifier">location</span>)
+<span class="ruby-identifier">capture_haml</span> <span class="ruby-keyword">do</span>
+ <span class="ruby-identifier">location</span>.<span class="ruby-identifier">machines</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span>     
+     <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-identifier">m</span>.<span class="ruby-identifier">machineConfig</span>.<span class="ruby-identifier">nil?</span>)           
+             <span class="ruby-identifier">haml_tag</span> <span class="ruby-value">:div</span>, <span class="ruby-identifier">id</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;box&quot;</span> <span class="ruby-keyword">do</span>
+                 <span class="ruby-identifier">haml_tag</span> <span class="ruby-value">:h3</span> <span class="ruby-keyword">do</span>
+                     <span class="ruby-identifier">haml_concat</span> <span class="ruby-node">&quot;#{location.name}&quot;</span>
+                   <span class="ruby-keyword">end</span>
+                 <span class="ruby-identifier">haml_tag</span> <span class="ruby-value">:ul</span>, <span class="ruby-keyword">class</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;nav nav-list&quot;</span> <span class="ruby-keyword">do</span>
+                    <span class="ruby-identifier">haml_concat</span> <span class="ruby-identifier">documents_info</span>(<span class="ruby-identifier">location</span>)
+                 <span class="ruby-keyword">end</span>
+             <span class="ruby-keyword">end</span>
+          <span class="ruby-keyword">end</span>
+       <span class="ruby-keyword">break</span>
+      <span class="ruby-keyword">end</span>  
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- document_pill-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- document_pill-method -->
+
+      
+        <div id="documents_info-method" class="method-detail ">
+          <a name="method-i-documents_info"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">documents_info</span><span
+              class="method-args">(location)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Display storage layout links and DCONFIG links</p>
+            
+
+            
+            <div class="method-source-code" id="documents_info-source">
+<pre>
+<span class="ruby-comment"># File app/helpers/static_pages_helper.rb, line 136</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">documents_info</span>(<span class="ruby-identifier">location</span>)
+  <span class="ruby-identifier">capture_haml</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">haml_tag</span> <span class="ruby-value">:li</span>, <span class="ruby-string">&quot;CPU&quot;</span>, <span class="ruby-keyword">class</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;nav-header&quot;</span>
+      <span class="ruby-identifier">haml_tag</span> <span class="ruby-value">:li</span> <span class="ruby-keyword">do</span>
+        <span class="ruby-identifier">haml_concat</span> <span class="ruby-identifier">link_to</span> <span class="ruby-string">&quot;Storage Layout&quot;</span>, <span class="ruby-identifier">storageLayout_path</span>(<span class="ruby-identifier">location</span><span class="ruby-operator">:</span> <span class="ruby-identifier">location</span>.<span class="ruby-identifier">id</span>)
+        <span class="ruby-identifier">haml_concat</span> <span class="ruby-identifier">link_to</span> <span class="ruby-string">&quot;DCONFIG&quot;</span>, <span class="ruby-identifier">dconfig_path</span>
+      <span class="ruby-keyword">end</span>
+   <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- documents_info-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- documents_info-method -->
+
+      
+        <div id="report_pill-method" class="method-detail ">
+          <a name="method-i-report_pill"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">report_pill</span><span
+              class="method-args">(location)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>create the report pill if the location contains report data.</p>
+            
+
+            
+            <div class="method-source-code" id="report_pill-source">
+<pre>
+<span class="ruby-comment"># File app/helpers/static_pages_helper.rb, line 22</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">report_pill</span>(<span class="ruby-identifier">location</span>)
+  <span class="ruby-identifier">capture_haml</span> <span class="ruby-keyword">do</span>
+   <span class="ruby-keyword">if</span>(<span class="ruby-identifier">ziips_info</span>(<span class="ruby-identifier">location</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">cpu_info</span>(<span class="ruby-identifier">location</span>))
+     <span class="ruby-identifier">haml_tag</span> <span class="ruby-value">:div</span>, <span class="ruby-identifier">id</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;box&quot;</span> <span class="ruby-keyword">do</span>  
+       <span class="ruby-identifier">haml_tag</span> <span class="ruby-value">:h3</span> <span class="ruby-keyword">do</span>
+         <span class="ruby-identifier">haml_concat</span> <span class="ruby-node">&quot;#{location.name}&quot;</span>
+       <span class="ruby-keyword">end</span>    
+           <span class="ruby-identifier">haml_tag</span> <span class="ruby-value">:ul</span>, <span class="ruby-keyword">class</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;nav nav-list&quot;</span> <span class="ruby-keyword">do</span> 
+             <span class="ruby-identifier">haml_concat</span> <span class="ruby-identifier">ziips_info</span>(<span class="ruby-identifier">location</span>)
+             <span class="ruby-identifier">haml_concat</span> <span class="ruby-identifier">cpu_info</span>(<span class="ruby-identifier">location</span>)
+           <span class="ruby-keyword">end</span>
+     <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+   <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- report_pill-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- report_pill-method -->
+
+      
+        <div id="ziips_info-method" class="method-detail ">
+          <a name="method-i-ziips_info"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">ziips_info</span><span
+              class="method-args">(location)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Does a location have ZIIP information in the database? If so display it.</p>
+            
+
+            
+            <div class="method-source-code" id="ziips_info-source">
+<pre>
+<span class="ruby-comment"># File app/helpers/static_pages_helper.rb, line 39</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">ziips_info</span>(<span class="ruby-identifier">location</span>)    
+  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">contain_ziip_data</span>(<span class="ruby-identifier">location</span>))            
+            <span class="ruby-identifier">capture_haml</span> <span class="ruby-keyword">do</span>
+                  <span class="ruby-identifier">haml_tag</span> <span class="ruby-value">:li</span>, <span class="ruby-string">&quot;ZIIP&quot;</span>, <span class="ruby-keyword">class</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;nav-header&quot;</span>
+                  <span class="ruby-identifier">haml_tag</span> <span class="ruby-value">:li</span> <span class="ruby-keyword">do</span>
+                    <span class="ruby-identifier">haml_concat</span> <span class="ruby-identifier">link_to</span> <span class="ruby-string">&quot;ZIIP Stats&quot;</span>, <span class="ruby-identifier">ziipreport_path</span>(<span class="ruby-identifier">location</span><span class="ruby-operator">:</span> <span class="ruby-identifier">location</span>.<span class="ruby-identifier">id</span>)
+                    <span class="ruby-comment">#haml_concat link_to &quot;ZIIP Custom&quot;, ziips_custom_path(1, location: location.id)</span>
+                    <span class="ruby-identifier">haml_concat</span> <span class="ruby-identifier">link_to</span> <span class="ruby-string">&quot;ZIIP Canned&quot;</span>, <span class="ruby-identifier">ziips_canned_path</span>(<span class="ruby-value">1</span>, <span class="ruby-identifier">location</span><span class="ruby-operator">:</span> <span class="ruby-identifier">location</span>.<span class="ruby-identifier">id</span>)
+                  <span class="ruby-keyword">end</span>
+
+                <span class="ruby-identifier">haml_tag</span> <span class="ruby-value">:div</span>, <span class="ruby-identifier">id</span><span class="ruby-operator">:</span> <span class="ruby-node">&quot;accordion#{location.id}&quot;</span>, <span class="ruby-keyword">class</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;accordion&quot;</span> <span class="ruby-keyword">do</span>
+                  <span class="ruby-identifier">haml_tag</span> <span class="ruby-value">:div</span>, <span class="ruby-keyword">class</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;accordion-group&quot;</span> <span class="ruby-keyword">do</span>
+                    <span class="ruby-identifier">haml_tag</span> <span class="ruby-value">:div</span>, <span class="ruby-keyword">class</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;accordion-heading&quot;</span> <span class="ruby-keyword">do</span>
+                      <span class="ruby-identifier">haml_tag</span> <span class="ruby-value">:a</span>, <span class="ruby-keyword">class</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;accordion-toggle&quot;</span>, <span class="ruby-string">&quot;data-parent&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;#accordion#{location.id}&quot;</span>, <span class="ruby-string">&quot;data-toggle&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;collapse&quot;</span>, <span class="ruby-string">&quot;href&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;#collapse#{location.id}&quot;</span> <span class="ruby-keyword">do</span>
+                        <span class="ruby-identifier">haml_concat</span> <span class="ruby-string">&quot;All Data&quot;</span>
+                      <span class="ruby-keyword">end</span>
+                    <span class="ruby-keyword">end</span>
+                    
+                    <span class="ruby-identifier">haml_tag</span> <span class="ruby-value">:div</span>, <span class="ruby-keyword">class</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;accordion-body collapse&quot;</span>, <span class="ruby-identifier">id</span><span class="ruby-operator">:</span> <span class="ruby-node">&quot;collapse#{location.id}&quot;</span> <span class="ruby-keyword">do</span>
+                      <span class="ruby-identifier">haml_tag</span> <span class="ruby-value">:div</span>, <span class="ruby-keyword">class</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;accordian-inner&quot;</span> <span class="ruby-keyword">do</span>
+                        <span class="ruby-identifier">haml_tag</span> <span class="ruby-value">:ul</span>, <span class="ruby-keyword">class</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;nav nav-list&quot;</span> <span class="ruby-keyword">do</span>
+                          <span class="ruby-identifier">location</span>.<span class="ruby-identifier">machines</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">m</span>,<span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+                           <span class="ruby-keyword">if</span>(<span class="ruby-identifier">m</span>.<span class="ruby-identifier">machineConfig</span>) 
+                            <span class="ruby-keyword">if</span>(<span class="ruby-identifier">m</span>.<span class="ruby-identifier">machineConfig</span>.<span class="ruby-identifier">ziip</span>)
+                              <span class="ruby-identifier">haml_tag</span> <span class="ruby-value">:li</span> <span class="ruby-keyword">do</span>
+                                <span class="ruby-identifier">haml_concat</span> <span class="ruby-identifier">link_to</span> <span class="ruby-identifier">m</span>.<span class="ruby-identifier">name</span>, <span class="ruby-identifier">ziips_allAvg_path</span>(<span class="ruby-identifier">m</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">m</span>.<span class="ruby-identifier">name</span>)
+                              <span class="ruby-keyword">end</span>
+                            <span class="ruby-keyword">end</span>
+                           <span class="ruby-keyword">end</span>
+                            <span class="ruby-identifier">location</span>.<span class="ruby-identifier">machines</span>[<span class="ruby-identifier">x</span>].<span class="ruby-identifier">lpars</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">lpar</span><span class="ruby-operator">|</span>
+                              <span class="ruby-keyword">if</span>(<span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-constant">LPAR</span><span class="ruby-operator">:</span> <span class="ruby-identifier">lpar</span>.<span class="ruby-identifier">name</span>))
+                                <span class="ruby-identifier">haml_tag</span> <span class="ruby-value">:li</span> <span class="ruby-keyword">do</span>
+                                  <span class="ruby-identifier">haml_concat</span> <span class="ruby-identifier">link_to</span> <span class="ruby-identifier">lpar</span>.<span class="ruby-identifier">name</span>, <span class="ruby-identifier">ziips_all_path</span>(<span class="ruby-value">1</span>, <span class="ruby-identifier">lpar</span>.<span class="ruby-identifier">name</span>)
+                                <span class="ruby-keyword">end</span>
+                              <span class="ruby-keyword">end</span>
+                            <span class="ruby-keyword">end</span>
+                                                       
+                          <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">end</span>
+                      <span class="ruby-keyword">end</span>
+                      
+                    <span class="ruby-keyword">end</span>
+                  <span class="ruby-keyword">end</span>
+                  
+                <span class="ruby-keyword">end</span>
+            <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span></pre>
+            </div><!-- ziips_info-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- ziips_info-method -->
+
+      
+      </div><!-- public-instance-method-details -->
+    
     </div><!-- 5Buntitled-5D -->
   
 

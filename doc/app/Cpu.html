@@ -65,11 +65,17 @@
         <h3 class="section-header">Methods</h3>
         <ul class="link-list">
           
+          <li><a href="#method-c-datetime_to_epoch">::datetime_to_epoch</a></li>
+          
           <li><a href="#method-c-findBOXaverage">::findBOXaverage</a></li>
           
           <li><a href="#method-c-findBOXpeaks">::findBOXpeaks</a></li>
           
           <li><a href="#method-c-findLPARpeaks">::findLPARpeaks</a></li>
+          
+          <li><a href="#method-c-mefbdTotalsByBox">::mefbdTotalsByBox</a></li>
+          
+          <li><a href="#method-c-mefbdTotalsByLPAR">::mefbdTotalsByLPAR</a></li>
           
           <li><a href="#method-c-parseCSV">::parseCSV</a></li>
           
@@ -110,9 +116,15 @@
 
         <ul class="link-list">
         
+          <li><a href="./Application.html">Application</a></li>
+        
           <li><a href="./ApplicationController.html">ApplicationController</a></li>
         
           <li><a href="./ApplicationHelper.html">ApplicationHelper</a></li>
+        
+          <li><a href="./ApplicationsController.html">ApplicationsController</a></li>
+        
+          <li><a href="./ApplicationsHelper.html">ApplicationsHelper</a></li>
         
           <li><a href="./CapacitiesController.html">CapacitiesController</a></li>
         
@@ -126,13 +138,35 @@
         
           <li><a href="./CpusHelper.html">CpusHelper</a></li>
         
+          <li><a href="./CsvDataUploader.html">CsvDataUploader</a></li>
+        
+          <li><a href="./Customer.html">Customer</a></li>
+        
+          <li><a href="./CustomerInformationControlSystem.html">CustomerInformationControlSystem</a></li>
+        
+          <li><a href="./CustomerInformationControlSystemsController.html">CustomerInformationControlSystemsController</a></li>
+        
+          <li><a href="./CustomerInformationControlSystemsHelper.html">CustomerInformationControlSystemsHelper</a></li>
+        
+          <li><a href="./CustomersController.html">CustomersController</a></li>
+        
+          <li><a href="./CustomersHelper.html">CustomersHelper</a></li>
+        
           <li><a href="./Date.html">Date</a></li>
         
-          <li><a href="./HomeController.html">HomeController</a></li>
+          <li><a href="./Db2.html">Db2</a></li>
         
-          <li><a href="./HomeHelper.html">HomeHelper</a></li>
+          <li><a href="./Db2sController.html">Db2sController</a></li>
+        
+          <li><a href="./Db2sHelper.html">Db2sHelper</a></li>
         
           <li><a href="./ImportsHelper.html">ImportsHelper</a></li>
+        
+          <li><a href="./InformationManagementSystem.html">InformationManagementSystem</a></li>
+        
+          <li><a href="./InformationManagementSystemsController.html">InformationManagementSystemsController</a></li>
+        
+          <li><a href="./InformationManagementSystemsHelper.html">InformationManagementSystemsHelper</a></li>
         
           <li><a href="./Location.html">Location</a></li>
         
@@ -201,6 +235,18 @@
           <li><a href="./StaticPagesController.html">StaticPagesController</a></li>
         
           <li><a href="./StaticPagesHelper.html">StaticPagesHelper</a></li>
+        
+          <li><a href="./Sysplex.html">Sysplex</a></li>
+        
+          <li><a href="./SysplexLpar.html">SysplexLpar</a></li>
+        
+          <li><a href="./SysplexLparsController.html">SysplexLparsController</a></li>
+        
+          <li><a href="./SysplexLparsHelper.html">SysplexLparsHelper</a></li>
+        
+          <li><a href="./SysplexesController.html">SysplexesController</a></li>
+        
+          <li><a href="./SysplexesHelper.html">SysplexesHelper</a></li>
         
           <li><a href="./User.html">User</a></li>
         
@@ -471,6 +517,40 @@
         <h3 class="section-header">Public Class Methods</h3>
 
       
+        <div id="datetime_to_epoch-method" class="method-detail ">
+          <a name="method-c-datetime_to_epoch"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">datetime_to_epoch</span><span
+              class="method-args">(datetime)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Convert a datetime to epoch time for Highcharts. format “YYYY-MM-DD
+HH:MM:SS”</p>
+            
+
+            
+            <div class="method-source-code" id="datetime_to_epoch-source">
+<pre>
+<span class="ruby-comment"># File app/models/cpu.rb, line 32</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">datetime_to_epoch</span>(<span class="ruby-identifier">datetime</span>)
+  <span class="ruby-constant">Time</span>.<span class="ruby-identifier">local</span>(<span class="ruby-identifier">datetime</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-string">'%Y'</span>).<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">datetime</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-string">'%m'</span>).<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">datetime</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-string">'%d'</span>).<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">datetime</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-string">'%H'</span>).<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">datetime</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-string">'%M'</span>).<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">datetime</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-string">'%S'</span>).<span class="ruby-identifier">to_i</span>).<span class="ruby-identifier">to_i</span> * <span class="ruby-value">1000</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- datetime_to_epoch-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- datetime_to_epoch-method -->
+
+      
         <div id="findBOXaverage-method" class="method-detail ">
           <a name="method-c-findBOXaverage"></a>
 
@@ -490,7 +570,7 @@
             
             <div class="method-source-code" id="findBOXaverage-source">
 <pre>
-<span class="ruby-comment"># File app/models/cpu.rb, line 44</span>
+<span class="ruby-comment"># File app/models/cpu.rb, line 67</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">findBOXaverage</span>(<span class="ruby-identifier">mid</span>)
   <span class="ruby-ivar">@Machine</span> = <span class="ruby-constant">Machine</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">mid</span>)
   <span class="ruby-ivar">@mipsSum</span> = <span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">find</span>(<span class="ruby-value">:all</span>, <span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;date(DateTime),time(DateTime)&quot;</span>, <span class="ruby-value">:select</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;sum(mips) as average&quot;</span>, <span class="ruby-value">:conditions</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">'smfid in (?)'</span>, <span class="ruby-ivar">@Machine</span>.<span class="ruby-identifier">lpars</span>.<span class="ruby-identifier">map</span>(&amp;<span class="ruby-value">:smfid</span>)])
@@ -531,7 +611,7 @@ datetime and peak returned.</p>
             
             <div class="method-source-code" id="findBOXpeaks-source">
 <pre>
-<span class="ruby-comment"># File app/models/cpu.rb, line 38</span>
+<span class="ruby-comment"># File app/models/cpu.rb, line 43</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">findBOXpeaks</span>(<span class="ruby-identifier">mid</span>)
   <span class="ruby-ivar">@Machine</span> = <span class="ruby-constant">Machine</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">mid</span>)
   <span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">find</span>(<span class="ruby-value">:all</span>, <span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;date(datetime),time(datetime)&quot;</span>, <span class="ruby-value">:select</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;datetime ,sum(mips) as peak&quot;</span>, <span class="ruby-value">:order</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;peak DESC&quot;</span>, <span class="ruby-value">:conditions</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">'smfid in (?)'</span>, <span class="ruby-ivar">@Machine</span>.<span class="ruby-identifier">lpars</span>.<span class="ruby-identifier">map</span>(&amp;<span class="ruby-value">:smfid</span>)])
@@ -565,7 +645,7 @@ datetime and peak returned.</p>
             
             <div class="method-source-code" id="findLPARpeaks-source">
 <pre>
-<span class="ruby-comment"># File app/models/cpu.rb, line 32</span>
+<span class="ruby-comment"># File app/models/cpu.rb, line 37</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">findLPARpeaks</span>(<span class="ruby-identifier">mid</span>)
   <span class="ruby-ivar">@Machine</span> = <span class="ruby-constant">Machine</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">mid</span>)
   <span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">find</span>(<span class="ruby-value">:all</span>, <span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;smfid&quot;</span>, <span class="ruby-value">:select</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;smfid, max(mips) as max, AVG(mips) as average&quot;</span>, <span class="ruby-value">:conditions</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">'smfid in (?)'</span>, <span class="ruby-ivar">@Machine</span>.<span class="ruby-identifier">lpars</span>.<span class="ruby-identifier">map</span>(&amp;<span class="ruby-value">:smfid</span>)])
@@ -578,6 +658,81 @@ datetime and peak returned.</p>
 
           
         </div><!-- findLPARpeaks-method -->
+
+      
+        <div id="mefbdTotalsByBox-method" class="method-detail ">
+          <a name="method-c-mefbdTotalsByBox"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">mefbdTotalsByBox</span><span
+              class="method-args">(mid,month)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Gets the mefbd totals by BOX total and month.</p>
+            
+
+            
+            <div class="method-source-code" id="mefbdTotalsByBox-source">
+<pre>
+<span class="ruby-comment"># File app/models/cpu.rb, line 57</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">mefbdTotalsByBox</span>(<span class="ruby-identifier">mid</span>,<span class="ruby-identifier">month</span>)
+  <span class="ruby-ivar">@totals</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-ivar">@Machine</span> = <span class="ruby-constant">Machine</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">mid</span>)
+  <span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">between</span>(<span class="ruby-constant">Date</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">month</span>).<span class="ruby-identifier">beginning_of_month</span>.<span class="ruby-identifier">previous_business_day</span>(<span class="ruby-string">'us'</span>),<span class="ruby-constant">Date</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">month</span>).<span class="ruby-identifier">beginning_of_month</span>.<span class="ruby-identifier">next_business_day</span>(<span class="ruby-string">'us'</span>) ).<span class="ruby-identifier">find</span>(<span class="ruby-value">:all</span>, <span class="ruby-value">:group</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;date(DateTime),time(DateTime)&quot;</span>, <span class="ruby-value">:select</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;datetime, sum(mips) as mips&quot;</span>, <span class="ruby-value">:conditions</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">'smfid in (?)'</span>, <span class="ruby-ivar">@Machine</span>.<span class="ruby-identifier">lpars</span>.<span class="ruby-identifier">map</span>(&amp;<span class="ruby-value">:smfid</span>)]).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+    <span class="ruby-ivar">@totals</span>.<span class="ruby-identifier">push</span>([<span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">datetime_to_epoch</span>(<span class="ruby-identifier">i</span>.<span class="ruby-identifier">datetime</span>),<span class="ruby-identifier">i</span>.<span class="ruby-identifier">mips</span>])
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@totals</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- mefbdTotalsByBox-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- mefbdTotalsByBox-method -->
+
+      
+        <div id="mefbdTotalsByLPAR-method" class="method-detail ">
+          <a name="method-c-mefbdTotalsByLPAR"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">mefbdTotalsByLPAR</span><span
+              class="method-args">(lid,month)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Gets the mefbd totals by LPAR and month.</p>
+            
+
+            
+            <div class="method-source-code" id="mefbdTotalsByLPAR-source">
+<pre>
+<span class="ruby-comment"># File app/models/cpu.rb, line 49</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">mefbdTotalsByLPAR</span>(<span class="ruby-identifier">lid</span>,<span class="ruby-identifier">month</span>)
+  <span class="ruby-ivar">@totals</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+  (<span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">between</span>(<span class="ruby-constant">Date</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">month</span>).<span class="ruby-identifier">beginning_of_month</span>.<span class="ruby-identifier">previous_business_day</span>(<span class="ruby-string">'us'</span>),<span class="ruby-constant">Date</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">month</span>).<span class="ruby-identifier">beginning_of_month</span>.<span class="ruby-identifier">next_business_day</span>(<span class="ruby-string">'us'</span>) ).<span class="ruby-identifier">where</span>(<span class="ruby-value">:smfid</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Lpar</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">lid</span>).<span class="ruby-identifier">smfid</span>).<span class="ruby-identifier">group</span>(<span class="ruby-string">&quot;date(datetime),time(datetime)&quot;</span>).<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;datetime, mips&quot;</span>)).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+    <span class="ruby-ivar">@totals</span>.<span class="ruby-identifier">push</span>([<span class="ruby-constant">Cpu</span>.<span class="ruby-identifier">datetime_to_epoch</span>(<span class="ruby-identifier">i</span>.<span class="ruby-identifier">datetime</span>),<span class="ruby-identifier">i</span>.<span class="ruby-identifier">mips</span>])
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@totals</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- mefbdTotalsByLPAR-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- mefbdTotalsByLPAR-method -->
 
       
         <div id="parseCSV-method" class="method-detail ">

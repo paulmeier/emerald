@@ -56,7 +56,7 @@ class Cpu < ActiveRecord::Base
   #Gets the mefbd totals by BOX total and month.
   def self.mefbdTotalsByBox(mid,month)
     @totals = Array.new
-    @Machine = Machine.find(mid)   
+    @Machine = Machine.find(mid)
     Cpu.between(Date.parse(month).beginning_of_month.previous_business_day('us'),Date.parse(month).beginning_of_month.next_business_day('us') ).find(:all, :group => "date(DateTime),time(DateTime)", :select => "datetime, sum(mips) as mips", :conditions => ['smfid in (?)', @Machine.lpars.map(&:smfid)]).each do |i|
       @totals.push([Cpu.datetime_to_epoch(i.datetime),i.mips])
     end
@@ -73,5 +73,5 @@ class Cpu < ActiveRecord::Base
     end
     
     return (sum / @mipsSum.count).round  
-  end 
+  end
 end

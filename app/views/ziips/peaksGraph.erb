@@ -3,11 +3,28 @@ $(function() {
 	var chart = new Highcharts.Chart({
 			chart: { renderTo: "ziipsChart", type: "column" },
 			title: { text: "ZIIP Peaks" },
-			xAxis: { },
+			xAxis: {
+					 categories: [
+					 <% @lparPeaks.each do |c| %>
+					 	'<%= c.LPAR %> - <%= c.DateTime %>',
+					 <% end %>
+					 <% @machinePeaks.each_with_index do |mp,index| %>
+					 	'<%= @machinePeaks[index][0] %> - <%= @machinePeaks[index][2] %>',
+					 <% end %>
+					 ],
+					labels: {
+                    rotation: -45,
+                    align: 'right',
+                    style: {
+                        fontSize: '8px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+    			},
+    		},
 			yAxis: { title: { text: "% of ZIIP Used" },
 					 labels: {
     				  	formatter: function () {
-				            return Highcharts.numberFormat(this.value, 2) + ' %';
+				            return Highcharts.numberFormat(this.value, 0) + ' %';
 				        }
 				     }
 				    },
@@ -18,18 +35,14 @@ $(function() {
                 }
             },
 			series: [
-			<% @lparPeaks.each do |lp| %>
-			{
-				name: "<%= lp.LPAR %>",   		
-				data: [<%= lp.max / 100 %>]
+			{   
+				name: 'LPAR Peaks',		
+				data: <%= @peakData %>
 			},
-			<% end %>
-			<% params[:ziip][:machines].each_with_index do |m,i| %>
-			{
-				name: "<%= Machine.find(m).name %>",   		
-				data: [<%= @machinePeaks[i].peak %>]
-			},
-			<% end %>
+			{   
+				name: 'Machine Peaks',		
+				data: <%= @mpeakData %>
+			}
 					]
 	});
 });

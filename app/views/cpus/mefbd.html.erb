@@ -83,7 +83,7 @@ $(function() {
 		series: [
 			<% params[:cpu][:lpars].each do |lpar| %>
 			{
-				name: "<%= Lpar.find(lpar.to_i).name %>",   		
+				name: "<%= Lpar.find(lpar).name %>",   		
 				data: <%= Cpu.mefbdTotalsByLPAR(lpar.to_i, Date.today.beginning_of_month.to_s ) %>,
 				pointInterval: 1200000
 			},

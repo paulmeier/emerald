@@ -102,9 +102,15 @@
 
         <ul class="link-list">
         
+          <li><a href="./Application.html">Application</a></li>
+        
           <li><a href="./ApplicationController.html">ApplicationController</a></li>
         
           <li><a href="./ApplicationHelper.html">ApplicationHelper</a></li>
+        
+          <li><a href="./ApplicationsController.html">ApplicationsController</a></li>
+        
+          <li><a href="./ApplicationsHelper.html">ApplicationsHelper</a></li>
         
           <li><a href="./CapacitiesController.html">CapacitiesController</a></li>
         
@@ -118,13 +124,35 @@
         
           <li><a href="./CpusHelper.html">CpusHelper</a></li>
         
+          <li><a href="./CsvDataUploader.html">CsvDataUploader</a></li>
+        
+          <li><a href="./Customer.html">Customer</a></li>
+        
+          <li><a href="./CustomerInformationControlSystem.html">CustomerInformationControlSystem</a></li>
+        
+          <li><a href="./CustomerInformationControlSystemsController.html">CustomerInformationControlSystemsController</a></li>
+        
+          <li><a href="./CustomerInformationControlSystemsHelper.html">CustomerInformationControlSystemsHelper</a></li>
+        
+          <li><a href="./CustomersController.html">CustomersController</a></li>
+        
+          <li><a href="./CustomersHelper.html">CustomersHelper</a></li>
+        
           <li><a href="./Date.html">Date</a></li>
         
-          <li><a href="./HomeController.html">HomeController</a></li>
+          <li><a href="./Db2.html">Db2</a></li>
         
-          <li><a href="./HomeHelper.html">HomeHelper</a></li>
+          <li><a href="./Db2sController.html">Db2sController</a></li>
+        
+          <li><a href="./Db2sHelper.html">Db2sHelper</a></li>
         
           <li><a href="./ImportsHelper.html">ImportsHelper</a></li>
+        
+          <li><a href="./InformationManagementSystem.html">InformationManagementSystem</a></li>
+        
+          <li><a href="./InformationManagementSystemsController.html">InformationManagementSystemsController</a></li>
+        
+          <li><a href="./InformationManagementSystemsHelper.html">InformationManagementSystemsHelper</a></li>
         
           <li><a href="./Location.html">Location</a></li>
         
@@ -194,6 +222,18 @@
         
           <li><a href="./StaticPagesHelper.html">StaticPagesHelper</a></li>
         
+          <li><a href="./Sysplex.html">Sysplex</a></li>
+        
+          <li><a href="./SysplexLpar.html">SysplexLpar</a></li>
+        
+          <li><a href="./SysplexLparsController.html">SysplexLparsController</a></li>
+        
+          <li><a href="./SysplexLparsHelper.html">SysplexLparsHelper</a></li>
+        
+          <li><a href="./SysplexesController.html">SysplexesController</a></li>
+        
+          <li><a href="./SysplexesHelper.html">SysplexesHelper</a></li>
+        
           <li><a href="./User.html">User</a></li>
         
           <li><a href="./Ziip.html">Ziip</a></li>
@@ -248,18 +288,20 @@
 
           <div class="method-description">
             
-            
+            <p>fix this. ZIIP is hard coded, it should not be.</p>
             
 
             
             <div class="method-source-code" id="lparList-source">
 <pre>
-<span class="ruby-comment"># File app/models/location.rb, line 6</span>
+<span class="ruby-comment"># File app/models/location.rb, line 7</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">lparList</span>(<span class="ruby-identifier">loc</span>)
   <span class="ruby-ivar">@lparList</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
   <span class="ruby-constant">Location</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">loc</span>).<span class="ruby-identifier">machines</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">m</span>.<span class="ruby-identifier">lpars</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span>
-      <span class="ruby-ivar">@lparList</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">l</span>)
+      <span class="ruby-keyword">if</span>(<span class="ruby-constant">Ziip</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-constant">LPAR</span><span class="ruby-operator">:</span> <span class="ruby-identifier">l</span>.<span class="ruby-identifier">name</span>))
+        <span class="ruby-ivar">@lparList</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">l</span>)
+      <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">return</span> <span class="ruby-ivar">@lparList</span>

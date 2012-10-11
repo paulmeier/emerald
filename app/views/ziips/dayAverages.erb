@@ -31,7 +31,7 @@ $(function() {
 });
 	var chart = new Highcharts.Chart({
 			chart: { renderTo: "ziipsChart", type: "column" },
-			title: { text: "ZIIP Average by Day for 2 Weeks" },
+			title: { text: "ZIIP Average by Day" },
 			xAxis: { type: "datetime",
 					 dateTimeLabelFormats: { day: '%b-%e' },
 					 tickInterval: 24 * 3600 * 1000,
@@ -60,13 +60,13 @@ $(function() {
 			<% params[:ziip][:lpars].each do |lpar| %>
 			{
 				name: "<%= Lpar.find(lpar).name %>",
-				data: <%= Ziip.getZiipAverageByDay("2012-08-16", "2012-08-30", lpar) %>,
+				data: <%= Ziip.getZiipAverageByDay(params[:ziip][:from], params[:ziip][:to], lpar) %>,
 			},
 			<% end %>
 			<% params[:ziip][:machines].each do |m| %>
 			{
 				name: "<%= Machine.find(m).name %>",		      		
-				data: <%= Ziip.getZiipBoxAverageByDay("2012-08-16", "2012-08-30", m) %>,
+				data: <%= Ziip.getZiipBoxAverageByDay(params[:ziip][:from], params[:ziip][:to], m) %>,
 			},
 			<% end %>	
 					]

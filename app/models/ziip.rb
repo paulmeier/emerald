@@ -28,6 +28,29 @@ class Ziip < ActiveRecord::Base
       Ziip.create(DateTime: date, LPAR: row[2], PCTBOX: row[3])
     end
   end
+
+  #Returns total averages for a passed in machine.
+  def self.totalAveragesCECs(from, to, mid)
+    @totals = Array.new
+    (Ziip.between(Date.parse(from),Date.parse(to)).where('LPAR in (?)', find_machine(mid).lpars.map(&:name)).select("AVG(PCTBOX) as average")).each do |i|
+      @totals.push(i.average)
+    end
+    return @totals
+  end
+  
+  #Returns total averages for LPARs that are selected
+  def self.totalAveragesLPARs(from, to, l)
+    @totals = Array.new
+    (Ziip.between(Date.parse(from),Date.parse(to)).where(LPAR: Lpar.find(l).name).select("AVG(PCTBOX) as average")).each do |i|
+      @totals.push(i.average)
+    end
+    return @totals
+  end
+  
+  #finds a single LPARs peak
+  def self.findLPARpeak(l)
+    Ziip.select("DateTime, MAX(PCTBOX) as max").where(LPAR: Lpar.find(l).name)
+  end
   
   #Find collection of LPARs cpu or MIPS peak use. name, datetime, and max returned.
   def self.findLPARpeaks(lpars)
@@ -43,7 +66,7 @@ class Ziip < ActiveRecord::Base
   #Find the peak period of the BOX and how much MIPS it is using total. datetime and peak returned.
   def self.findBoxPeaks(mid)
     find_machine(mid)
-    Ziip.find(:all, :group => "date(DateTime),time(DateTime)", :select => "DateTime ,sum(PCTBOX) as peak", :order => "peak DESC", :conditions => ['LPAR in (?)', @Machine.lpars.map(&:name)]).first
+    Ziip.find(:all, :group => "date(DateTime),time(DateTime)", :select => "DateTime, sum(PCTBOX) as peak", :order => "peak DESC", :conditions => ['LPAR in (?)', @Machine.lpars.map(&:name)]).first
   end
   
   #Find the average MIPS the BOX uses.
@@ -66,21 +89,23 @@ class Ziip < ActiveRecord::Base
   #Find LPAR average ZIIP useage by day. Numbers are in percent (from database)
   def self.getZiipAverageByDay(from, to, lparId)
     @totals = Array.new
-    (Ziip.between(from,to).where(LPAR: Lpar.find(lparId).name).group("date(DateTime)").select("AVG(PCTBOX) as average")).each do |i|
-      @totals.push(i.average)
+    (Ziip.between(Date.parse(from),Date.parse(to)).where(LPAR: Lpar.find(lparId).name).group("date(DateTime)").select("DateTime, AVG(PCTBOX) as average")).each do |i|
+      @totals.push([Ziip.datetime_to_epoch(i.DateTime),i.average])
     end
-    return @totals     
+    return @totals
   end
   
   #Find CEC average ZIIP useage by day. Numbers are in percent (from database)
   def self.getZiipBoxAverageByDay(from, to, machineId)
     @totals = Array.new
-    (Ziip.between(from,to).where('LPAR in (?)', find_machine(machineId).lpars.map(&:name)).group("date(DateTime)").select("AVG(PCTBOX) as dayTotal")).each do |i|
-      @totals.push(i.dayTotal)
+    (Ziip.between(Date.parse(from),Date.parse(to)).where('LPAR in (?)', find_machine(machineId).lpars.map(&:name)).group("date(DateTime)").select("DateTime, AVG(PCTBOX) as dayTotal")).each do |i|
+      @totals.push([Ziip.datetime_to_epoch(i.DateTime),i.dayTotal])
     end
-    return @totals     
+    return @totals
   end
+  
   private
+  
   #Private method to find a machine
   def self.find_machine(mid)
     @Machine = Machine.find(mid)
