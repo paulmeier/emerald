@@ -1,6 +1,20 @@
-<h3>Two Week Totals</h3>
-Two week data for selected systems.<br>
+<h3>Two Week Averages</h3>
+Chart shows two week averages for the sum of data.<br>
 <br>
+
+<div class="modal hide" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Two Week Averages</h3>
+  </div>
+  <div class="modal-body">
+    <%= image_tag 'twoweekavgsum.png' %>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
+</div>
+
 <%= simple_form_for(@ziips, :url => twoweektot_path(1)) do |f| %>
 		<%= f.input :lpars, :collection => @lparList , :input_html => { :multiple => true, :class => "input-large", :size => "10" }%>
 	<span class="help-block label label-info" style="width: 380px">Select multiple by holding down "Ctrl" then making selections.</span>
@@ -10,5 +24,6 @@ Two week data for selected systems.<br>
   <div class="actions">
     <%= f.submit "Graph", :class => 'btn btn-primary' %>
     <%= submit_tag 'Clear', :type => :reset, :class => "btn btn-danger" %>
+    <a href="#myModal2" role="button" class="btn btn-info" data-toggle="modal">Preview</a>
   </div>
 <% end %>

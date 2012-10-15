@@ -52,13 +52,23 @@ $(function() {
 			<% params[:ziip][:lpars].each do |l| %>
 			{
 				name: "<%= Lpar.find(l).name %>",
-				data: <%= Ziip.totalAveragesLPARs(Date.parse(params[:ziip][:from]).beginning_of_month.to_s, Date.parse(params[:ziip][:from]).end_of_month.to_s, l) %>
+				data: <%= Ziip.totalAveragesLPARs(Date.parse(params[:ziip][:from]).beginning_of_month.to_s, Date.parse(params[:ziip][:from]).end_of_month.to_s, l) %>,
+				dataLabels: { enabled: true,							  
+							  formatter: function() {
+                        return Highcharts.numberFormat(this.y, 2) +' %';
+                    },
+               }
 			},
 			<% end %>
 			<% params[:ziip][:machines].each do |m| %>
 			{
 				name: "<%= Machine.find(m).name %>",
-				data: <%= Ziip.totalAveragesCECs(Date.parse(params[:ziip][:from]).beginning_of_month.to_s, Date.parse(params[:ziip][:from]).end_of_month.to_s, m) %>
+				data: <%= Ziip.totalAveragesCECs(Date.parse(params[:ziip][:from]).beginning_of_month.to_s, Date.parse(params[:ziip][:from]).end_of_month.to_s, m) %>,
+				dataLabels: { enabled: true,							  
+							  formatter: function() {
+                        return Highcharts.numberFormat(this.y, 2) +' %';
+                    },
+               }
 			},
 			<% end %>
 					]

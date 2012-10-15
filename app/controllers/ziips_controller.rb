@@ -165,15 +165,16 @@ class ZiipsController < ApplicationController
     end
     
     #find Machine peaks
-    @machinePeaks = Array.new
-    params[:ziip][:machines].each do |m|
-      @machinePeaks.push([Machine.find(m).name,Ziip.findBoxPeaks(m).peak,Ziip.findBoxPeaks(m).DateTime])
-    end
-    
-    @mpeakData = Array.new
-    @machinePeaks.each_with_index do |mp,index|
-      @mpeakData.push(@machinePeaks[index][1])
-    end
+    if(!params[:ziip][:machines].nil?)
+      @machinePeaks = Array.new
+      params[:ziip][:machines].each do |m|
+        @machinePeaks.push([Machine.find(m).name,Ziip.findBoxPeaks(m).peak,Ziip.findBoxPeaks(m).DateTime])
+      end
+      
+      @machinePeaks.each_with_index do |mp,index|
+        @peakData.push(@machinePeaks[index][1])
+      end
+     end
   end
   
 end

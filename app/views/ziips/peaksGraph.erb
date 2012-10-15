@@ -33,16 +33,17 @@ $(function() {
                         return '<b>'+ this.series.name +'</b><br/>'+
                         Highcharts.numberFormat(this.y, 2) +' %';
                 }
-            },
+            },           
 			series: [
-			{   
-				name: 'LPAR Peaks',		
-				data: <%= @peakData %>
-			},
-			{   
-				name: 'Machine Peaks',		
-				data: <%= @mpeakData %>
-			}
+				{   
+					name: 'Peaks',		
+					data: <%= @peakData %>,
+					dataLabels: { enabled: true,							  
+							  formatter: function() {
+                        return Highcharts.numberFormat(this.y, 2) +' %';
+                    	},
+               		}
+				}
 					]
 	});
 });

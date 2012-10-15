@@ -14,18 +14,31 @@ $(function() {
             $(this).datepicker('setDate', new Date(year, month, 1));
         }
      });
+   $(".month").focus(function () {
+   	$(".ui-datepicker-calendar").hide();
+   });
 });
 </script>
-<!-- ><style>
-.ui-datepicker-calendar {
-    display: none;
-    }
-</style> -->
+
 <h3>Monthly Averages</h3>
-Select systems for a pie chart of average usage for a month.<br>
+Average monthly ZIIP usage for selected systems.<br>
+
+<div class="modal hide" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Monthly Averages</h3>
+  </div>
+  <div class="modal-body">
+    <%= image_tag 'zma.png' %>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
+</div>
+
 <br>
 <%= simple_form_for(@ziips, url: monAvg_path(1)) do |f| %>
-	Month: <%= f.datepicker :from, id: "month", class: "month"%>
+	Month: <%= f.datepicker :from, id: "month", class: "month" %>
 	<br>
 	<br>
 	<%= f.input :lpars, collection: @lparList, input_html: { multiple: true, class: "input-large", size: "10" }%>
@@ -36,5 +49,6 @@ Select systems for a pie chart of average usage for a month.<br>
   <div class="actions">
     <%= f.submit "Graph", class: 'btn btn-primary' %>
     <%= submit_tag 'Clear', type: :reset, class: "btn btn-danger" %>
+    <a href="#myModal3" role="button" class="btn btn-info" data-toggle="modal">Preview</a>
   </div>
 <% end %>

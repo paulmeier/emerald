@@ -115,8 +115,10 @@ class CpusController < ApplicationController
   end
   
   def canned
-    gon.startDate = Cpu.first(order: 'datetime asc').datetime  
-    @cpus = Cpu.new    
+    gon.startDate = Cpu.first(order: 'datetime asc').datetime
+    @lpars = Location.lparList(params[:location])
+    @machines = Location.find(params[:location]).machines
+    @cpus = Cpu.new
   end
   
   def mefbdc

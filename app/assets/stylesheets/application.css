@@ -64,14 +64,23 @@ body{
 	  width:300px;
 	  top: 40px;
    }
+   
    div#container{
 	  position:relative;
 	  padding-right: 30px;
 	  padding-top: 10px;
    } 
+   
    div#dino{
 	  float:right;
 	  background-image:url('dinosaur_3.gif');
 	  background-repeat:no-repeat;
 	  padding:250px 250px 60px 20px;
-   }  
+   }
+   
+   div#chartPreview{
+   	  float:right;
+   	  margin-left:400px;
+	  margin-bottom:20px;
+	  top: 80px;
+   }

@@ -13,8 +13,6 @@
       %a{"data-toggle" => "tab", href: "#da"}Daily Averages
     %li
       %a{"data-toggle" => "tab", href: "#tabd"}Peak Periods
-    %li
-      %a{"data-toggle" => "tab", href: "#mefbd"}ME/FBD
   .tab-content
     #twowe.tab-pane.active
       = render partial: 'twoweekavg'
@@ -26,5 +24,3 @@
       = render partial: 'dayAverages'
     #tabd.tab-pane
       = render partial: 'peaksGraph'
-    #mefbd.tab-pane
-      MEFBD - Under construction
