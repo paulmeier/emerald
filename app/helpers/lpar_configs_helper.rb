@@ -1,3 +1,0 @@
-module LparConfigsHelper
-
-end

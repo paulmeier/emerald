@@ -1,9 +1,0 @@
-= simple_form_for @capacity, html: { class: 'form-horizontal' } do |f|
-  = f.input :name
-  = f.input :number
-  = f.input :capSetting
-  = f.input :msu
-  = f.input :mips
-  .form-actions
-    = f.button :submit, class: 'btn-primary'
-    = link_to t('.cancel', default: t("helpers.links.cancel")), capacities_path, class: 'btn'
