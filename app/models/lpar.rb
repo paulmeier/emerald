@@ -2,7 +2,7 @@ class Lpar < ActiveRecord::Base
   attr_accessible :id, :mid, :name, :smfid
   
   has_one :lparConfig, dependent: :destroy
-  has_many :machine_lpars
+  has_many :machine_lpars, dependent: :destroy
   has_many :machines, through: :machine_lpars
   has_many :sysplex_lpars, dependent: :destroy
   has_many :sysplexes, through: :sysplex_lpars
