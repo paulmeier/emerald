@@ -1,0 +1,11 @@
+%hr{align: "left", width: "500px"}
+  - @notifications.each do |n|
+    %div{class: "alert alert-block alert-#{n.name} fade in", id: "test"}
+      %button.close{"data-dismiss" => "alert", type: "button", }
+      = n.msg
+      = n.created_at.in_time_zone('Central Time (US & Canada)')
+      %div{align: "right", class: "fade in"}
+        = link_to 'Delete', notification_path(n), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-mini btn-danger'
+#dino
+  #footer{align: "center"}
+    %a{href: "mailto:Paul.Meier@fisglobal.com"} Contact

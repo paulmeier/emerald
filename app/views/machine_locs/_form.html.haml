@@ -1,0 +1,13 @@
+= simple_form_for @machine_loc, :html => { :class => 'form-horizontal' } do |f|
+  %fieldset
+    .control-group
+      %label.control-label LPAR:
+      .controls
+        = f.select :location_id, Location.all.collect{ |c| [c.name, c.id] }
+      %label.control-label Machine:
+      .controls
+        = f.select :machine_id, Machine.all.collect{ |c| [c.name, c.id] }
+    = f.input :raisedFloorLoc, :label => "Raised Floor Location"
+  .form-actions
+    = f.button :submit, :class => 'btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), machine_locs_path, :class => 'btn'

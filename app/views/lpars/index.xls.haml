@@ -1,0 +1,12 @@
+%table{:border => "1"}
+  %thead
+    %tr
+      %th Machine ID
+      %th SMF ID
+      %th Name
+  %tbody
+    - @lpars.each do |lpar|
+      %tr
+        %td= lpar.mid
+        %td= lpar.smfid
+        %td= lpar.name

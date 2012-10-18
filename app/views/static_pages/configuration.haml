@@ -1,0 +1,91 @@
+.page-header
+  %h1 Configuration
+#accordion2.accordion
+  .accordion-group
+    .accordion-heading
+      %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", :href => "#collapseOne"}
+        Machines
+    #collapseOne.accordion-body.collapse
+      .accordion-inner
+        %ul.nav.nav-pills.nav-stacked
+          %li= link_to "Machines", machines_path
+          %li= link_to "Configurations", machine_configs_path
+          %li= link_to "Machine LPARs", machine_lpars_path
+          %li= link_to "Capacity", capacities_path
+          %li= link_to "Models", mods_path
+  .accordion-group
+    .accordion-heading
+      %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", :href => "#collapseTwo"}
+        LPARs
+    #collapseTwo.accordion-body.collapse
+      .accordion-inner
+        %ul.nav.nav-pills.nav-stacked
+          %li= link_to "LPARs", lpars_path
+          %li= link_to "Configurations", lpar_configs_path
+  .accordion-group
+    .accordion-heading
+      %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", :href => "#collapseThree"}
+        Sysplex
+    #collapseThree.accordion-body.collapse
+      .accordion-inner
+        %ul.nav.nav-pills.nav-stacked
+          %li= link_to "Sysplex", sysplexes_path
+          %li= link_to "Sysplex LPARs", sysplex_lpars_path
+  .accordion-group
+    .accordion-heading
+      %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", :href => "#collapseFour"}
+        IMS
+    #collapseFour.accordion-body.collapse
+      .accordion-inner
+        %ul.nav.nav-pills.nav-stacked
+          %li= link_to "IMS", information_management_systems_path
+  .accordion-group
+    .accordion-heading
+      %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", :href => "#collapseFive"}
+        Customers
+    #collapseFive.accordion-body.collapse
+      .accordion-inner
+        %ul.nav.nav-pills.nav-stacked
+          %li= link_to "Customers", customers_path
+  .accordion-group
+    .accordion-heading
+      %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", :href => "#collapseSix"}
+        Locations
+    #collapseSix.accordion-body.collapse
+      .accordion-inner
+        %ul.nav.nav-pills.nav-stacked
+          %li= link_to "Locations", locations_path
+          %li= link_to "Machine Locations", machine_locs_path
+  .accordion-group
+    .accordion-heading
+      %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", :href => "#collapseSeven"}
+        Applications
+    #collapseSeven.accordion-body.collapse
+      .accordion-inner
+        %ul.nav.nav-pills.nav-stacked
+          %li= link_to "Applications", applications_path
+  .accordion-group
+    .accordion-heading
+      %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", :href => "#collapseNine"}
+        DB2s
+    #collapseNine.accordion-body.collapse
+      .accordion-inner
+        %ul.nav.nav-pills.nav-stacked
+          %li= link_to "DB2s", db2s_path
+  .accordion-group
+    .accordion-heading
+      %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", :href => "#collapseTen"}
+        CICS
+    #collapseTen.accordion-body.collapse
+      .accordion-inner
+        %ul.nav.nav-pills.nav-stacked
+          %li= link_to "CICS", customer_information_control_systems_path
+  .accordion-group
+    .accordion-heading
+      %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", :href => "#collapseEight"}
+        Report Data
+    #collapseEight.accordion-body.collapse
+      .accordion-inner
+        %ul.nav.nav-pills.nav-stacked
+          %li= link_to "ZIIP", ziips_path
+          %li= link_to "CPU", cpus_path

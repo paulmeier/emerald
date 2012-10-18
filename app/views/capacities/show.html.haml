@@ -1,0 +1,33 @@
+- model_class = Capacity
+.page-header
+  %h1= t '.title', default: model_class.model_name.human
+%dl.dl-horizontal
+  %dt
+    %strong
+      = model_class.human_attribute_name(:name)
+      \:
+  %dd= @capacity.name
+  %dt
+    %strong
+      = model_class.human_attribute_name(:number)
+      \:
+  %dd= @capacity.number
+  %dt
+    %strong
+      = model_class.human_attribute_name(:capSetting)
+      \:
+  %dd= @capacity.capSetting
+  %dt
+    %strong
+      = model_class.human_attribute_name(:msu)
+      \:
+  %dd= @capacity.msu
+  %dt
+    %strong
+      = model_class.human_attribute_name(:mips)
+      \:
+  %dd= @capacity.mips
+.form-actions
+  = link_to t('.back', default: t("helpers.links.back")), capacities_path, class: 'btn'
+  = link_to t('.edit', default: t("helpers.links.edit")), edit_capacity_path(@capacity), class: 'btn'
+  = link_to t('.destroy', default: t("helpers.links.destroy")), capacity_path(@capacity), method: 'delete', data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'

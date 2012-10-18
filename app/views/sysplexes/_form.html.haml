@@ -1,0 +1,10 @@
+= simple_form_for @sysplex, html: { class: 'form-horizontal' } do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :id
+    = f.input :name
+
+  .form-actions
+    = f.button :submit, class: 'btn-primary'
+    = link_to t('.cancel', default: t("helpers.links.cancel")), mods_path, class: 'btn'

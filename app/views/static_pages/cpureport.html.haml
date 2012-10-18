@@ -1,0 +1,34 @@
+.page-header
+  %h1 CPU Detailed Report
+- Location.find(params[:location]).machines.each do |m|
+  %h3= m.name
+  %strong
+    Name
+  = m.name
+  %br
+  %strong
+    Peak MIPS
+  = Cpu.findBOXpeaks(m.id).first.peak.to_i
+  %br
+  %strong
+    Peak Time
+  = Cpu.findBOXpeaks(m.id).first.datetime.in_time_zone("Central Time (US & Canada)")
+  %br
+  %strong
+    Average MIPS
+  = Cpu.findBOXaverage(m.id)
+  %table#minTable
+    %thead
+      %tr
+        %th LPAR
+        %th Peak
+        %th Average
+        %th MIPS Weight 
+    %tbody
+      - Cpu.findLPARpeaks(m.id).each do |l|
+        %tr
+          %td= l.smfid
+          %td= l.max.round
+          %td= l.average.round
+          %td= LparConfig.weightMIPS(Lpar.find_by_smfid(l.smfid).id)
+  %br

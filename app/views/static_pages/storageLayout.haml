@@ -1,0 +1,158 @@
+:javascript
+  $(document).ready(function() {
+      $('.tip').tooltip();
+  });
+.page-header
+  %h1 Storage Layout
+- @machineList.each do |m|
+  %br
+  %table#minTable{align: "center"}
+    %thead
+      %tr
+        %th 
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "tooltip", :title => "The IOCDS designated name."}CPU
+        %th 
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "The machines serial number."}Serial
+        %th 
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "The IBM MIPS rating."}MIPS
+        %th 
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "The IBM MSU rating."}MSU
+        %th 
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "Converts MIPS (at the weight value) to MSUs for software contracts."}MSU Weight
+        %th 
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "The IBM designation for the number of z/OS engines."}Capacity
+        %th Model
+        %th 
+          %a{"data-placement" => "top", :href => "#", :rel => "itooltip",  class: "tip",
+           :title => "Indicates how much of the logical engines assigned an LPAR are used. (Physical engines are never permanently assigned an LPAR.)"}Per CP Share
+        %th 
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "The standard amount of storage allocated to this machine."}Storage
+        %th 
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "Available storage."}Remaining Storage
+      %tbody
+        %td= m.name
+        %td= m.serialNumber
+        %td= m.machineConfig.capacity.mips
+        %td= m.machineConfig.capacity.msu
+        %td= MachineConfig.msuPerEngine(m.id)
+        %td= m.machineConfig.capacity.capSetting
+        %td= m.machineConfig.mod.name
+        %td= MachineConfig.machineCpPerShare(m.id)
+        %td= m.machineConfig.centralStorage
+        %td= MachineConfig.remainingStorage(m.id)
+  %br
+  %table#minTable
+    %thead
+      %tr
+        %th 
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "LPAR name."}LPAR
+        %th 
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "I/O protocols use this number to direct incoming I/O to the correct LPAR."}Lpar ID
+        %th 
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "This ID is set by the systems group in the SYSNAME parameter of the member IEASYS00 in SYS1.PARMLIB"}SMF ID
+        %th 
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "Except for OVERHEAD, these are the values entered via the HMC (Hardware Management Console)."}Coded Weight
+        %th 
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "Regardless of coded weight values, PR/SM normalizes the weight settings to 100."}Running Weight
+        %th 
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "This column, generated for TAPS, converts MIPS (at the weight value) to MSUs for software contracts."}MSU Weight
+        %th 
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "This is the maximum MIPS that will be allocated to this LPAR when the MACHINE is running at 100%."}Max MIPS (Weight)
+        %th 
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip",
+           :title => "If there is no CAP VALUE, this is the maximum MIPS this LPAR could get based on the number of logical engines assigned in the HMC."}Max MIPS Engine Cap
+        %th 
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "This value represents the MAXIMUM MIPS this LPAR can use if neither weight nor capping is a factor."}Max Kick
+        %th 
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "This is the MSU value entered into the HMC that corresponds with the desired MIPS value."}Cap Value
+        %th 
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "These are the values entered via the HMC (Hardware Management Console)."}Ziip Weight
+        %th 
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "These are the values entered via the HMC (Hardware Management Console)."}Zaap Weight
+        %th 
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "The number of Z/OS logical engines assigned to this LPAR. The assignment is done on the HMC console."}Local Engines
+        %th 
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "This entry exists if a zIIP engine(s) is assigned to this LPAR, normally in shared (S) mode."}ZIIPs
+        %th 
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "This entry exists if a zAAP engine(s) is assigned to this LPAR, normally in shared (S) mode."}ZAAPs
+        %th 
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "This entry exists if a IFL engine(s) is assigned to this LPAR."}IFLs
+        %th 
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip",
+           :title => "Guaranteed Processor Value. This value is based on weight. When running at 100% GPV shows the number of engines that will be used by this LPAR. WHOLE numbers are preferred! Fractional numbers mean overhead is likely to be higher as Z/OS swaps real engines. Real engine swapping can optionally be minimized via HiperDispatch."}GPV
+        %th 
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "Indicates how much of the logical engines assigned an LPAR are used. (Physical engines are never permanently assigned an LPAR."}Per CP Share
+        %th 
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "The total amount of storage requitred for full CBU mode operation with all LPARs recovered."}Storage CBU
+        %th 
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "The standard amount of storage allocated to this LPAR via the HMC."}Storage Normal
+        %th 
+          %a{"data-placement" => "top", :href => "#", class: "tip", :rel => "itooltip", :title => "The value coded in the HMC for this parameter."}Reserved Storage
+    %tbody
+      - m.lpars.find_each(batch_size: 200) do |lpar|
+        %tr#lconflist
+          %td= lpar.name
+          %td= lpar.mid
+          %td= lpar.smfid
+          %td= lpar.lparConfig.codedWeight
+          %td= lpar.lparConfig.runningWeight
+          %td= LparConfig.msuWeight(lpar.id)
+          %td= LparConfig.maxMips(lpar.id)
+          %td= LparConfig.mipsCap(lpar.id)
+          %td= LparConfig.maxKick(lpar.id)
+          %td= lpar.lparConfig.capValue 
+          %td= lpar.lparConfig.ziipWeight
+          %td= lpar.lparConfig.zaapWeight
+          %td= lpar.lparConfig.localEngines
+          %td= lpar.lparConfig.ziip
+          %td= lpar.lparConfig.zaap
+          %td= lpar.lparConfig.ifl
+          %td= LparConfig.gpv(lpar.id)
+          %td= LparConfig.perCpShare(lpar.id)
+          %td= lpar.lparConfig.storageCbu
+          %td= lpar.lparConfig.storageNormal
+          %td= lpar.lparConfig.reservedStorage
+      %tr
+        %td HSA
+        %td
+        %td   
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+      %tr
+        %td  
+        %td 
+        %td
+        %td= LparConfig.sum(:codedWeight, :conditions => ['lpar_id in (?)', m.lpars.map(&:id)])
+        %td= LparConfig.sum(:runningWeight, :conditions => ['lpar_id in (?)', m.lpars.map(&:id)])
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td= LparConfig.sum(:ziipWeight, :conditions => ['lpar_id in (?)', m.lpars.map(&:id)])
+        %td
+        %td= LparConfig.sum(:localEngines, :conditions => ['lpar_id in (?)', m.lpars.map(&:id)])
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td= LparConfig.sum(:storageCbu, :conditions => ['lpar_id in (?)', m.lpars.map(&:id)])
+        %td= LparConfig.sum(:storageNormal, :conditions => ['lpar_id in (?)', m.lpars.map(&:id)])
+        %td

@@ -1,0 +1,23 @@
+- model_class = Customer
+%h1= t '.title', default: model_class.model_name.human.pluralize.upcase
+%br
+  = link_to image_tag('xls-icon.png', height: "3.5%", width: "3.5%"),url_for(format: 'xls'),class: "xlsicon"
+  = link_to image_tag('PDF_icon.gif', height: "3%", width: "3%"), url_for(format: 'pdf')
+  %br
+    %br
+      %table.table.table-striped
+        %tr
+          %th Id
+          %th Name
+          %th= model_class.human_attribute_name(:created_at)
+          %th= t '.actions', default: t("helpers.actions")
+      
+        - @customers.each do |customer|
+          %tr
+            %td= customer.id
+            %td= customer.name
+            %td= l customer.created_at
+            %td
+              = link_to t('.edit', default: t("helpers.links.edit")), edit_customer_path(customer), class: 'btn btn-mini'
+              = link_to t('.destroy', default: t("helpers.links.destroy")),customer_path(customer), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger'                                                                                                 |
+      = link_to t('.new', default: t("helpers.links.new")), new_customer_path, class: 'btn btn-primary'

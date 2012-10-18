@@ -1,0 +1,34 @@
+%table{:border => "1"}
+  %thead
+    %tr
+      %th ID
+      %th Name
+      %th LparID
+      %th Coded Weight
+      %th Running Weight
+      %th Ziip Weight
+      %th Zaap Weight
+      %th Local Engines
+      %th ZIIPs
+      %th ZAAPs
+      %th IFLs
+      %th Storage CBU
+      %th Storage Normal
+      %th Reserved Storage
+  %tbody
+    - @lpar_configs.each do |lpar_config|
+      %tr#lconflist
+        %td= lpar_config.id
+        %td= lpar_config.lpar.name
+        %td= lpar_config.lpar.mid
+        %td= lpar_config.codedWeight
+        %td= lpar_config.runningWeight
+        %td= lpar_config.ziipWeight
+        %td= lpar_config.zaapWeight
+        %td= lpar_config.localEngines
+        %td= lpar_config.ziip
+        %td= lpar_config.zaap
+        %td= lpar_config.ifl
+        %td= lpar_config.storageCbu
+        %td= lpar_config.storageNormal
+        %td= lpar_config.reservedStorage

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 1
+  DateTime: 2012-07-13 10:02:16
+  LPAR: MyString
+  PCTBOX: 1.5
+
+two:
+  id: 1
+  DateTime: 2012-07-13 10:02:16
+  LPAR: MyString
+  PCTBOX: 1.5

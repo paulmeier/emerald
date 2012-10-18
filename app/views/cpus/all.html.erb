@@ -1,0 +1,104 @@
+​<script>
+$(function () {
+    $.get("/cpus/1/<%= params[:lpar] %>/call", {}, function (data) {
+        var arr = new Array();
+        $.each(data, function (index, obj) {
+            arr.push([
+            Date.UTC(
+            obj.datetime.substring(0, 4),
+            obj.datetime.substring(5, 7) - 1,
+            obj.datetime.substring(8, 10),
+            obj.datetime.substring(11, 13),
+            obj.datetime.substring(14, 16),
+            obj.datetime.substring(17, 19)), obj.mips]);
+        });
+        window.chart = new Highcharts.StockChart({
+            chart: {
+                renderTo: 'container'
+            },
+            rangeSelector: {
+                buttons: [{
+                    type: 'hour',
+                    count: 1,
+                    text: '1h'
+                }, {
+                    type: 'day',
+                    count: 3,
+                    text: '3d'
+                }, {
+                    type: 'week',
+                    count: 1,
+                    text: '1w'
+                }, {
+                    type: 'month',
+                    count: 1,
+                    text: '1m'
+                }, {
+                    type: 'month',
+                    count: 6,
+                    text: '6m'
+                }, {
+                    type: 'year',
+                    count: 1,
+                    text: '1y'
+                }, {
+                    type: 'all',
+                    text: 'All'
+                }],
+                selected: 2
+            },
+            plotOptions: {
+                area: {
+                    fillColor: {
+                        linearGradient: [0, 0, 0, 300],
+                        stops: [
+                            [0, Highcharts.getOptions().colors[0]],
+                            [1, 'rgba(2,0,0,0)']
+                        ]
+                    },
+                    lineWidth: 1,
+                    marker: {
+                        enabled: false,
+                        states: {
+                            hover: {
+                                enabled: true,
+                                radius: 5
+                            }
+                        }
+                    },
+                    shadow: false,
+                    states: {
+                        hover: {
+                            lineWidth: 1
+                        }
+                    }
+                }
+            },
+            title: {
+                text: '<%= params[:lpar] %> - MIPS'
+            },
+            xAxis: {
+                tickInterval: 24 * 3600 * 1000,
+                maxZoom: 1 * 24 * 3600000
+            },
+            yAxis: {
+                title: {
+                    text: "MIPS Used"
+                },
+                min: 0
+            },
+            series: [{
+                name: '<%= params[:lpar] %>',
+                data: arr,
+                tooltip: {
+                    valueDecimals: 2
+                },
+                dataGrouping: {
+                    enabled: true,
+                }
+            }]
+        });
+    })
+});
+</script>
+<div id="container" style="height: width:1200px; height:600px;"></div>​

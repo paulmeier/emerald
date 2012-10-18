@@ -1,0 +1,18 @@
+#lbox
+  %h3 Sign in
+  %br
+  = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    %form.form-horizontal
+      .control-group
+        .controls
+          = f.input :email, required: false, autofocus: true
+      .control-group
+        .controls
+          = f.input :password, required: false
+      .control-group
+        .controls
+          %label.checkbox
+            = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+      .form-actions{align: "center"}
+        = f.button :submit, "Sign in"
+  = render "devise/shared/links"

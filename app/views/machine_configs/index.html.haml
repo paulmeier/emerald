@@ -1,0 +1,50 @@
+- model_class = MachineConfig
+.page-header
+  %h1= t '.title', default: model_class.model_name.human.pluralize
+%br
+  = link_to image_tag('xls-icon.png', height: "3.5%", width: "3.5%"),url_for(format: 'xls'),class: "xlsicon"
+  = link_to image_tag('PDF_icon.gif', height: "3%", width: "3%"), url_for(format: 'pdf')
+  %table.table.table-striped
+    %thead
+      %tr
+        %th= model_class.human_attribute_name(:id)
+        %th= model_class.human_attribute_name(:machine_id)
+        %th= model_class.human_attribute_name(:name)
+        %th= model_class.human_attribute_name(:mod_id)
+        %th= model_class.human_attribute_name(:capacity_id)
+        %th= model_class.human_attribute_name(:machineLoc_id)
+        %th= model_class.human_attribute_name(:centralStorage)
+        %th= model_class.human_attribute_name(:ziip)
+        %th= model_class.human_attribute_name(:icf)
+        %th= model_class.human_attribute_name(:cbu)
+        %th= model_class.human_attribute_name(:ifb)
+        %th= model_class.human_attribute_name(:es)
+        %th= model_class.human_attribute_name(:fi)
+        %th= model_class.human_attribute_name(:osa)
+        %th= model_class.human_attribute_name(:crypto)
+        %th= model_class.human_attribute_name(:created_at)
+        %th= t '.actions', default: t("helpers.actions")
+    %tbody
+      - @machine_configs.each do |machine_config|
+        %tr
+          %td= link_to machine_config.id, machine_config_path(machine_config)
+          %td= machine_config.machine.name
+          %td= machine_config.name
+          %td= machine_config.mod.name
+          %td= machine_config.capacity.capSetting
+          %td= machine_config.machineLoc_id
+          %td= machine_config.centralStorage
+          %td= machine_config.ziip
+          %td= machine_config.icf
+          %td= machine_config.cbu
+          %td= machine_config.ifb
+          %td= machine_config.es
+          %td= machine_config.fi
+          %td= machine_config.osa
+          %td= machine_config.crypto
+          %td= l machine_config.created_at
+          %td
+            = link_to t('.edit', default: t("helpers.links.edit")), edit_machine_config_path(machine_config), class: 'btn btn-mini'
+            = link_to t('.destroy', default: t("helpers.links.destroy")),                                                                |
+              machine_config_path(machine_config), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger' |
+  = link_to t('.new', default: t("helpers.links.new")), new_machine_config_path, class: 'btn btn-primary'

@@ -1,0 +1,59 @@
+<script>
+$(function() {
+  $.datepicker.setDefaults({dateFormat: "yy-mm-dd"});
+  $("#ziipfrom").datepicker({
+    minDate: gon.startDate,
+    maxDate: -1,
+    defaultDate: "-1d",
+    changeMonth: true,
+    changeYear: true,
+    numberOfMonths: 1,
+	    onSelect: function(selectedDate) {
+	      $("#ziipto").datepicker("option", "minDate", selectedDate);
+	     	}
+     });
+
+  $("#ziipto").datepicker({
+    minDate: "#ziipfrom",
+    maxDate: -1,
+    defaultDate: "-1d",
+    changeMonth: true,
+    changeYear: true,
+    numberOfMonths: 1,
+	    onSelect: function(selectedDate) {
+	      $("#ziipfrom").datepicker("option", "maxDate", selectedDate);
+	     }
+    });
+});
+</script>
+<h3>Custom Graph</h3>
+Create a custom graph below.<br>
+
+<br>
+<%= simple_form_for(@ziips, :url => zcustgraph_path) do |f| %>
+	From:
+<%= f.datetime_picker :from, id: "ziipfrom" %> To:
+<%= f.datetime_picker :to, id: "ziipto" %>
+<br><br>
+Data as <%= f.select :data, options_for_select(DATA) %>
+<br><br>
+Increment as <%= f.select :increment, options_for_select(INCTYPES) %>
+<br><br>
+<strong>Select multiple by holding down "Ctrl"</strong>
+<br><br>
+<%= f.input :lpars, :collection => Location.lparList(params[:location]) , :input_html => { :multiple => true, :class => "input-large", :size => "10" }%>
+<br>
+<%= f.input :includeWeights, :label => 'Include LPAR Weight(s)', :as => :boolean %>
+<br>
+<%= f.input :machines, :collection => Location.find(params[:location]).machines , :input_html => { :multiple => true, :class => "input-large", :size => "5" }%>
+<br>
+<%= f.input :maxMips, :label => 'Include Maximum CEC MIPS', :as => :boolean %>
+<br>
+Graph Type
+<%= f.select :graphtype, options_for_select(GRAPHTYPES) %>
+<br><br>	
+<div class="actions">
+<%= f.submit "Graph", :class => 'btn btn-primary' %>
+<%= submit_tag 'Clear', :type => :reset, :class => "btn btn-danger" %>
+</div>
+<% end %>

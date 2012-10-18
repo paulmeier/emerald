@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Id:
+  = @db2.id
+%p
+  %b Name:
+  = @db2.name
+
+= link_to 'Edit', edit_db2_path(@db2)
+\|
+= link_to 'Back', db2s_path

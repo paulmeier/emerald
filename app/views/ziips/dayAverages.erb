@@ -1,0 +1,77 @@
+<script type="text/javascript">
+$(function() {
+		//Set the charts colors
+	Highcharts.setOptions({
+    colors: [
+'#C46210',	
+'#2E5894',
+'#9C2542',	
+'#BF4F51',
+'#A57164',	
+'#58427C',	
+'#4A646C',	
+'#85754E',	
+'#319177',	
+'#0A7E8C',	
+'#9C7C38',
+'#8D4E85',	
+'#8FD400',	
+'#D98695',	
+'#757575',	
+'#0081AB',
+'#CDC5C2',
+'#80DAEB',
+'#ECEABE',
+'#FFCF48',
+'#FD5E53',
+'#FAA76C',
+'#18A7B5',
+'#EBC7DF',
+]
+});
+	var chart = new Highcharts.Chart({
+			chart: { renderTo: "ziipsChart", type: "column" },
+			title: { text: "ZIIP Average by Day" },
+			xAxis: { type: "datetime",
+					 dateTimeLabelFormats: { day: '%b-%e' },
+					 tickInterval: 24 * 3600 * 1000,
+    				 labels: {
+    				  	rotation:-45,
+    				  	align: 'right',
+    				  	formatter: function() {
+				             return Highcharts.dateFormat("%a %b %e, %Y", this.value);
+				        }
+    				  } 
+    				},
+			yAxis: { title: { text: "Average % of ZIIP Used" },
+					 labels: {
+    				  	formatter: function () {
+				            return Highcharts.numberFormat(this.value, 2) + ' %';
+				        }
+				     }
+				    },
+			tooltip: {
+                formatter: function() {
+                        return '<b>'+ this.series.name +'</b><br/>'+
+                        Highcharts.numberFormat(this.y, 2) +' %';
+                }
+            },
+			series: [
+			<% params[:ziip][:lpars].each do |lpar| %>
+			{
+				name: "<%= Lpar.find(lpar).name %>",
+				data: <%= Ziip.getZiipAverageByDay(params[:ziip][:from], params[:ziip][:to], lpar) %>,
+			},
+			<% end %>
+			<% params[:ziip][:machines].each do |m| %>
+			{
+				name: "<%= Machine.find(m).name %>",		      		
+				data: <%= Ziip.getZiipBoxAverageByDay(params[:ziip][:from], params[:ziip][:to], m) %>,
+			},
+			<% end %>	
+					]
+	});
+});
+</script>
+
+<div id="ziipsChart" style="width:1200px; height:600px;"></div>

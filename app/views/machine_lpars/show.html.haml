@@ -1,0 +1,18 @@
+- model_class = MachineLpar
+.page-header
+  %h1= t '.title', default: model_class.model_name.human
+%dl.dl-horizontal
+  %dt
+    %strong
+      = model_class.human_attribute_name(:lpar_id)
+      \:
+  %dd= @machine_lpar.lpar_id
+  %dt
+    %strong
+      = model_class.human_attribute_name(:machine_id)
+      \:
+  %dd= @machine_lpar.machine_id
+.form-actions
+  = link_to t('.back', default: t("helpers.links.back")), machine_lpars_path, class: 'btn'
+  = link_to t('.edit', default: t("helpers.links.edit")), edit_machine_lpar_path(@machine_lpar), class: 'btn'
+  = link_to t('.destroy', default: t("helpers.links.destroy")), machine_lpar_path(@machine_lpar), method: 'delete', data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'

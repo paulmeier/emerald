@@ -1,0 +1,47 @@
+- model_class = LparConfig
+.page-header
+  %h1 LPAR Configurations
+%br
+  = link_to image_tag('xls-icon.png', height: "3.5%", width: "3.5%"),url_for(format: 'xls'),class: "xlsicon"
+  = link_to image_tag('PDF_icon.gif', height: "3%", width: "3%"), url_for(format: 'pdf')
+  %table.table-condensed.table-striped
+    %thead
+      %tr
+        %th ID
+        %th LPAR
+        %th Coded Weight
+        %th Running Weight
+        %th ZIIP Weight
+        %th ZAAP Weight
+        %th CAP Value
+        %th Local Engines
+        %th ZIIP
+        %th ZAAP
+        %th IFL
+        %th Storage CBU
+        %th Storage Normal
+        %th Reserved Storage
+        %th= model_class.human_attribute_name(:created_at)
+        %th= t '.actions', default: t("helpers.actions")
+    %tbody
+      - @lpar_configs.each do |lpar_config|
+        %tr
+          %td= link_to lpar_config.id, lpar_config_path(lpar_config)
+          %td= lpar_config.lpar.name
+          %td= lpar_config.codedWeight
+          %td= lpar_config.runningWeight
+          %td= lpar_config.ziipWeight
+          %td= lpar_config.zaapWeight
+          %td= lpar_config.capValue
+          %td= lpar_config.localEngines
+          %td= lpar_config.ziip
+          %td= lpar_config.zaap
+          %td= lpar_config.ifl
+          %td= lpar_config.storageCbu
+          %td= lpar_config.storageNormal
+          %td= lpar_config.reservedStorage
+          %td= l lpar_config.created_at
+          %td
+            = link_to t('.edit', default: t("helpers.links.edit")), edit_lpar_config_path(lpar_config), class: 'btn btn-mini'
+            = link_to t('.destroy', default: t("helpers.links.destroy")), lpar_config_path(lpar_config), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger'
+  = link_to t('.new', default: t("helpers.links.new")), new_lpar_config_path, class: 'btn btn-primary'

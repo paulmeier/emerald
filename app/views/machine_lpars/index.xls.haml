@@ -1,0 +1,10 @@
+%table{:border => "1"}
+  %thead
+    %tr
+      %th Lpar
+      %th Machine
+  %tbody
+    - @machine_lpars.each do |machine_lpar|
+      %tr
+        %td= machine_lpar.lpar.name
+        %td= machine_lpar.machine.name
